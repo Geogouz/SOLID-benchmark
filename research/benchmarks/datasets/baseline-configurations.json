@@ -1,0 +1,63 @@
+{
+ "schema": "solid.baselines.base-configurations.v1",
+ "rule": "The fixed settings of every baseline, its published constants and solver budgets, the options of Jin 2021, FNL 2025 and STRONG 2021 that TWR-CLOUD-Bern's training scans once chose, and the anchor aided rounds of ADE-BP 2015 of the retained runs. Every training half selects those options again among the candidates of baseline_selection.py, so a run takes the fixed settings from here and the options from its selection records. ADE-BP's other options stay fixed, its ranging model is fitted on each training half and its area is SOLID's operating area of the unit. No baseline setting is read from an evaluation run. The Bern evaluation run records named under provenance are where these values were once read, kept as provenance only.",
+ "solve_config": {"gradient_tolerance": 1e-05, "history_size": 10, "max_iterations": 10000, "max_time_micros": 0, "max_tof_ns": 200.0},
+ "methods": {
+  "jin-2021": {
+   "fixed": "The residual multiplier c = 2 of the paper. Jin takes the median or the mean of a link's readings from its own setting and reads neither the aggregation of the solve settings nor the robust radius.",
+   "method_config": {"method": "jin-2021", "residual_multiplier": 2.0},
+   "solve_config": {"aggregation": "Median", "robust_delta": 0.7},
+   "bern": {
+    "AF": {"solve_config": {"dimension_policy": "planar"}, "method_config": {}},
+    "AAC": {"solve_config": {"dimension_policy": "planar"}, "method_config": {}},
+    "ANC": {"solve_config": {"dimension_policy": "planar"}, "method_config": {}}
+   }
+  },
+  "fnl": {
+   "fixed": "The 10,000 updates of the paper's schedule, the solve settings' iteration cap that FNL never exceeds. FNL reads no robust radius.",
+   "method_config": {"method": "fnl"},
+   "solve_config": {"robust_delta": 0.7},
+   "bern": {
+    "AF": {"solve_config": {"dimension_policy": "planar", "aggregation": "Median"}, "method_config": {"initialization": "solid-geometry"}},
+    "AAC": {"solve_config": {"dimension_policy": "planar", "aggregation": "Median"}, "method_config": {"initialization": "solid-geometry"}},
+    "ANC": {"solve_config": {"dimension_policy": "spatial", "aggregation": "Median"}, "method_config": {"initialization": "released"}}
+   }
+  },
+  "strong": {
+   "fixed": "An iteration cap of 10,000 and the relative stopping tolerance of 1e-5, measured from the anchor centroid, with the median of a link's readings.",
+   "method_config": {"method": "strong"},
+   "solve_config": {"aggregation": "Median"},
+   "bern": {
+    "AAC": {"solve_config": {"dimension_policy": "spatial", "robust_delta": 40.0}, "method_config": {"initialization": "solid-geometry"}},
+    "ANC": {"solve_config": {"dimension_policy": "spatial", "robust_delta": 40.0}, "method_config": {"initialization": "solid-geometry"}}
+   }
+  },
+  "ade-bp-2015": {
+   "fixed": "500 particles from the paper, four rounds of message passing from the paper in the anchor only mode, the cap of 256 importance refinements from a TWR-CLOUD-Bern training screen, the median of a link's readings and the planar model, the one it implements. The rounds of the anchor aided mode are selected on every training half between the four of the paper and the ten chosen on synthetic TIERS training layouts, which the retained runs took. Its ranging model is fitted on each training half (ade_training.py) and its area is SOLID's operating area of the unit (layout_inputs.py). TWR-CLOUD-Bern runs ADE-BP from its own fitted configuration (ade_training.bern_config) with the rounds its selection chose.",
+   "method_config": {"method": "ade-bp-2015", "area": null, "particles": 500, "importance_iterations": 256},
+   "solve_config": {"aggregation": "Median", "dimension_policy": "planar", "robust_delta": 0.7},
+   "modes": {
+    "AAC": {"solve_config": {}, "method_config": {}},
+    "ANC": {"solve_config": {}, "method_config": {"iterations": 4}}
+   },
+   "bern": {
+    "AAC": {"solve_config": {}, "method_config": {"iterations": 10, "ranging_model": {"negative_intercept_cm": 55.935533353036, "negative_slope": 0.0, "positive_intercept_cm": 9.7059943254643, "positive_slope": 0.04361915824323337}}},
+    "ANC": {"solve_config": {}, "method_config": {"ranging_model": {"negative_intercept_cm": 55.935533353036, "negative_slope": 0.0, "positive_intercept_cm": 9.7059943254643, "positive_slope": 0.04361915824323337}}}
+   }
+  }
+ },
+ "provenance": {
+  "AAC": {
+   "jin-2021": ["corrected-training/evaluation/runs/jin-2021/aac/benchmark.json", "d57f2eaa5eda8af64a6e3c1bd6a95371ebd683344c4bb39afb579da980e05e23"],
+   "ade-bp-2015": ["corrected-training/evaluation/runs/ade-bp-2015/aac/benchmark.json", "e7c5ad680b41e73ee4f4a2c945ebec7bd33ede42398e8e25df7773b77bbd5a78"],
+   "fnl": ["runs/fnl/aac/benchmark.json", "6cea6e29a4f6e8fb7a2a304f7d4556a0ca4fbf649a4e7bc3aeb9fdd7a4a4ed0d"],
+   "strong": ["corrected-training/evaluation/runs/strong/aac/benchmark.json", "74772c0ada0cbd29100a2d930bde1b4bc464b50b4447d267ec152157014d5969"]
+  },
+  "ANC": {
+   "jin-2021": ["corrected-training/evaluation/runs/jin-2021/anc/benchmark.json", "30809f4c101846db9ad7aacc65ac12a6d0625d9a58664d26f2641a9f228c5219"],
+   "ade-bp-2015": ["corrected-training/evaluation/runs/ade-bp-2015/anc/benchmark.json", "9e8e47758c080f080d0be9a4fba09d528162af2cec15477347af3512e3db5bc1"],
+   "fnl": ["runs/fnl/anc/benchmark.json", "d23ba4d0cfc45ec1278178ae348c44bdea577053f33d30ca8f5fe8689f3f8c64"],
+   "strong": ["corrected-training/evaluation/runs/strong/anc/benchmark.json", "7d2a7dc50a735e64b19ea2408f77fc8407443a19a1701a247726432fcfa72d72"]
+  }
+ }
+}

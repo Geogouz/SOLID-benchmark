@@ -1,0 +1,40 @@
+[workspace]
+members = [
+    "cli",
+    "evaluation",
+    "benchmarks/bern/calibration/fitter",
+    "io",
+    "methods",
+]
+default-members = [
+    "cli",
+    "evaluation",
+    "io",
+    "methods",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+rust-version = "1.85"
+
+[workspace.dependencies]
+anyhow = "1.0.86"
+clarabel = "0.11.1"
+clap = { version = "4.5.7", features = ["derive"] }
+libm = "=0.2.16"
+nalgebra = "0.34.0"
+rayon = "1.10.0"
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = "1.0.117"
+sha2 = "=0.10.9"
+thiserror = "1.0.61"
+zip = { version = "4", default-features = false, features = ["deflate"] }
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+panic = "abort"
+strip = "symbols"

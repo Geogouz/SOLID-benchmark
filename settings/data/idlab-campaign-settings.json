@@ -1,0 +1,314 @@
+{
+ "schema": "solid.settings.idlab-campaign.v1",
+ "rule": "The settings of every mode of the paper's IDLab campaign bases, idlab-campaign/base.json.gz and the copy in idlab-training-campaign/base.json.gz: the profile, the reported scale and the baselines of the request of each adapter check, idlab-check/<mode>/request.json, without its units, which idlab_campaign.freeze copies into the base. A reader's reproduction (SOLID_READER=1) runs no adapter check and no selection of STRONG's threshold and freezes the campaign with these settings. They hold every setting that idlab_check.py prepare writes today, and also what the code that built the paper's campaign wrote and the current code does not: the solve_config keys objective, requested_starts and research of the anchored baselines.",
+ "settings": {
+  "AF": {
+   "profile": {
+    "range_error": {
+     "positive_scale": 0.28192329101860075,
+     "negative_scale": 0.283354734285326
+    },
+    "availability": {
+     "intercept": 1.5191565651785053,
+     "slope": 0.22709257195167654
+    }
+   },
+   "scale_cm": 80.26037949746505,
+   "baselines": [
+    {
+     "method": "jin-2021",
+     "method_config": {
+      "method": "jin-2021",
+      "residual_multiplier": 2.0
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "fnl",
+     "method_config": {
+      "method": "fnl",
+      "initialization": "solid-geometry"
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    }
+   ]
+  },
+  "AAC": {
+   "profile": {
+    "range_error": {
+     "positive_scale": 0.8108332323628739,
+     "negative_scale": 0.7384202913461734
+    },
+    "availability": null
+   },
+   "scale_cm": 80.26037949746505,
+   "baselines": [
+    {
+     "method": "jin-2021",
+     "method_config": {
+      "method": "jin-2021",
+      "residual_multiplier": 2.0
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "ade-bp-2015",
+     "method_config": {
+      "method": "ade-bp-2015",
+      "area": null,
+      "particles": 500,
+      "iterations": 10,
+      "importance_iterations": 256,
+      "ranging_model": {
+       "positive_slope": 0.01635310663811578,
+       "positive_intercept_cm": 13.749990270390033,
+       "negative_slope": 0.026771098718657262,
+       "negative_intercept_cm": 8.721850458237846
+      }
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "fnl",
+     "method_config": {
+      "method": "fnl",
+      "initialization": "solid-geometry"
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "strong",
+     "method_config": {
+      "method": "strong",
+      "initialization": "solid-geometry"
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "spatial",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 40.0,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    }
+   ]
+  },
+  "ANC": {
+   "profile": null,
+   "scale_cm": 80.26037949746505,
+   "baselines": [
+    {
+     "method": "jin-2021",
+     "method_config": {
+      "method": "jin-2021",
+      "residual_multiplier": 2.0
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "ade-bp-2015",
+     "method_config": {
+      "method": "ade-bp-2015",
+      "area": null,
+      "particles": 500,
+      "iterations": 4,
+      "importance_iterations": 256,
+      "ranging_model": {
+       "positive_slope": 0.01635310663811578,
+       "positive_intercept_cm": 13.749990270390033,
+       "negative_slope": 0.026771098718657262,
+       "negative_intercept_cm": 8.721850458237846
+      }
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "planar",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "fnl",
+     "method_config": {
+      "method": "fnl",
+      "initialization": "released"
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "spatial",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 0.7,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    },
+    {
+     "method": "strong",
+     "method_config": {
+      "method": "strong",
+      "initialization": "solid-geometry"
+     },
+     "solve_config": {
+      "objective": "AccuracyProfile",
+      "aggregation": "Median",
+      "dimension_policy": "spatial",
+      "max_iterations": 10000,
+      "gradient_tolerance": 1e-05,
+      "history_size": 10,
+      "robust_delta": 40.0,
+      "max_tof_ns": 200.0,
+      "max_time_micros": 0,
+      "requested_starts": 32,
+      "research": {
+       "accuracy_solver_policy": false,
+       "aac_decoder": "projected_edm_median",
+       "anc_initializer": "production",
+       "anc_cutoff_standardized": 0.0
+      }
+     }
+    }
+   ]
+  }
+ },
+ "sources": {
+  "research/data/external-benchmarks/idlab-check/AF/request.json": "d8dd19547bddba1ad91ff4f023a8a0119e24181667fcf8228cf127a4701dc6af",
+  "research/data/external-benchmarks/idlab-check/AAC/request.json": "ea6b074d891c34fe1cd108b7d860b6ef38a75738c7bb68d5e83bd3a54fc54cb5",
+  "research/data/external-benchmarks/idlab-check/ANC/request.json": "8360f8411486e2f21f8f03257f6b902a0091ad84c92183473af1e3a0ac3d43cb",
+  "research/data/external-benchmarks/idlab-campaign/base.json.gz": "d178fc42b55ae23faf9802a2a8d732ffc95fba0c440c91ba52ec1f651b75eb36",
+  "research/data/external-benchmarks/idlab-training-campaign/base.json.gz": "800586d14c5f58163f63e12909b43b8988129aaacc83d225680780492a33ddc1"
+ }
+}

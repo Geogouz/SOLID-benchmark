@@ -1,0 +1,23 @@
+[workspace]
+members = ["engine", "ffi"]
+default-members = ["engine", "ffi"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+rust-version = "1.85"
+
+[workspace.dependencies]
+libm = "=0.2.16"
+nalgebra = "0.32.6"
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = { version = "1.0.117", features = ["float_roundtrip"] }
+thiserror = "1.0.61"
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+panic = "abort"
+strip = "symbols"

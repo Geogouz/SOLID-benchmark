@@ -1,0 +1,10 @@
+{
+ "area": {
+  "minimum_x_cm": -21535.594665,
+  "maximum_x_cm": -20121.105434999998,
+  "minimum_y_cm": -19920.62937,
+  "maximum_y_cm": -16558.370030000002
+ },
+ "detection_range_cm": 1007.695193955731,
+ "source": "Bern deployment fitted on the eleven training scans: the area is the bounding box of the training positions, the detection range is the Gaussian detection law fitted on the presence and absence of training ranging pools. Retained from the original Bern deployment profile, research/experiments/central/adaptive_anc/profiles/twr-cloud-bern-v1.json at revision 85d6fbd."
+}

@@ -1,0 +1,36 @@
+{
+  "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "range_error": {
+    "1": {
+      "positive_scale": 1.3594279909440836,
+      "negative_scale": 1.5262318183779042
+    },
+    "10": {
+      "positive_scale": 0.9487738540673715,
+      "negative_scale": 0.477412778472723
+    }
+  },
+  "availability": {
+    "1": {
+      "intercept": 6.503955719687028,
+      "slope": 0.5251975818754152
+    },
+    "10": {
+      "intercept": 6.328230501083835,
+      "slope": 0.5296944253284447
+    }
+  },
+  "sample": "Link medians formed as the engine forms them from the release's scenarios: every unordered pair of a scan as an agent pair, one reading of each direction on the one-sample track and up to ten on the ten-sample track drawn from the direction's pool with the admissible ones of both directions pooled into one median, and every directed pool as an anchor link with one direction alone, 16 fixed-seed draws of each, the two kinds weighted equally on every track."
+}

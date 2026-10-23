@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "SOLID: Spatial Optimization with Likelihood-Informed Distance Geometry for Range-Based Positioning"
+type: software
+license: MIT
+repository-code: "https://github.com/Geogouz/SOLID-benchmark"
+authors:
+  - family-names: Xenakis
+    given-names: Dimitris
+    orcid: "https://orcid.org/0000-0002-9423-2077"
+    affiliation: University of Bern
+  - family-names: Di Maio
+    given-names: Antonio
+    orcid: "https://orcid.org/0000-0001-8495-8926"
+    affiliation: University of Bern
+  - family-names: Braun
+    given-names: Torsten
+    orcid: "https://orcid.org/0000-0001-5968-7108"
+    affiliation: University of Bern
+preferred-citation:
+  type: article
+  title: "SOLID: Spatial Optimization with Likelihood-Informed Distance Geometry for Range-Based Positioning"
+  journal: "IEEE Journal of Indoor and Seamless Positioning and Navigation"
+  status: in-preparation
+  authors:
+    - family-names: Xenakis
+      given-names: Dimitris
+    - family-names: Di Maio
+      given-names: Antonio
+    - family-names: Braun
+      given-names: Torsten

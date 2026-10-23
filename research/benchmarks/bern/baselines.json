@@ -1,0 +1,21 @@
+{
+  "schema": "solid.bern.baselines.v1",
+  "note": "The retained TWR-CLOUD-Bern configuration of every baseline, one version per method and mode. Calibration names the input archive: refit is the corrected training calibration applied to every sample, raw is the published time of flight with the method's built in conversion. Dimensions and aggregation are the training selected choices of BASELINE_DIMENSIONS.md. Jin 2021, FNL 2025 and STRONG 2021 now run with the candidate their selection on the eleven held training scans chose (research/artifacts/baselines/bern-<method>-selection.json) and every other setting from research/benchmarks/datasets/baseline-configurations.json, so for them only the calibration of a mode applies and the dimensions, aggregation, configuration and radius here are the earlier choices of the retained runs. ADE-BP's ranging model is fitted on all eleven training scans under the engine's conversion of raw timings (research/artifacts/baselines/bern-ade-fit.json), and the held scans take the fit of their fold.",
+  "archives": {
+    "raw": "inputs/8617b54db218e099/TWR-CLOUD Bern Eval Scenarios.zip",
+    "refit": "corrected-training/evaluation/calibrated-scenarios.zip",
+    "scorer": "inputs/0068d72b94db6b1c/score_twr_cloud_bern.py",
+    "scorer_scenarios": "inputs/a4f213a271d308d9/TWR-CLOUD-Bern-v5-scorer-input.zip"
+  },
+  "methods": {
+    "strong": {"modes": {"AAC": {"calibration": "refit", "config": "strong-aac.json", "dimensions": "three-d"}, "ANC": {"calibration": "refit", "config": "strong-anc.json", "dimensions": "three-d"}}, "aggregation": "median", "robust_delta": 40.0},
+    "jin-2021": {"modes": {"AF": {"calibration": "refit", "config": "jin-2021-af.json", "dimensions": "two-d"}, "AAC": {"calibration": "refit", "config": "jin-2021-aac.json", "dimensions": "two-d"}, "ANC": {"calibration": "refit", "config": "jin-2021-anc.json", "dimensions": "two-d"}}, "aggregation": "median"},
+    "ade-bp-2015": {"modes": {"AAC": {"calibration": "raw", "config": "ade-bp-2015-refit-aac.json", "dimensions": "two-d"}, "ANC": {"calibration": "raw", "config": "ade-bp-2015-refit-anc.json", "dimensions": "two-d"}}, "aggregation": "median"},
+    "fnl": {"modes": {"AF": {"calibration": "raw", "config": "fnl-geometry.json", "dimensions": "two-d"}, "AAC": {"calibration": "raw", "config": "fnl-geometry.json", "dimensions": "two-d"}, "ANC": {"calibration": "raw", "config": null, "dimensions": "three-d"}}, "aggregation": "median"}
+  },
+  "solid": {
+    "AF": {"calibration": "raw", "profiles": "research/artifacts/solid/profiles/bern-agent-only.json"},
+    "AAC": {"calibration": "raw", "profiles": "research/artifacts/solid/profiles/bern-anchor-aided.json"},
+    "ANC": {"calibration": "raw", "profile": "research/artifacts/solid/profiles/bern-anchor-only.json"}
+  }
+}

@@ -1,0 +1,82 @@
+{
+ "1": {
+  "range_error": {
+   "positive_scale": 0.28192329101860075,
+   "negative_scale": 0.283354734285326
+  },
+  "presence": {
+   "shape": "gaussian",
+   "quantile": 0.9,
+   "factor": 0.75,
+   "width": 0.15,
+   "reach": "ml",
+   "enabled": true
+  },
+  "block_range": {
+   "kappa": 0.029495536139414556,
+   "excess_probability": 0.033618233180627836,
+   "excess_mean_rel": 83.95863606623044,
+   "persistent_sd_rel": 15.034457792193693,
+   "nu": 3.0,
+   "offset_shape": "gaussian",
+   "early_detection_per_cm": 0.0,
+   "height_nodes": [
+    257.1
+   ],
+   "height_weights": [
+    1.0
+   ],
+   "refine_from_median": true,
+   "independent_packets": false
+  },
+  "starts": 64,
+  "calibration": {
+   "range_slope_cm_per_ns": 28.512859035713586,
+   "range_offset_cm": 19.57939566609116,
+   "scale_slope": 0.02635621175286423,
+   "scale_intercept_cm": 4.649664346296255,
+   "scale_min_cm": 8.0,
+   "scale_max_cm": 55.0
+  }
+ },
+ "10": {
+  "range_error": {
+   "positive_scale": 0.28192329101860075,
+   "negative_scale": 0.283354734285326
+  },
+  "presence": {
+   "shape": "gaussian",
+   "quantile": 0.9,
+   "factor": 0.75,
+   "width": 0.15,
+   "reach": "ml",
+   "enabled": true
+  },
+  "block_range": {
+   "kappa": 0.029495536139414556,
+   "excess_probability": 0.033618233180627836,
+   "excess_mean_rel": 83.95863606623044,
+   "persistent_sd_rel": 15.034457792193693,
+   "nu": 3.0,
+   "offset_shape": "gaussian",
+   "early_detection_per_cm": 0.0,
+   "height_nodes": [
+    257.1
+   ],
+   "height_weights": [
+    1.0
+   ],
+   "refine_from_median": true,
+   "independent_packets": false
+  },
+  "starts": 64,
+  "calibration": {
+   "range_slope_cm_per_ns": 28.512859035713586,
+   "range_offset_cm": 19.57939566609116,
+   "scale_slope": 0.02635621175286423,
+   "scale_intercept_cm": 4.649664346296255,
+   "scale_min_cm": 8.0,
+   "scale_max_cm": 55.0
+  }
+ }
+}
