@@ -1,0 +1,562 @@
+{
+ "schema": "solid.split.heldout-benchmarks.v1",
+ "role": "HYMN and AAU Meshed UWB are held-out benchmarks. No design decision of the method reads them. Both halves are built, fitted and solved only after the method freeze recorded in research/artifacts/solid/selections/method-freeze.json, and the evaluation halves are evaluated once.",
+ "freeze_record": "research/artifacts/solid/selections/method-freeze.json",
+ "revisions": [
+  "The first version took the sign of the AAU statistics file for the pair biases. Its declared check on seq1, a training flight, stopped the first build, and the README's sign replaced it (aau.calibration.revision).",
+  "The first scratch builds of the training halves, before any link, ADE-BP or STRONG fit and before any solve, found failed exchanges that the radios publish as ranges, AAU reports near 338 km in either sign and HYMN readings of up to 306 m. Every calibrated reading of both datasets now has to lie from zero to the range of 200 ns of flight, the interval of raw timings the engine and the baselines accept, to be admissible. Each dataset's calibration counts the failed exchanges of its training half.",
+  "An independent review before any fit or solve on the node led to the third version. It scores a unit against the diameter of its own agents as the released scorer does, fits ADE-BP on the training blocks SOLID's link fit reads, declares the area of a unit without any admissible anchor sample, compares the AAU flights by their admissible calibrated ranges, states that the AAU halves share their node positions, requires a committed freeze record and has stage two check every record of stage one first. The plans and halves are unchanged.",
+  "A further review before any fit or solve on the node applied the repository's rule for scenes with real height spread, the rule Bregar follows, to both datasets (rules.roster). Jin 2021 now infers with the spatial model like FNL, STRONG keeps its planar or spatial selection on the training half, and ADE-BP, which has no spatial implementation, is not run. The same review moved stage one after the method freeze, so that no calibration, fit, selection or score of either half exists before it, and has the freeze record pin this declaration and the held-out sources (rules.freeze). The plans and halves are unchanged.",
+  "Before any fit or solve, the anchor only headline of every dataset became the balanced percentiles over the cells with three or more anchors, and the cells with one and two anchors became separate rows (rules.headline). The ranges of an agent to one or two anchors cannot fix its position, which stays ambiguous along a circle for one anchor and between mirror candidates for two, so those cells are underdetermined by their ranges and are reported apart from the headline. STRONG's selection on the training half ranks its candidates over the headline cells, so that it is tuned for the figure it is reported on. The cells, plans and halves are unchanged.",
+  "Before any fit or solve, the score rule of every dataset was revised to the joined pair set, the agent pairs that a unit's measured links join with every anchor counted as one node, and every figure reports the share of pairs and units it scores, with the ranged pair set beside it as a supplementary figure (rules.score). STRONG's selection ranks its candidates under the joined pair set, and the freeze pins the scoring code that defines it. The cells, plans and halves are unchanged.",
+  "Before any fit or solve, a review revised the freeze and the runs. The method freeze now holds the method record of the confirmatory round, the identity of every source and of both executables, the Python environment and the budget check record, and SOLID's link fit, budgets and switches follow that record (rules.freeze, rules.methods). A tracked ledger records every step that reads a half, so a dataset is evaluated once, the method is not frozen again after any read, and every run needs the closed stage one (rules.ledger, rules.stages). A HYMN unit with an agent without an admissible anchor sample takes the anchor box padded by the end of the admissible interval (rules.area), and an AAU evaluation flight beyond the relocation guard is excluded and reported (aau.split.relocation_guard). The freeze rule names the statistics the disclosures list, and rules.methods states the inputs that only SOLID receives and how every baseline starts. The cells and plans are unchanged.",
+  "Before anything was built, HYMN's one-reading track was changed to the reading of the first epoch of each window alone, epoch 10w, which a link carries only when that exchange answered. Before, it took the first reading anywhere in the window, so a link counted as answered when any of its ten epochs answered and the one-reading track carried the presence of ten attempts. A blank reading is a failed exchange of a polled anchor, as the inspection of the raw logs in the disclosures shows (hymn.blank, hymn.units.rule, rules.tracks). The ten-reading track, the cells and the plans are unchanged.",
+  "Before any fit or selection, the baselines took the rule of every other dataset for the options that TWR-CLOUD-Bern's scans once chose. Jin 2021, FNL 2025 and STRONG 2021 now start from the declared base configuration of research/benchmarks/datasets/baseline-configurations.json, and each selects on the training half its model and the aggregation of a link's readings, FNL and STRONG their start as well and STRONG its Huber radius, by the rule STRONG followed over the headline cells under the joined pair set, with mean S75 values within 0.01 cm of the lowest counted as tied and the tie going to the declared order, so that solver noise cannot pick a candidate. A run applies the declared settings of the candidate its record names. Before, Jin and FNL kept the spatial model and the retained Bern settings, and STRONG's start stayed the geometric layout (rules.roster, rules.methods, rules.stages). The cells, plans and halves are unchanged.",
+  "Before any fit or solve, a review declared the outcome of every check that could stop a held-out step after the freeze, when it could never be fixed (rules.outcomes). A link fit that does not converge is used as it stands and marked in the tables, a fit with a value that is not finite fails every solve of SOLID, a failed nested check of the refit and true positions outside their operating area are marked and stop nothing, an AAU pair without an admissible report is left out of the relocation guard and reported, and a fit of another likelihood or a refit of other settings stays a stop that is checked before any step opens. The same review revised the ledger. Its history covers every branch, tag and side of a merge, the stages commit it on a branch only and tag and log each commit outside the repository at once, and a failed commit leaves no entry (rules.ledger). The freeze binds solid-units to the round's build and needs the method record and the budget check record committed (rules.freeze). The freeze rule names every statistic the disclosures list, stage one states what its loaders parse, stage two states which records it rebuilds and which it verifies, and the role says that no design decision of the method reads the datasets (role, rules.stages). An AAU training flight beyond the relocation guard, which stopped the build for review before, is left out of the training half for every method alike and reported, as an evaluation flight is, since nothing may be reviewed and changed after the freeze and stage one closes both datasets together, no reading can empty a training half by the declared counts, and stage two evaluates each dataset on its own, so that one dataset never blocks the other (aau.split.relocation_guard, rules.outcomes). The cells, plans and halves are unchanged.",
+  "Before any fit or solve, the starting coordinates of every held-out unit moved inside the area both tracks of the unit share, the intersection of the operating areas of its one-reading and its ten-reading track, as every other dataset draws them, so that every method starts inside SOLID's area on both tracks (rules.initialization). SOLID's entry now points a fit that does not converge to its declared outcome (rules.methods). The cells, plans and halves are unchanged.",
+  "A further review before any fit or solve extended the method freeze. It now pins the declared analysis of the paper's final tables beside this declaration, and the executables of the evaluation runs of the other datasets, the TWR-CLOUD-Bern CLI and the adapters of TIERS, Bregar and IDLab, beside solid-units and heldout-adapter (rules.freeze). Both stages and the stage of the method freeze refuse a checkout that lacks a commit the log of the ledger names (rules.ledger). The outcome of a link fit that does not converge no longer refers back to rules.methods.solid, which refers to it (rules.outcomes.link_fit). The cells, plans and halves are unchanged.",
+  "Before any fit or solve, the score rule of every dataset declared the coordinate rule that every scorer applies. Before any scorer reads the predictions, a coordinate that is not finite or whose magnitude exceeds 1e7 cm, the engine's bound on a sane coordinate, is treated as missing, for every method alike, so a finite but enormous coordinate is charged and counted as a missing one and cannot stop a scoring (rules.score). The cells, plans and halves are unchanged."
+ ],
+ "disclosures": [
+  "Before the declaration a structural scan counted the published readings per point and anchor of all 48 HYMN points, the surveyed coordinates of all points were displayed to design the split, and the median raw ranges of the 72 static pairs of both spiral_1to2_2m flights were compared with those of seq1, largest changes 7.5 cm and 10.3 cm, to confirm that the published constellation still held. None of these compared a reading with its truth or ran a method.",
+  "While inspecting the file format before any split existed, the first five rows of the HYMN UWB file, readings of point A13B6, were displayed. A13B6 fell into the evaluation half.",
+  "Tests committed in a82b26d compared the raw and the bias-corrected median residual of the pair 101 to 102 on spiral_1to2_2m seq1, an evaluation flight, and pinned readings and the surveyed position of A13B6. They ran locally three times, after both earlier revisions, and printed no value. They now read training data, and no rule changed because of them.",
+  "Before the fourth revision, which moved stage one after the freeze, scratch builds of both training halves computed their packet scales, 220.65 cm for HYMN and 3.68 cm for AAU, and the held-out deployment settings that follow from them. Smoke solves then ran the four baselines of the earlier roster and SOLID, with a placeholder link model, on eight training inputs of each dataset. Their outputs were checked for failures and finite estimates only, and the baseline rows passed through the scorer to check their structure with no error value printed or stored. No link, ADE-BP or STRONG fit ran, and no evaluation input was built.",
+  "To settle what a blank HYMN reading means, the raw ZigPos logs data/raw/uwb/log_zigpos_twr_*.sqlite of the archive were inspected before anything was built. For all fifty logs the schema was read, a LOG table of record time, topic and message and a RUN table of start and end times, and the times of the first and last record, which match every log to the published time window of one point or of none. Only in the logs of the 24 training points were the messages decoded in memory and counted, 7,425 messages of the one topic RANGING_DISTANCES from two initiating addresses on beacon slots 71 and 75, each listing all ten anchors once with a status, status 0 in all 74,250 entries. No range, accuracy, signal strength or position was stored or displayed, no record time beyond the first and last of each log was displayed, and no message of a log of an evaluation point was read."
+ ],
+ "rules": {
+  "mode": "ANC. Only agent to anchor links enter a unit and no agent to agent range is supplied.",
+  "tracks": "Every unit has two tracks under one identity. The ten-reading track holds the readings of a link in the unit's block of ten, and the one-reading track the reading of the block's first attempt, the first report of an AAU block and the first epoch of a HYMN window. A link whose first attempt holds no reading has no observation in the one-reading track. A calibrated reading outside the interval from zero to the range of 200 ns of flight, the interval of raw timings the engine and the baselines accept, is a failed exchange. It is inadmissible and stays out of the samples, so a link whose every reading is inadmissible stays present without samples.",
+  "admissible_interval_cm": [
+   0.0,
+   5995.84916
+  ],
+  "initialization": "Every method receives the same starting coordinates, uniform in the area both tracks of the unit share, the intersection of the operating areas of its one-reading and its ten-reading track by the deployment rules, seeded by the dataset seed and the unit identity, as every other dataset draws them. Both tracks share them, so every method starts inside SOLID's area on both tracks.",
+  "area": "The operating area of every unit and track follows the deployment rules of research/solid/deployment.py, the padded box of its known anchors and measured ranges bounded by a published site extent. A unit or track of a dataset without a published extent that holds an agent without any admissible anchor sample, or no admissible anchor sample at all, takes the box of its anchors padded by the end of the admissible interval, the longest range an admissible reading can take. Such an agent carries no range that bounds its place, and the box padded by the ranges of the other agents need not hold it, so the wider box keeps the check of the operating areas in stage one from stopping at it. SOLID receives that area, and no baseline of the roster takes one.",
+  "truth": "Published surveyed positions in the publisher's local frame, used for scoring and for fits on the training half only. The AAU halves share their node positions, see aau.scope.",
+  "score": "The released pairwise score of TWR-CLOUD-Bern transferred to horizontal pair distances and capped at the diameter of the unit's true agent positions, the scenario diameter of the released scorer, over the joined pair set of research/benchmarks/datasets/scoring.py, the rule of every dataset. A unit scores only the agent pairs that its measured links join, directly or through other agents or anchors with every anchor counted as one node. In the anchor only mode a pair is scored when both agents hold at least one answered anchor link, whether or not the link holds an admissible reading. A unit without such a pair is left out of the percentiles, as the released scorer leaves out a scenario without eligible pairs. Balanced S50, S75 and S90 per track over the headline cells of three or more anchors, S75 the headline, and the same percentiles of each cell with one or two anchors alone as a separate row. Every row reports the share of pairs scored, the joined pairs over every agent pair of its units, and the share of units scored, its units holding at least one joined pair over all its units. Both shares follow from the inputs alone and are the same for every method. The ranged pair set, the pairs joined by links that hold an admissible reading, is reported beside every figure as a supplementary one with its shares, and the headline stays joined. Before any scorer reads the predictions, a coordinate that is not finite or whose magnitude exceeds 1e7 cm is treated as missing, for every method alike.",
+  "headline": {
+   "rule": "The anchor only headline of every dataset is the balanced S50, S75 and S90 per track over the cells with three or more anchors under the joined pair set of rules.score, S75 the headline figure. The cells with one and two anchors are reported as separate rows, the percentiles of each cell alone. Every row reports the share of pairs and units it scores. The cells stay as declared.",
+   "minimum_anchors": 3,
+   "cells": {
+    "hymn": [
+     "anchors-3",
+     "anchors-4",
+     "anchors-5",
+     "anchors-6",
+     "anchors-7",
+     "anchors-8",
+     "anchors-9",
+     "anchors-10"
+    ],
+    "aau": [
+     "anchors-3",
+     "anchors-4",
+     "anchors-5",
+     "anchors-6",
+     "anchors-7"
+    ]
+   },
+   "separate_rows": {
+    "hymn": [
+     "anchors-1",
+     "anchors-2"
+    ],
+    "aau": [
+     "anchors-1",
+     "anchors-2"
+    ]
+   }
+  },
+  "roster": "Both constellations have real height spread. HYMN's anchors stand 3.1 m to 4.2 m high over points about 2 m to 3.3 m high, and AAU's nodes stand from 0.3 m to 3.3 m. The repository's rule for such scenes, the rule Bregar follows (bregar_predict.rs), therefore applies. Jin 2021, FNL 2025 and STRONG 2021 run, each with the planar or the spatial model that its selection on the training half chose. ADE-BP has no spatial implementation and is not applicable.",
+  "methods": {
+   "solid": "The frozen method's anchor only profile, composed from the method record of the confirmatory round, research/artifacts/solid/selections/method.json, which the method freeze pins. Its link model is fitted by the fitter of research/solid/fit_layout.py on at most 2000 blocks per track of the training half with the options of the method's link model variant and refitted without the link components the method removed, as the round refits them (research/solid/fit_heldout.py links). Every fit uses the round's likelihood, and a fit that does not converge has the outcome of rules.outcomes. Its deployment settings come from the held-out deployment record of the training half, its anchor only budgets from the method's budget factor and its switches from the method record, and solid-units solves it. SOLID takes two inputs that no baseline of the roster takes. One is the operating area of rules.area, bounded by the published site extent where one exists, AAU's 5 m by 8 m area. The other is the height prior of its anchor links from the true heights of the unknown nodes of the training half, which for AAU are the heights of the nine nodes that both halves score (aau.scope).",
+   "jin-2021": "The declared base configuration of research/benchmarks/datasets/baseline-configurations.json with the planar or the spatial model and the median or the mean of a link's readings selected on the training half by the lowest mean over the two tracks of the balanced S75 over the headline cells of three or more anchors under the joined pair set, the figure it is reported on, ties by declared order among the means within 0.01 cm of the lowest. Its semidefinite relaxation takes no starting coordinates.",
+   "fnl": "The declared base configuration with the planar or the spatial model, the median of a link's readings or every reading as its own term and its start selected on the training half by the lowest mean over the two tracks of the balanced S75 over the headline cells of three or more anchors under the joined pair set, the figure it is reported on, ties by declared order among the means within 0.01 cm of the lowest. It starts every agent at the unit's starting coordinates or at the engine's geometric layout of the unit, the start its selection chose, and, with the spatial model, at the median height of the unit's known anchors.",
+   "ade-bp-2015": "Not run. It has no spatial implementation, and both constellations have real height spread.",
+   "strong": "The declared base configuration with its Huber radius among 10, 20, 40, 80 and 160 cm and no robust loss, its planar or spatial model and its start selected jointly on the training half by the lowest mean over the two tracks of the balanced S75 over the headline cells of three or more anchors under the joined pair set, the figure it is reported on, ties by declared order among the means within 0.01 cm of the lowest. It starts every agent at the unit's starting coordinates or at the engine's geometric layout of the unit, the start its selection chose, and, with the spatial model, at the median height of the unit's known anchors."
+  },
+  "execution": "Baselines run in single-threaded heldout-adapter processes with every solve that crashes an adapter recorded as that method's failure on that unit. SOLID runs in solid-units.",
+  "freeze": "The method freeze record research/artifacts/solid/selections/method-freeze.json, which research/solid/method_freeze.py writes once the confirmatory round has decided the method, must be committed, and so must the method record and the budget check record it pins. It holds the SHA-256 of the method record and of the round's freeze, the identity of the sources, every tracked file of the runtime and the research tree without the records under research/artifacts, the papers and the Markdown documents, the identity and SHA-256 of the solid-units and heldout-adapter executables and of the executables of the evaluation runs of the other datasets, the TWR-CLOUD-Bern CLI and the adapters of TIERS, Bregar and IDLab, the Python, numpy and scipy versions, the SHA-256 of the budget check record and, under heldout_benchmarks, the SHA-256 of this declaration and of the declared analysis of the paper's final tables, research/artifacts/solid/splits/final-analysis.json. The sources and the packages must equal those of the round's freeze when it is written, solid-units must be byte for byte the executable the round froze, and the likelihood of the fitter must be the one the round froze. Every builder, fitter, selection and runner of either half refuses to run until then and while any of them differs. No range statistic, calibration, fit, selection or score of either half is stored or displayed before the freeze beyond the statistics that the disclosures and revisions list. These are the reading counts per point and anchor of all 48 HYMN points and the surveyed coordinates of all its points, which designed the split, the failed exchange counts of the training halves and the sign check on seq1 in this declaration, the failed readings of up to 306 m in HYMN and near 338 km in AAU, the largest median changes of 7.5 cm and 10.3 cm of the static ranges of the spiral_1to2_2m flights against seq1, the packet scales of 220.65 cm for HYMN and 3.68 cm for AAU with the held-out deployment settings that follow from them, the smoke solves of eight training inputs of each dataset, whose outputs were checked for failures and finite estimates and whose baseline rows passed through the scorer without an error value printed or stored, and the inspection of the raw ZigPos logs of HYMN, the schema and the times of the first and last record of all fifty logs and the counts of the messages and of their statuses in the logs of the 24 training points. The first rows of the HYMN readings, of the evaluation point A13B6, were displayed before the split existed.",
+  "ledger": "The ledger research/artifacts/solid/splits/heldout-evaluations.json records every step that reads a held-out half after the method freeze, and the node stages commit every entry on a branch. An entry and its commit are one step of a stage, and a commit that fails leaves no entry behind. The stages refuse to start without a git identity or on a detached HEAD. Right after each commit of the ledger the stage tags it with the local annotated tag heldout/<step>/<event> and appends its SHA with the UTC time to logs/heldout-ledger-commits.log in the node's work folder, outside the repository, so that no reset, rebase or merge drops a commit unseen. Both stages and the stage of the method freeze refuse to start while that log names a commit the checkout lacks, as a fresh clone would. Nothing is pushed. Stage one opens its entry before it reads any training half and closes it with the SHA-256 of its records and of the executables. Stage two opens a dataset before the first read of its evaluation half and closes it with the SHA-256 of the population, request and reference of both halves, of the run and score files of every method on both and of the executables. Every run of SOLID and the baselines on either half needs the committed opening of its dataset and the closed stage one, and a training run takes the stage one profile into its own folder like an evaluation run. A dataset that the ledger closes in any version that a commit of the repository holds, on any branch or tag and on either side of a merge (git rev-list --full-history --all), is not evaluated again, and an entry under another method freeze in any such version refuses that freeze, so the method is not frozen again once a held-out half has been read. git log --full-history --all -p on the ledger shows every entry with the commit that added it, and the tags and the log name every such commit.",
+  "stages": {
+   "one": "After the method freeze only, with the freeze verified, the likelihood of the fitter among it. The ledger opens the stage in a commit before any training half is read. Check this declaration, build the training inputs and the calibration, fit SOLID's link model and the deployment settings, write the composed profiles and select the options of Jin 2021, FNL 2025 and STRONG 2021. The loaders parse the whole archive of each dataset, both halves, and check its structure, and from the evaluation half they compute only the statistics this declaration states, the reading counts of its points and the report counts of its flights. No reading of an evaluation half enters a calibration, fit, selection or unit of stage one. The ledger closes the stage with the SHA-256 of every record in the commit of the records.",
+   "two": "After stage one, with the freeze verified again and every record of stage one committed as the ledger's closing of stage one names it. Rebuild the training halves, rebuild SOLID's link fits, the held-out deployment record and the composed profiles and compare each with its record, and verify the selection records of the baselines against the declaration, the training half, the freeze and the adapter they name, without selecting again. For each dataset the ledger opens it in a commit before its evaluation half is built, every method runs on both halves, and the ledger closes it with the SHA-256 of its files in a further commit. Each dataset is evaluated on its own, so a stop of one dataset's evaluation leaves the other's to go on. A dataset the ledger closes is not evaluated again."
+  },
+  "outcomes": {
+   "rule": "The method freeze pins the sources, so a check that stopped a held-out step after the freeze could never be fixed, and every such check has the outcome declared here. A data defect leaves out the affected unit, pair or flight for every method alike and is reported with its count and reason, as an AAU flight beyond the relocation guard is. A method defect counts against SOLID, and the tables mark it beside SOLID's rows. It is never grounds for declaring a dataset not evaluable, and nothing is fitted or run again with other settings. A build defect, which no reading can cause, stays a stop and is checked before the ledger opens the step it would stop. Stage one closes both datasets with one entry, so no stop of it may depend on a reading, and stage two evaluates each dataset on its own, so a stop of one dataset's evaluation leaves the other's to go on.",
+   "relocation": "An AAU flight whose static ranges moved from seq1 beyond the relocation guard, or that has no pair the guard can compare, is a data defect, as aau.split.relocation_guard declares. It is left out of its half for every method alike, whether it trains or evaluates, and a training flight out of the packet scale, SOLID's link fit, the deployment settings and every selection as well. It never stops a stage. The calibration record, the population records of both halves and every run record name each such flight with its change and its units, and every table of AAU notes it for every method.",
+   "training_halves": "No reading can empty a training half. The declared counts leave 31,087 admissible readings of the HYMN training points, and at least 4,118 admissible reports in seq1, the reference of the relocation guard, which the guard therefore always keeps, since seq1 holds 13 blocks of all 72 ordered pairs and all training flights together hold 5,242 failed exchanges. So every training half keeps readings for its packet scale, SOLID's link fit, its deployment settings and every selection, and none of them stops for want of a reading.",
+   "link_fit": "A link fit of SOLID on a training half, the full fit or the refit without the removed components, that ends without converging is the method's link model as it stands. It is never fitted again with other settings, and every table of that dataset marks SOLID with it. A fit with a value that is not finite makes every solve of SOLID with it fail, and every failure is scored as a failure with the failure penalty. A full fit with such a value is not refitted, so the method's link model keeps no value.",
+   "likelihood": "A link fit from another likelihood than the one the round froze is a build defect and stops stage one. The check of the freeze compares the likelihood of the fitter with the round's before the ledger opens stage one, so no reading reaches a fit of another likelihood.",
+   "refit": "A refit that is not the full model minus the removed components is a build defect and stops stage one. Its settings follow from the method's fit options and removed components alone, never from a reading, and the round's own refits of the same components under the same sources passed the same check before the method record was written.",
+   "nested_check": "The nested check of the refit, as the round runs it, is recorded with the refit, and a failure stops nothing, since the refit is the method's link model. Every table of that dataset marks SOLID with it.",
+   "containment": "A true agent position of a training half outside its unit's operating area is counted in the held-out deployment record and stops nothing. The area is SOLID's input alone, so such a position counts against SOLID, and every table of that dataset marks SOLID with the count.",
+   "aau_pairs": "An ordered static pair of AAU without an admissible report in a flight, or in seq1, has no range for the relocation guard to compare, a data defect. The guard compares that flight on its other pairs, and a flight without any pair to compare counts as beyond the guard. The calibration record, the population record of the half and every run record of it name each such pair with its flight, and its links stay present without samples for every method alike, as rules.tracks declares for every link without an admissible reading. A pair without an admissible report in any training flight stays out of the packet scale, and the calibration record names it."
+  }
+ },
+ "hymn": {
+  "archive": {
+   "path": "research/data/downloads/zenodo-19566178/HYMN-dataset-1.3.zip",
+   "md5": "4874f6c931561eaaa17bb0972a052e42",
+   "sha256": "7a728275e2822411e5dbb3eb1ba72fad31e043498af5218a6545e031d2de257d",
+   "source": "Zenodo record 19566178, HYMN dataset release 1.3",
+   "licence": "Data CC BY 4.0, code MIT"
+  },
+  "extraction": {
+   "rule": "The four members below are read from the archive in memory. No other member is read and nothing is extracted to disk.",
+   "prefix": "TUD-ITVS-HYMN-dataset-8ae0f89/",
+   "members": {
+    "uwb": "data/processed/csv/uwb.csv",
+    "anchors": "data/reference/csv/anchor_coordinates.csv",
+    "points": "data/reference/csv/point_coordinates.csv",
+    "times": "data/reference/csv/time_reference.csv"
+   },
+   "members_sha256": {
+    "uwb": "620bab7c4f90c1b6bd92a48e7d6ca941078ce437914a9199a5ceedb3fc612d71",
+    "anchors": "e7329cbc925db45585f02a26d8d2fae296ec35966312cd22ce686558ecab4e58",
+    "points": "e70913df68ac9d4c0a474e7aec6c4c8b657087d150f52667f762a7cfa1f7d021",
+    "times": "be4c349c86cfa4b237eff30a39254870790b7365d269a0781692ac503ef143f7"
+   }
+  },
+  "anchors": {
+   "count": 10,
+   "identities": {
+    "UWB_01": 101,
+    "UWB_02": 102,
+    "UWB_03": 103,
+    "UWB_04": 104,
+    "UWB_05": 105,
+    "UWB_06": 106,
+    "UWB_07": 107,
+    "UWB_08": 108,
+    "UWB_09": 109,
+    "UWB_10": 110
+   },
+   "coordinates": "X, Y and Z_LOCAL of the UWB rows of the anchor reference, metres converted to centimetres"
+  },
+  "points": {
+   "count": 48,
+   "epochs_per_point": {
+    "minimum": 127,
+    "maximum": 145
+   },
+   "epoch_rule": "The rows of the processed UWB file in time order per point, each listing all ten anchors, NaN for no reading"
+  },
+  "blank": "A blank reading, NaN, is a failed exchange of an anchor the tag polled. Every ranging round of the raw ZigPos logs data/raw/uwb/log_zigpos_twr_*.sqlite lists all ten anchors once with a status, so every anchor is polled in every epoch and a blank is never an anchor left out of a round. The disclosures state how the logs were inspected.",
+  "reference": "Surveyed in the publisher's local tangent plane frame centred at the tachymeter station (reference README). The tag position per point is X, Y and Z_LOCAL_UWB of the processed UWB file, equal to the UWB2 columns of the point reference. Horizontal coordinates score the units, heights enter the slant distances of the training fits and the deployment's height prior.",
+  "calibration": {
+   "rule": "None documented by the publisher. The ranges enter as published, converted from metres. One packet scale, the RMS residual of every admissible published reading of the training points against the slant distance with equal weight per point to anchor link, is computed from the training half and applied to both halves.",
+   "missing": "NaN, including a published nonpositive range, is no reading",
+   "inadmissible": "A published reading beyond the range of 200 ns of flight is a failed exchange and stays out of the samples. The interval is the engine's and not the hall's, so a gross error between the largest surveyed distance and the end of the interval stays an admissible reading.",
+   "failed_exchanges_in_training": {
+    "readings": 31215,
+    "inadmissible": 128
+   }
+  },
+  "extent": "None. The archive and the publisher's pages give no hall extent, so the operating area of a unit is its padded anchor box by the deployment rules.",
+  "split": {
+   "rule": "The 48 points in the publisher's scheme order, grid points by row A then column B and the transition points T01 to T06 last, alternate between training and evaluation starting with training. Neighbouring points of every row fall on opposite sides, so both halves span the hall's length and width, the lower rows A01 and A07 and the transition strip, and every evaluation position is new. The rule reads only the point labels.",
+   "identities": {
+    "A01B1": 1,
+    "A01B2": 2,
+    "A01B3": 3,
+    "A01B4": 4,
+    "A01B5": 5,
+    "A01B6": 6,
+    "A02B2": 7,
+    "A02B4": 8,
+    "A02B6": 9,
+    "A03B1": 10,
+    "A03B3": 11,
+    "A03B5": 12,
+    "A04B2": 13,
+    "A04B4": 14,
+    "A04B6": 15,
+    "A05B1": 16,
+    "A05B3": 17,
+    "A05B5": 18,
+    "A06B2": 19,
+    "A06B4": 20,
+    "A06B6": 21,
+    "A07B1": 22,
+    "A07B3": 23,
+    "A07B5": 24,
+    "A08B1": 25,
+    "A08B3": 26,
+    "A08B5": 27,
+    "A09B2": 28,
+    "A09B4": 29,
+    "A09B6": 30,
+    "A10B1": 31,
+    "A10B3": 32,
+    "A10B5": 33,
+    "A11B2": 34,
+    "A11B4": 35,
+    "A11B6": 36,
+    "A12B1": 37,
+    "A12B3": 38,
+    "A12B5": 39,
+    "A13B2": 40,
+    "A13B4": 41,
+    "A13B6": 42,
+    "T01": 43,
+    "T02": 44,
+    "T03": 45,
+    "T04": 46,
+    "T05": 47,
+    "T06": 48
+   },
+   "training_points": [
+    "A01B1",
+    "A01B3",
+    "A01B5",
+    "A02B2",
+    "A02B6",
+    "A03B3",
+    "A04B2",
+    "A04B6",
+    "A05B3",
+    "A06B2",
+    "A06B6",
+    "A07B3",
+    "A08B1",
+    "A08B5",
+    "A09B4",
+    "A10B1",
+    "A10B5",
+    "A11B4",
+    "A12B1",
+    "A12B5",
+    "A13B4",
+    "T01",
+    "T03",
+    "T05"
+   ],
+   "evaluation_points": [
+    "A01B2",
+    "A01B4",
+    "A01B6",
+    "A02B4",
+    "A03B1",
+    "A03B5",
+    "A04B4",
+    "A05B1",
+    "A05B5",
+    "A06B4",
+    "A07B1",
+    "A07B5",
+    "A08B3",
+    "A09B2",
+    "A09B6",
+    "A10B3",
+    "A11B2",
+    "A11B6",
+    "A12B3",
+    "A13B2",
+    "A13B6",
+    "T02",
+    "T04",
+    "T06"
+   ]
+  },
+  "units": {
+   "rule": "A unit takes eight points of one half as agents, k of the ten anchors and one window of ten consecutive epochs shared by its agents, window w holding the epochs 10w to 10w + 9 of a point in time order. Each agent to anchor link carries its published readings in the window in the ten-reading track and the reading of the window's first epoch 10w alone in the one-reading track. A link whose first epoch holds no reading, a failed exchange (blank), has no observation in the one-reading track even when a later epoch of the window answered, and a link without a reading in the window has no observation in either track. Agents, anchors and window are drawn by hash order from the seed and the unit's half, anchor count and replicate.",
+   "agents_per_unit": 8,
+   "windows": 12,
+   "epochs_per_window": 10,
+   "tracks": [
+    1,
+    10
+   ],
+   "seed": "solid.heldout.hymn.v1",
+   "cells": [
+    "anchors-1",
+    "anchors-2",
+    "anchors-3",
+    "anchors-4",
+    "anchors-5",
+    "anchors-6",
+    "anchors-7",
+    "anchors-8",
+    "anchors-9",
+    "anchors-10"
+   ],
+   "units_per_cell": 60,
+   "identity": "10000 (1 for training, 2 for evaluation) + 100 anchor count + replicate",
+   "agent_identities": "the point identities of the split",
+   "anchor_identities": "UWB_01 to UWB_10 as 101 to 110"
+  },
+  "plan": {
+   "training": {
+    "identities": 600,
+    "identities_per_cell": {
+     "anchors-1": 60,
+     "anchors-2": 60,
+     "anchors-3": 60,
+     "anchors-4": 60,
+     "anchors-5": 60,
+     "anchors-6": 60,
+     "anchors-7": 60,
+     "anchors-8": 60,
+     "anchors-9": 60,
+     "anchors-10": 60
+    },
+    "sha256": "b6ee461ad7de0fda47a3eb2f48262238523089cb65287b710a69ef4f384c49c3"
+   },
+   "evaluation": {
+    "identities": 600,
+    "identities_per_cell": {
+     "anchors-1": 60,
+     "anchors-2": 60,
+     "anchors-3": 60,
+     "anchors-4": 60,
+     "anchors-5": 60,
+     "anchors-6": 60,
+     "anchors-7": 60,
+     "anchors-8": 60,
+     "anchors-9": 60,
+     "anchors-10": 60
+    },
+    "sha256": "50744d4047357829e624c252292e568a24d9e8b32ea83dadb72ad68c26130dae"
+   }
+  }
+ },
+ "aau": {
+  "archive": {
+   "path": "research/data/downloads/zenodo-10819706/AAU_Meshed_UWB_Dataset.zip",
+   "md5": "a59e6d590b0b4b69385746fc464c5050",
+   "sha256": "9236366321ffc51b51543552832a150162aaa271737409ad13c02e04896f8113",
+   "source": "Zenodo record 10819706, AAU Meshed UWB Dataset",
+   "licence": "CC BY 4.0 on the Zenodo record. The archive's LICENSE and README state a BSD-2 licence with a condition against sale and a citation requirement for academic use, written for the publisher's software."
+  },
+  "scope": "Both halves score the same nine node positions and the same ordered pairs, and the publisher estimated the pair biases from the true lengths of those pairs on seq1. SOLID's link fit and the height prior read the training flights of these same links and nodes. AAU therefore holds out later flights of a calibrated layout, not new positions, unlike HYMN, whose evaluation positions are new.",
+  "extraction": {
+   "rule": "The real recordings recordings/*/real_ranges/seq*.bag are read one at a time through a temporary file, and the constellation, the seq1 statistics and the README in memory. No other member is read.",
+   "prefix": "AAU_Meshed_UWB_Dataset/",
+   "members_sha256": {
+    "uwb_constellation.yaml": "2b46d27fe40486916077e5a43d7d62fcc20a8f070eeaacf7a4b6f76773d1bef0",
+    "recordings/spiral_8m/eval/seq1/statistics.yaml": "7e0a440835f378019a894ef467df3248fc4dc8b661a91790aa13beebd23ee21e",
+    "README.md": "be218e34771491137614e9f00708ec825aed19cb5d936b449e625b57a17d2b4f"
+   },
+   "recordings": {
+    "spiral_8m/seq1": "0021f8cd76b10ef45487f361de96e1024450d92a5724dde6fff0afaee6fcbf6f",
+    "spiral_8m/seq2": "a47e6301a6331c584d15b35b160f98b662ab066fb4e120db76c1d96f37e20bc5",
+    "spiral_8m/seq3": "17e5a93e2d5c8a1324109c6fad048e5dd485edc233e1a979e4c3253364864e2d",
+    "spiral_8m/seq4": "03503ddfdceca73b97dcb6010cbf9aa3305058ac225b58c3db72a35282b69dad",
+    "spiral_8m/seq5": "b752b7baf40124037e37f334d061f5606968a4ce54ca6f543f8e666dfb3c80b7",
+    "spiral_8m/seq6": "9609eacdf78afb05bb69330bf746affe760929fb4839f6954fb87a8d2ae06ac0",
+    "spiral_8m/seq7": "6ee04620f4915ae4b018e7ae6622a344cbf4993fa13fd839bcca6340076f5baa",
+    "spiral_8m/seq8": "78aac2572cf2833514f53880d87f787df4ff8ed67d4d18a4b85514dc657d69c0",
+    "spiral_8m/seq9": "87426477934913af632ab1f87a3f9ed8c8899c08d10793c17056975ff6b68933",
+    "spiral_8m/seq10": "d45bc3e1675b904b36d8128217c771aa646bca640c6d033a734b0cee5e55a96f",
+    "spiral_8m/seq11": "c6f12a73ff0acb4ecb9d9aecd29c20c48e0ae504e0b819e58205e864f7b11c1f",
+    "spiral_8m/seq12": "078ca7d3ea9fa5931419268639fa1bb14d8f51242a292a8e200ce7d089638469",
+    "spiral_1to2_2m/seq1": "c247fc53ae64bbba341072e2dd4d4bb5b2731428ee830c9135dfc0394f8f1b77",
+    "spiral_1to2_2m/seq2": "a60cfe39f9d11a8b889a2ad868b495a35cf5626214928e85a32d33f3ffbe793c"
+   },
+   "excluded": {
+    "recordings": {
+     "spiral_1to2_2m/stddev0_1": 2,
+     "spiral_1to2_2m/stddev0_2": 2,
+     "spiral_1to2_2m/stddev0_3": 1,
+     "spiral_8m/stddev0_01": 12,
+     "spiral_8m/stddev0_1": 12,
+     "spiral_8m/stddev0_1_outliers0_01": 12,
+     "spiral_8m/stddev0_1_outliers0_1": 12,
+     "spiral_8m/stddev0_2": 12,
+     "spiral_8m/stddev0_3": 12
+    },
+    "reason": "The stddev* folders hold synthetic ranges, true ranges with added noise. The UAV tags 100 and 105 and every exchange with a tag are dropped."
+   }
+  },
+  "spiral_1to2_2m": "Two real recordings of 19 and 20 September 2023, 92 s and 157 s, the closed loop experiment of the paper with the spiral lowered to 2.2 m and alternating between 1 m and 2.2 m. Their static nodes carry the same identities and topics, and the publisher generated their synthetic versions from the same constellation file. They are real flights and enter.",
+  "nodes": {
+   "identities": [
+    101,
+    102,
+    103,
+    104,
+    106,
+    107,
+    108,
+    109,
+    110
+   ],
+   "positions": "abs_anchor_positions of uwb_constellation.yaml, equal to the README table, metres converted to centimetres",
+   "heights_cm": {
+    "minimum": 33.0,
+    "maximum": 325.6
+   }
+  },
+  "reference": "The paper (arXiv 2408.14081, Sec. IV) states that the true positions of the nine static nodes were captured in the flight volume covered by the motion capture system, without naming the instrument used for the nodes. The nodes stand at heights from 0.3 m to 3.3 m, so only anchor only mode is used and scoring stays horizontal.",
+  "streams": "A static node publishes the exchanges it initiates on its ranging topic, UWB_ID1 the node and UWB_ID2 the peer, range_raw in metres. The reports of an ordered pair are ordered by header stamp. range_corr, R and LOS are unused.",
+  "calibration": {
+   "rule": "The publisher's constant bias of each ordered pair of static nodes, the gamma of the README's pair-wise bias table estimated on spiral_8m seq1 with the publisher's range evaluation tool, is subtracted from every raw range of that pair, for every method. One packet scale, the RMS residual of the admissible calibrated reports of the training flights against the published distance with equal weight per ordered pair, is applied to both halves.",
+   "sign": "The README lists the biases with the sign of the paper's model, a measurement equal to the true distance plus the bias (arXiv 2408.14081, eq. 12), and they are negative. The tool's statistics file recordings/spiral_8m/eval/seq1/statistics.yaml lists the same magnitudes with the opposite sign. The build checks on seq1, a training flight, that subtracting the README's biases brings the median residual of the static pairs closer to zero than the raw ranges have it, and stops otherwise.",
+   "revision": "The first version of this declaration took the sign of the statistics file. Its declared check on seq1 stopped the first build before any fit or solve, because the raw static ranges of seq1 fall short of the published distances by the published magnitudes. The medians below come from seq1 alone.",
+   "sign_check_on_seq1": {
+    "raw_median_cm": -34.185,
+    "readme_sign_median_cm": -0.091,
+    "statistics_sign_median_cm": -67.795
+   },
+   "statistics_magnitudes_equal": true,
+   "statistics_signs_opposite": true,
+   "inadmissible": "A calibrated reading outside the interval from zero to the range of 200 ns of flight is a failed exchange and stays out of the samples. The radios publish such failures mostly near 338 km in either sign.",
+   "failed_exchanges_in_training": {
+    "reports": 76612,
+    "inadmissible": 5242,
+    "below_zero": 2734
+   }
+  },
+  "extent": "The published 5 m by 8 m area of the static nodes (README and paper Sec. IV-A), its diagonal around every known anchor.",
+  "split": {
+   "rule": "The fourteen real flights in recorded order, by the start time of their bags. The first seven train and the last seven evaluate. seq1, the flight of the published calibration, opens the training half.",
+   "flights": [
+    {
+     "name": "spiral_8m/seq1",
+     "start_ns": 1693690562606733566,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq2",
+     "start_ns": 1693690800734646250,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq3",
+     "start_ns": 1693690956511874005,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq4",
+     "start_ns": 1693691117376964052,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq5",
+     "start_ns": 1693691266308455225,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq6",
+     "start_ns": 1693691423713580967,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq7",
+     "start_ns": 1693691645847819952,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq8",
+     "start_ns": 1693691797267074595,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq9",
+     "start_ns": 1693691945856450401,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq10",
+     "start_ns": 1693692100701835544,
+     "blocks": 13
+    },
+    {
+     "name": "spiral_8m/seq11",
+     "start_ns": 1693692321340541468,
+     "blocks": 12
+    },
+    {
+     "name": "spiral_8m/seq12",
+     "start_ns": 1693692464985106858,
+     "blocks": 12
+    },
+    {
+     "name": "spiral_1to2_2m/seq1",
+     "start_ns": 1695117065090694881,
+     "blocks": 7
+    },
+    {
+     "name": "spiral_1to2_2m/seq2",
+     "start_ns": 1695245196753386089,
+     "blocks": 13
+    }
+   ],
+   "training_flights": [
+    "spiral_8m/seq1",
+    "spiral_8m/seq2",
+    "spiral_8m/seq3",
+    "spiral_8m/seq4",
+    "spiral_8m/seq5",
+    "spiral_8m/seq6",
+    "spiral_8m/seq7"
+   ],
+   "evaluation_flights": [
+    "spiral_8m/seq8",
+    "spiral_8m/seq9",
+    "spiral_8m/seq10",
+    "spiral_8m/seq11",
+    "spiral_8m/seq12",
+    "spiral_1to2_2m/seq1",
+    "spiral_1to2_2m/seq2"
+   ],
+   "relocation_guard": "A flight in which the median admissible calibrated range of a static pair moved from seq1 by more than 30 cm shows a relocated node, a data defect, and a flight without any pair the guard can compare counts as such a flight. Such a flight is left out of its half for every method alike, its units left out, and a training flight out of the packet scale, the link fit, the deployment settings and every selection as well, since nothing may be reviewed and changed after the freeze and a stop would block both datasets. The calibration record, the population records of both halves and every run record report the flight, its change and its units, and the tables of AAU note it. The guard compares ranges only and checks each half when that half is built."
+  },
+  "units": {
+   "rule": "Per flight, the reports of every ordered static pair in time order form blocks of ten, block b holding reports 10b to 10b + 9, as many blocks as the pair with the fewest reports fills. For every block the nine nodes are ordered by hash from the seed, the flight and the block, and for every anchor count k from 1 to 7 the nine cyclic windows of k nodes in that order are the anchors of nine units, the other nodes their agents. An agent to anchor link carries the block of the exchanges the agent initiated towards the anchor, its first report forming the one-reading track, as a tag's own ranging would carry it. The exchanges an anchor initiated stay unused.",
+   "tracks": [
+    1,
+    10
+   ],
+   "seed": "solid.heldout.aau.v1",
+   "cells": [
+    "anchors-1",
+    "anchors-2",
+    "anchors-3",
+    "anchors-4",
+    "anchors-5",
+    "anchors-6",
+    "anchors-7"
+   ],
+   "units_per_block_and_cell": 9,
+   "identity": "10000 flight position in recorded order + 100 block + 10 anchor count + cyclic start",
+   "agent_identities": "the published node identities"
+  },
+  "plan": {
+   "training": {
+    "identities": 5733,
+    "identities_per_cell": {
+     "anchors-1": 819,
+     "anchors-2": 819,
+     "anchors-3": 819,
+     "anchors-4": 819,
+     "anchors-5": 819,
+     "anchors-6": 819,
+     "anchors-7": 819
+    },
+    "sha256": "14c454b72c3bc76c65ded6d8eaccea65ac6893a16c6e7b4d81021581e24a6e54"
+   },
+   "evaluation": {
+    "identities": 5229,
+    "identities_per_cell": {
+     "anchors-1": 747,
+     "anchors-2": 747,
+     "anchors-3": 747,
+     "anchors-4": 747,
+     "anchors-5": 747,
+     "anchors-6": 747,
+     "anchors-7": 747
+    },
+    "sha256": "36e5f59a599b3948c5e27da430f21f2748fb2f87beef8a82f82dbb8bac156f1b"
+   }
+  }
+ },
+ "code": {
+  "research/benchmarks/datasets/heldout.py": "33220116f3c821f37c6a55a4faf408e19599d52ae85a0b477acb34d1d0fa8258",
+  "research/benchmarks/datasets/hymn_layout.py": "228941a3d8f1bc2007ea42586b63758b0f42aee962e6009a7ab77eac65ef50c8",
+  "research/benchmarks/datasets/aau_layout.py": "e6db6b588b63598b117d285e90846bf17b1a0819458e8039dcf6703d04a44821",
+  "research/solid/deployment.py": "e3df642969ea49c5ed11e8617191335e735e4dd6adc412906c2f2c4bb2eb9587"
+ }
+}

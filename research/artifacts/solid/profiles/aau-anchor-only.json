@@ -1,0 +1,38 @@
+{
+ "anchor_only": {
+  "kappa": 0.3714017732422887,
+  "excess_probability": 1.0000000000000008e-06,
+  "excess_mean_rel": 0.0010000000000000002,
+  "persistent_sd_rel": 0.8428594133031939,
+  "nu": 3.0,
+  "offset_shape": "gaussian",
+  "early_detection_per_cm": 0.0,
+  "independent_packets": false,
+  "decision": "risk",
+  "presence": {
+   "shape": "gaussian",
+   "quantile": 0.9,
+   "factor": 0.75,
+   "width": 0.15,
+   "reach": "ml",
+   "enabled": true
+  },
+  "height_nodes": [
+   46.2,
+   115.9,
+   185.6,
+   255.3,
+   325.0
+  ],
+  "height_weights": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "grid_step": 3.5355339059327373,
+  "joint_samples": 1024,
+  "seed": 20260918
+ }
+}

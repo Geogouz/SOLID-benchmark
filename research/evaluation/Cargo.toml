@@ -1,0 +1,11 @@
+[package]
+name = "solid-evaluation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+libm.workspace = true
+solid-core = { path = "../../runtime/engine" }
+thiserror.workspace = true

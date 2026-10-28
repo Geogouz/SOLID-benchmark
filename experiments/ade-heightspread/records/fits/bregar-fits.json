@@ -1,0 +1,180 @@
+{
+ "schema": "solid.baselines.ade-heightspread.fits.v1",
+ "dataset": "bregar",
+ "harness": {
+  "path": "experiments/ade-heightspread/fit_ade.py",
+  "sha256": "039a49f44fe5878af8a349356c6de7126b9df46659108ca97bd4af240e7aa2fa",
+  "shared": {
+   "path": "experiments/ade-heightspread/shared.py",
+   "sha256": "6ae662c154e823d1808f5766a253aa0d3a01da348021112cfcd327faa2f91192"
+  }
+ },
+ "declaration": {
+  "path": "experiments/ade-heightspread/declaration.json",
+  "sha256": "0af21f8c7e169cb1f71d0d62ddbb2f4aa0686ebf7859f0a037093e50c0e1049c"
+ },
+ "root": ".",
+ "commit": "108e535cc280ff8e5bd78e7ff18093ef97ef5e80",
+ "checkouts": {
+  "repository": {
+   "path": ".",
+   "commit": "108e535cc280ff8e5bd78e7ff18093ef97ef5e80"
+  },
+  "code": {
+   "path": ".",
+   "commit": "108e535cc280ff8e5bd78e7ff18093ef97ef5e80"
+  }
+ },
+ "prerequisites": {
+  "adapters_record": {
+   "path": "WORK/adapters.json",
+   "sha256": "3944d3d9a45ffbc0afd0ca754384ebd2d25eed9d5ed39f00f0d3774dc31f2e9e"
+  },
+  "validation_record": {
+   "path": "WORK/validation/tiers-ade-validation.json",
+   "sha256": "b59a233993b4652a233abc4db6437b5de45e6e4f01bd3525f953cbb92fea8dd7"
+  },
+  "table_checked": {
+   "path": "WORK/tables/bregar/check-committed.json",
+   "sha256": "4889b6c8072ccc1a93e73acaeec85a7c547e5e52b64e4770a70c99c83c3917ee"
+  }
+ },
+ "read": null,
+ "freeze": null,
+ "patches": [
+  {
+   "target": "tempfile.tempdir",
+   "reason": "temporary files lie under WORK, where the audit hook lets them be written, the recordings aau_layout.flights writes among them"
+  },
+  {
+   "target": "heldout.require_freeze",
+   "reason": "every read of a held-out half is of the training half, and any other half is refused before a file is read"
+  }
+ ],
+ "procedure": {
+  "model2": "fit_profiles.fit_ade_model: maximum likelihood of the asymmetric Laplace density with scales slope times measured range plus intercept, over individual reports, Nelder-Mead from (0.02, 20, 0.01, 40) with nonnegative slopes and positive intercepts. Residual is the converted range minus the planar distance.",
+  "model1": "fit_profiles.fit_constant_ade_model: maximum likelihood of the asymmetric Laplace density with constant scales, model 1 of Li, Hedley and Collings, on the readings of the model 2 fit (experiments/ade-reselection/fit_model1.py)"
+ },
+ "code": {
+  "ade_training": "2e0b4ffb24f8c05c3fe11cecd1ffa0410af32947ddd42dc5f441c5be8a2ab2fe",
+  "common": "ff4224e3781bafb2a912b2b990f6108fc6444eb1a5e44703a0fc5ee9fff96bdc",
+  "fit_layout": "1a5a28ca2c82ae8c74354170a9c3becb63247819fd325f56f99d57b43bb9770c",
+  "heldout": "33220116f3c821f37c6a55a4faf408e19599d52ae85a0b477acb34d1d0fa8258",
+  "heldout_ade": "b7fcfd064035c4cc20f9cf42c139bf799d5ebf6bba2756a6365cf15c8cb17408",
+  "aau_layout": "e6db6b588b63598b117d285e90846bf17b1a0819458e8039dcf6703d04a44821",
+  "hymn_layout": "228941a3d8f1bc2007ea42586b63758b0f42aee962e6009a7ab77eac65ef50c8"
+ },
+ "records": {
+  "bregar-environment0-ade-fit.json": "be1503ba1b9045e47f6083d20e9e3cc2c763e92ca9a215e660ac2caed3f38b3c",
+  "bregar-environment0-ade-fit-model1.json": "0b9e162767f0335565c3f9e641b33518cd24346aa5d45cd6b97ecabbcc57482f",
+  "bregar-environment1-ade-fit.json": "e170f585c66fa2bbf49b6db2b8ebdb53fba1a20b257c9a78aa1c17b00527c177",
+  "bregar-environment1-ade-fit-model1.json": "3ce597304bfddce4b60692a4458fb4183329033aad24f49f6216930e9e6dc0cf",
+  "bregar-environment2-ade-fit.json": "ee6bec25d30f95b402b5d894dff49146ace0cd148066f66266c5d1c71181add1",
+  "bregar-environment2-ade-fit-model1.json": "53e2ac24b55725d467af081911c49c09241aa7bbef6e8d47e3cadf2387ed2a11",
+  "bregar-environment3-ade-fit.json": "bd62aa88cbed65f185867c0bc1c72bb70c3d434f6100114620af6bbfb820da59",
+  "bregar-environment3-ade-fit-model1.json": "6f3ff16dff4263b393514c978b0339e30adfb414f366e467088b170c0ae381d5"
+ },
+ "models": {
+  "environment0": {
+   "model2": {
+    "ranging_model": {
+     "positive_slope": 0.06838232850711272,
+     "positive_intercept_cm": 5.74015178372113,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 8.70232968822204
+    },
+    "readings": 40799,
+    "nll_per_report": 4.932008644872957,
+    "failure": null
+   },
+   "model1": {
+    "ranging_model": {
+     "positive_slope": 0.0,
+     "positive_intercept_cm": 45.92955791609661,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 9.433946828335568
+    },
+    "readings": 40799,
+    "nll_per_report": 5.013920585754022,
+    "failure": null
+   }
+  },
+  "environment1": {
+   "model2": {
+    "ranging_model": {
+     "positive_slope": 0.07213935172968133,
+     "positive_intercept_cm": 0.382910760680806,
+     "negative_slope": 5.698435182858226e-16,
+     "negative_intercept_cm": 3.5886845616442553
+    },
+    "readings": 38400,
+    "nll_per_report": 4.065876541632965,
+    "failure": null
+   },
+   "model1": {
+    "ranging_model": {
+     "positive_slope": 0.0,
+     "positive_intercept_cm": 20.316493910030463,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 4.008568790711887
+    },
+    "readings": 38400,
+    "nll_per_report": 4.191507199040043,
+    "failure": null
+   }
+  },
+  "environment2": {
+   "model2": {
+    "ranging_model": {
+     "positive_slope": 0.07482641372583598,
+     "positive_intercept_cm": 1.0000000000000002e-06,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 13.054325684546694
+    },
+    "readings": 35280,
+    "nll_per_report": 5.2267363348990425,
+    "failure": null
+   },
+   "model1": {
+    "ranging_model": {
+     "positive_slope": 0.0,
+     "positive_intercept_cm": 71.66579259497198,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 15.696134243175813
+    },
+    "readings": 35280,
+    "nll_per_report": 5.470059543509779,
+    "failure": null
+   }
+  },
+  "environment3": {
+   "model2": {
+    "ranging_model": {
+     "positive_slope": 0.07694167671577731,
+     "positive_intercept_cm": 1.17057164867077,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 14.974909248019621
+    },
+    "readings": 38790,
+    "nll_per_report": 5.09239533272571,
+    "failure": null
+   },
+   "model1": {
+    "ranging_model": {
+     "positive_slope": 0.0,
+     "positive_intercept_cm": 50.501935601468766,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 16.551631576397654
+    },
+    "readings": 38790,
+    "nll_per_report": 5.205491818024612,
+    "failure": null
+   }
+  }
+ },
+ "evaluation_rows_used": 0,
+ "evaluation_rows_rule": "The readings of the declared evaluation half each fit took, counted by its collector, AAU's by fit_layout.aau_groups, HYMN's by fit_layout.evaluation_rows over the points heldout_ade.hymn_reports walks, and none on Bregar, whose collector fit_layout.bregar_groups refuses a request that is not the training block. Every fit record names its count, and any count but 0 stops the run.",
+ "passed": true,
+ "finished": "2026-10-04T06:04:10.604+00:00",
+ "seconds": 2.1
+}

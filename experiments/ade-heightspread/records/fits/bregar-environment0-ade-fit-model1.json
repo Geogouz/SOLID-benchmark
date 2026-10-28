@@ -1,0 +1,95 @@
+{
+ "schema": "solid.baselines.ade-fit.v1",
+ "dataset": "bregar",
+ "method": "ade-bp-2015",
+ "rule": "Every admissible calibrated reading of every link the radio answered in the ten-reading units of the environment's training block, its first block of ten reports on all six channels (fit_layout.bregar_groups), against the planar distance from the surveyed tag position to the anchor.",
+ "procedure": "fit_profiles.fit_constant_ade_model: maximum likelihood of the asymmetric Laplace density with constant scales, model 1 of Li, Hedley and Collings, on the readings of the model 2 fit (experiments/ade-reselection/fit_model1.py)",
+ "distance": "planar Euclidean, cm",
+ "conversion": {
+  "rule": "The calibration of the environment's first block, the offset of each anchor and channel subtracted from the raw range (bregar_layout.calibrate), as the training units carry it, readings below zero inadmissible and left out, the conversion every method receives"
+ },
+ "evaluation_rows_used": 0,
+ "previous": {
+  "source": "the retained Bern ANC configuration research/benchmarks/bern/configs/ade-bp-2015-anc.json",
+  "ranging_model": {
+   "positive_slope": 0.04361915824323337,
+   "positive_intercept_cm": 9.7059943254643,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 55.935533353036
+  },
+  "sha256": "660f93dac4943e0d343a9a991d64b0b4e4fd9237ce82f5a83374a09e2f8cdea8"
+ },
+ "sources": {
+  "request": {
+   "path": "research/data/external-benchmarks/bregar-layout/training/request.json.gz",
+   "sha256": "964dda60c179af554e6ac3bbcc3123ff9a83995387eda61e49fa8fcd9795a63f"
+  },
+  "reference": {
+   "path": "research/data/external-benchmarks/bregar-layout/training/reference.json",
+   "sha256": "718eff151e6333219a54dc0416c0c0c8d6ded370b8a8301f63818520920ecf6f"
+  },
+  "calibration": {
+   "path": "research/data/external-benchmarks/bregar-layout/calibration.json",
+   "sha256": "b835ba17fc6c6302390f30b20116186fc21172a9929193e7670b8a8ff879b400"
+  }
+ },
+ "code": {
+  "research/benchmarks/datasets/ade_training.py": "2e0b4ffb24f8c05c3fe11cecd1ffa0410af32947ddd42dc5f441c5be8a2ab2fe",
+  "research/benchmarks/bern/ade_bp/fit_profiles.py": "3dfd3c9e159d269f654c2ae20c1d07fc7a1842395649416a906dfdcbae857312"
+ },
+ "fitted_on": {
+  "host": "linux-x86-64",
+  "python": "3.12.3",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1"
+ },
+ "environment": "environment0",
+ "training_units": 6,
+ "links": 4080,
+ "positions": 85,
+ "anchors": 8,
+ "readings": 40799,
+ "fit": {
+  "ranging_model": {
+   "positive_slope": 0.0,
+   "positive_intercept_cm": 45.92955791609661,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 9.433946828335568
+  },
+  "negative_log_likelihood": 204562.94597817835,
+  "nll_per_report": 5.013920585754022,
+  "reports": 40799,
+  "residual_quantiles_cm": {
+   "5": -8.75,
+   "25": 9.181,
+   "50": 26.515,
+   "75": 58.77,
+   "95": 106.86
+  },
+  "previous_nll_per_report": 5.56881441508875
+ },
+ "model": 1,
+ "harness": {
+  "path": "experiments/ade-heightspread/fit_ade.py",
+  "sha256": "039a49f44fe5878af8a349356c6de7126b9df46659108ca97bd4af240e7aa2fa",
+  "shared": {
+   "path": "experiments/ade-heightspread/shared.py",
+   "sha256": "6ae662c154e823d1808f5766a253aa0d3a01da348021112cfcd327faa2f91192"
+  }
+ },
+ "collector": {
+  "split": "training",
+  "split_record_sha256": "7590ca1818b109a9a34b180d24ddc7bc5b6c949331a20c46a43ff5f98058cf89",
+  "evaluation_rows_used": 0,
+  "sources": {
+   "request": "964dda60c179af554e6ac3bbcc3123ff9a83995387eda61e49fa8fcd9795a63f",
+   "reference": "718eff151e6333219a54dc0416c0c0c8d6ded370b8a8301f63818520920ecf6f"
+  }
+ },
+ "inputs_sha256": {
+  "calibration.json": "b835ba17fc6c6302390f30b20116186fc21172a9929193e7670b8a8ff879b400",
+  "population.json": "36d3f2ebb526644ea1d14564711611949cced46224f95af5b4a7f4ea4f3f32df",
+  "training/request.json.gz": "964dda60c179af554e6ac3bbcc3123ff9a83995387eda61e49fa8fcd9795a63f",
+  "training/reference.json": "718eff151e6333219a54dc0416c0c0c8d6ded370b8a8301f63818520920ecf6f"
+ }
+}

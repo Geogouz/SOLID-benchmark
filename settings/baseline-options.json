@@ -1,0 +1,272 @@
+{
+ "schema": "solid.baselines.options.v1",
+ "rule": "The final options of the baselines, the candidates that their selections on the training parts chose per dataset, mode and on Bregar environment (Table S-XVIII of the supplement), each named as a declared candidate of research/benchmarks/datasets/baseline_selection.py (declared_grid), and the fitted error law of ADE-BP 2015 of every dataset, mode and Bregar environment where it runs, the ranging model of model 1 or model 2 of Li, Hedley and Collings (2015, Table I) fitted on the training part, with the shipped record it was fitted into, and ADE-BP's operating area on TWR-CLOUD. In reader mode (SOLID_READER=1) every baseline runner applies the declared settings of the candidate named here (baseline_selection.chosen) with every other setting from the declared base configurations (baseline-configurations.json), and ADE-BP the law of the model its candidate names. A dataset or mode a method does not run is absent.",
+ "options": {
+  "bern": {
+   "jin-2021": {
+    "AF": "planar-median",
+    "AAC": "planar-median",
+    "ANC": "planar-median"
+   },
+   "ade-bp-2015": {
+    "AAC": "model2-median-rounds-10",
+    "ANC": "model2-median-rounds-4"
+   },
+   "fnl": {
+    "AF": "planar-median-geometry",
+    "AAC": "planar-median-geometry",
+    "ANC": "spatial-median-provided"
+   },
+   "strong": {
+    "AAC": "planar-40-geometry",
+    "ANC": "planar-20-geometry"
+   }
+  },
+  "tiers": {
+   "jin-2021": {
+    "AF": "planar-median",
+    "AAC": "planar-mean",
+    "ANC": "planar-median"
+   },
+   "ade-bp-2015": {
+    "AAC": "model2-median-rounds-10",
+    "ANC": "model2-median-rounds-4"
+   },
+   "fnl": {
+    "AF": "planar-median-geometry",
+    "AAC": "spatial-median-geometry",
+    "ANC": "spatial-median-geometry"
+   },
+   "strong": {
+    "AAC": "planar-160-geometry-all",
+    "ANC": "spatial-160-geometry"
+   }
+  },
+  "idlab": {
+   "jin-2021": {
+    "AF": "planar-mean",
+    "AAC": "spatial-mean",
+    "ANC": "spatial-mean"
+   },
+   "ade-bp-2015": {
+    "AAC": "model2-median-rounds-10",
+    "ANC": "model1-median-rounds-4"
+   },
+   "fnl": {
+    "AF": "planar-median-geometry",
+    "AAC": "spatial-median-geometry",
+    "ANC": "spatial-all-geometry"
+   },
+   "strong": {
+    "AAC": "planar-none-geometry-all",
+    "ANC": "planar-160-geometry-all"
+   }
+  },
+  "bregar": {
+   "jin-2021": {
+    "ANC": {
+     "environment0": "spatial-mean",
+     "environment1": "planar-mean",
+     "environment2": "spatial-mean",
+     "environment3": "spatial-mean"
+    }
+   },
+   "ade-bp-2015": {
+    "ANC": {
+     "environment0": "model2-median-rounds-4",
+     "environment1": "model1-median-rounds-4",
+     "environment2": "model2-median-rounds-4",
+     "environment3": "model2-median-rounds-4"
+    }
+   },
+   "fnl": {
+    "ANC": {
+     "environment0": "spatial-all-provided",
+     "environment1": "planar-median-provided",
+     "environment2": "spatial-all-provided",
+     "environment3": "spatial-all-provided"
+    }
+   },
+   "strong": {
+    "ANC": {
+     "environment0": "spatial-10-geometry-all",
+     "environment1": "planar-40-geometry",
+     "environment2": "planar-160-geometry",
+     "environment3": "planar-160-geometry"
+    }
+   }
+  },
+  "hymn": {
+   "jin-2021": {
+    "ANC": "spatial-median"
+   },
+   "ade-bp-2015": {
+    "ANC": "model2-median-rounds-4"
+   },
+   "fnl": {
+    "ANC": "planar-all-geometry"
+   },
+   "strong": {
+    "ANC": "planar-40-geometry"
+   }
+  },
+  "aau": {
+   "jin-2021": {
+    "ANC": "spatial-median"
+   },
+   "ade-bp-2015": {
+    "ANC": "model2-median-rounds-4"
+   },
+   "fnl": {
+    "ANC": "spatial-median-geometry"
+   },
+   "strong": {
+    "ANC": "planar-10-geometry"
+   }
+  }
+ },
+ "ade_bp": {
+  "laws": {
+   "bern": {
+    "AAC": {
+     "model": 2,
+     "fit": "research/benchmarks/bern/configs/ade-bp-2015-refit-aac.json",
+     "ranging_model": {
+      "positive_slope": 0.043518097740125286,
+      "positive_intercept_cm": 10.1076461725945,
+      "negative_slope": 0.0,
+      "negative_intercept_cm": 55.83324326521197
+     }
+    },
+    "ANC": {
+     "model": 2,
+     "fit": "research/benchmarks/bern/configs/ade-bp-2015-refit-anc.json",
+     "ranging_model": {
+      "positive_slope": 0.043518097740125286,
+      "positive_intercept_cm": 10.1076461725945,
+      "negative_slope": 0.0,
+      "negative_intercept_cm": 55.83324326521197
+     }
+    }
+   },
+   "tiers": {
+    "AAC": {
+     "model": 2,
+     "fit": "research/artifacts/baselines/tiers-ade-fit.json",
+     "ranging_model": {
+      "positive_slope": 0.01613743897434777,
+      "positive_intercept_cm": 5.753927382302323,
+      "negative_slope": 5.768772211664639e-16,
+      "negative_intercept_cm": 4.7360052556510075
+     }
+    },
+    "ANC": {
+     "model": 2,
+     "fit": "research/artifacts/baselines/tiers-ade-fit.json",
+     "ranging_model": {
+      "positive_slope": 0.01613743897434777,
+      "positive_intercept_cm": 5.753927382302323,
+      "negative_slope": 5.768772211664639e-16,
+      "negative_intercept_cm": 4.7360052556510075
+     }
+    }
+   },
+   "idlab": {
+    "AAC": {
+     "model": 2,
+     "fit": "research/artifacts/baselines/idlab-ade-fit.json",
+     "ranging_model": {
+      "positive_slope": 0.016340178223385737,
+      "positive_intercept_cm": 13.767943559296032,
+      "negative_slope": 0.026771480390074102,
+      "negative_intercept_cm": 8.717638763734886
+     }
+    },
+    "ANC": {
+     "model": 1,
+     "fit": "experiments/ade-reselection/records/fits/idlab-ade-fit-model1.json",
+     "ranging_model": {
+      "positive_slope": 0.0,
+      "positive_intercept_cm": 28.29588926345108,
+      "negative_slope": 0.0,
+      "negative_intercept_cm": 32.81267519033265
+     }
+    }
+   },
+   "bregar": {
+    "ANC": {
+     "environment0": {
+      "model": 2,
+      "fit": "experiments/ade-heightspread/records/fits/bregar-environment0-ade-fit.json",
+      "ranging_model": {
+       "positive_slope": 0.06838232850711272,
+       "positive_intercept_cm": 5.74015178372113,
+       "negative_slope": 0.0,
+       "negative_intercept_cm": 8.70232968822204
+      }
+     },
+     "environment1": {
+      "model": 1,
+      "fit": "experiments/ade-heightspread/records/fits/bregar-environment1-ade-fit-model1.json",
+      "ranging_model": {
+       "positive_slope": 0.0,
+       "positive_intercept_cm": 20.316493910030463,
+       "negative_slope": 0.0,
+       "negative_intercept_cm": 4.008568790711887
+      }
+     },
+     "environment2": {
+      "model": 2,
+      "fit": "experiments/ade-heightspread/records/fits/bregar-environment2-ade-fit.json",
+      "ranging_model": {
+       "positive_slope": 0.07482641372583598,
+       "positive_intercept_cm": 1.0000000000000002e-06,
+       "negative_slope": 0.0,
+       "negative_intercept_cm": 13.054325684546694
+      }
+     },
+     "environment3": {
+      "model": 2,
+      "fit": "experiments/ade-heightspread/records/fits/bregar-environment3-ade-fit.json",
+      "ranging_model": {
+       "positive_slope": 0.07694167671577731,
+       "positive_intercept_cm": 1.17057164867077,
+       "negative_slope": 0.0,
+       "negative_intercept_cm": 14.974909248019621
+      }
+     }
+    }
+   },
+   "hymn": {
+    "ANC": {
+     "model": 2,
+     "fit": "experiments/ade-heightspread/records/fits/hymn-ade-fit.json",
+     "ranging_model": {
+      "positive_slope": 0.016655334952999166,
+      "positive_intercept_cm": 17.895114643443506,
+      "negative_slope": 0.0,
+      "negative_intercept_cm": 43.663127259357665
+     }
+    }
+   },
+   "aau": {
+    "ANC": {
+     "model": 2,
+     "fit": "experiments/ade-heightspread/records/fits/aau-ade-fit.json",
+     "ranging_model": {
+      "positive_slope": 0.0,
+      "positive_intercept_cm": 30.711194136604988,
+      "negative_slope": 0.0020772545429420704,
+      "negative_intercept_cm": 1.7315201514500815
+     }
+    }
+   }
+  },
+  "bern_area": {
+   "minimum_x_cm": -21535.594665,
+   "maximum_x_cm": -20121.105434999998,
+   "minimum_y_cm": -19920.62937,
+   "maximum_y_cm": -16558.370030000002
+  }
+ }
+}

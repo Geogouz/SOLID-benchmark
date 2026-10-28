@@ -1,0 +1,190 @@
+{
+ "schema": "solid.deployment.heldout.v1",
+ "rules": {
+  "padding_scales": 3.0,
+  "height_percentiles": [
+   5.0,
+   95.0
+  ],
+  "height_nodes": 5,
+  "single_height_span_cm": 10.0,
+  "grid_fraction": 0.25,
+  "grid_step_bounds_cm": [
+   5.0,
+   40.0
+  ],
+  "joint_samples": 512,
+  "seed": 20260918,
+  "decimals": 1,
+  "published_extents_cm": {
+   "tiers": [
+    800.0,
+    900.0
+   ],
+   "idlab": [
+    4100.0,
+    2600.0
+   ]
+  },
+  "heldout_extents_cm": {
+   "aau": [
+    500.0,
+    800.0
+   ]
+  }
+ },
+ "declaration_sha256": "b51dc4f8ffc4aee76381ee3312475824242ffb0343d66a51bc1be35aae4611f4",
+ "statement": "research/solid/deployment.py",
+ "datasets": {
+  "hymn": {
+   "heights_cm": {
+    "positions": 24,
+    "minimum": 205.20000000000002,
+    "p5": 210.53,
+    "median": 332.7,
+    "p95": 334.055,
+    "maximum": 334.1
+   },
+   "anchor_scale_cm": {
+    "packets": 266243,
+    "median": 220.65016538195687
+   },
+   "extent": null,
+   "sources": {
+    "population_sha256": "44c8ca97281c49a2da8b09b7eb0670edd6e31277437478d5a5787fe9ac844402",
+    "request_sha256": "08b786d8ff0c25cab41d29463fd866c26851d038c1901a507bb62a52bfe64f2a",
+    "excluded_flights": {},
+    "training_excluded_flights": {},
+    "unguarded_pairs": {}
+   },
+   "settings": {
+    "height_nodes": [
+     210.5,
+     241.4,
+     272.3,
+     303.2,
+     334.1
+    ],
+    "height_weights": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "grid_step": 40.0,
+    "joint_samples": 512,
+    "seed": 20260918
+   },
+   "containment": {
+    "units": 1200,
+    "agents": 9600,
+    "linked_agents": 9511,
+    "linked_outside": 0,
+    "unlinked_agents": 89,
+    "unlinked_outside": 0,
+    "units_without_anchor_range": 0,
+    "units_with_an_unranged_agent": 72,
+    "units_bound_by_extent": 0,
+    "first_outside": []
+   },
+   "area_cm": {
+    "width": [
+     4663.900992291741,
+     11455.100992291742,
+     14967.000992291742
+    ],
+    "depth": [
+     4663.900992291741,
+     13921.30099229174,
+     17575.80099229174
+    ],
+    "padding": [
+     2322.9504961458706,
+     4884.950496145871,
+     6637.950496145871
+    ],
+    "cells": [
+     13689.0,
+     99750.0,
+     165000.0
+    ]
+   }
+  },
+  "aau": {
+   "heights_cm": {
+    "positions": 9,
+    "minimum": 33.0,
+    "p5": 46.2,
+    "median": 176.0,
+    "p95": 325.03999999999996,
+    "maximum": 325.59999999999997
+   },
+   "anchor_scale_cm": {
+    "packets": 941043,
+    "median": 3.677717115283578
+   },
+   "extent": "published 5 m by 8 m area of the static nodes, diagonal around every known anchor",
+   "sources": {
+    "population_sha256": "5ff30e540a19b0edc4603c1c44b69eaa0c8812a69310f796202f3a611024b634",
+    "request_sha256": "974d422813157d1ce72987ab1ec32e3f65828f5b248d1832e7d9273d6fc43d3c",
+    "excluded_flights": {},
+    "training_excluded_flights": {},
+    "unguarded_pairs": {}
+   },
+   "settings": {
+    "height_nodes": [
+     46.2,
+     115.9,
+     185.6,
+     255.3,
+     325.0
+    ],
+    "height_weights": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "grid_step": 5.0,
+    "joint_samples": 512,
+    "seed": 20260918
+   },
+   "containment": {
+    "units": 11466,
+    "agents": 57330,
+    "linked_agents": 56735,
+    "linked_outside": 0,
+    "unlinked_agents": 595,
+    "unlinked_outside": 0,
+    "units_without_anchor_range": 0,
+    "units_with_an_unranged_agent": 505,
+    "units_bound_by_extent": 10007,
+    "first_outside": []
+   },
+   "area_cm": {
+    "width": [
+     1122.4403108704123,
+     1425.6962264113208,
+     1886.7962264113207
+    ],
+    "depth": [
+     1061.5962264113207,
+     1263.9962264113205,
+     1886.7962264113207
+    ],
+    "padding": [
+     539.732856469752,
+     857.9695946747081,
+     872.6334359222667
+    ],
+    "cells": [
+     50625.0,
+     70840.0,
+     142884.0
+    ]
+   }
+  }
+ }
+}
