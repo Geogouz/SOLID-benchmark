@@ -1,0 +1,308 @@
+--- research/benchmarks/datasets/bregar_predict.rs
++++ experiments/ade-heightspread/adapter/src/bregar_predict.rs
+@@ -6,8 +6,10 @@
+ use anyhow::{ensure, Result};
+ use serde::Deserialize;
+ use serde_json::json;
+-use solid_core::{DimensionPolicy, LocalizationMode, PreparedProblem, SolveConfig};
+-use solid_methods::{stayed_at_start, LocalizationMethod, MethodConfig, MethodKind, MethodRunner};
++use solid_core::{Anchor, DimensionPolicy, LocalizationMode, PreparedProblem, SolveConfig};
++use solid_methods::{
++    stayed_at_start, AreaBounds, LocalizationMethod, MethodConfig, MethodKind, MethodRunner,
++};
+
+ #[derive(Deserialize)]
+ #[serde(deny_unknown_fields)]
+@@ -25,6 +27,10 @@
+     scale_cm: f64,
+     strong_radius_cm: f64,
+     problem: PreparedProblem,
++    /// SOLID's operating area of the unit by the deployment rules (layout_inputs.py), which ADE-BP receives wherever it
++    /// runs. The other baselines take no area. The runners of this addition send an area in ADE-BP's requests alone,
++    /// which hold ADE-BP alone (select_ade.py, run_ade.py), and this adapter checks that an area holds every anchor.
++    area: Option<AreaBounds>,
+ }
+
+ #[derive(Deserialize)]
+@@ -34,6 +40,24 @@
+     units: Vec<Unit>,
+ }
+
++/// A finite box that holds every known anchor, the operating area ADE-BP receives (the rule of the TIERS adapter).
++fn area_holds_anchors(area: &AreaBounds, anchors: &[Anchor]) -> bool {
++    [
++        area.minimum_x_cm,
++        area.maximum_x_cm,
++        area.minimum_y_cm,
++        area.maximum_y_cm,
++    ]
++    .iter()
++    .all(|v| v.is_finite())
++        && area.minimum_x_cm < area.maximum_x_cm
++        && area.minimum_y_cm < area.maximum_y_cm
++        && anchors.iter().all(|a| {
++            (area.minimum_x_cm..=area.maximum_x_cm).contains(&a.position.x)
++                && (area.minimum_y_cm..=area.maximum_y_cm).contains(&a.position.y)
++        })
++}
++
+ fn validate(unit: &Unit) -> Result<()> {
+     let p = &unit.problem;
+     ensure!(
+@@ -75,6 +99,12 @@
+             && a.height_cm.is_finite()),
+         "invalid surveyed anchor"
+     );
++    if let Some(area) = &unit.area {
++        ensure!(
++            area_holds_anchors(area, &p.anchors),
++            "the operating area must be a finite box that holds every known anchor"
++        );
++    }
+     let mut links = BTreeSet::new();
+     for link in &p.observations {
+         ensure!(
+@@ -100,9 +130,10 @@
+     Ok(())
+ }
+
+-/// Jin 2021, FNL and STRONG, each at most once. A run sends the three and the selection of a method's options on the
+-/// training block sends that method alone. A request that crashes the adapter is sent again unit by unit and then
+-/// method by method (isolation.adapter_parts), so every nonempty subset of the three passes.
++/// Jin 2021, FNL, STRONG and ADE-BP 2015, each at most once. A run sends the three and the selection of a method's
++/// options on the training block sends that method alone, ADE-BP's runs and selections send ADE-BP alone. A request
++/// that crashes the adapter is sent again unit by unit and then method by method (isolation.adapter_parts), so every
++/// nonempty subset of the four passes.
+ fn roster_allowed(methods: &[MethodKind]) -> bool {
+     let names: BTreeSet<_> = methods.iter().map(|m| m.name()).collect();
+     !methods.is_empty()
+@@ -110,18 +141,50 @@
+         && methods.iter().all(|m| {
+             matches!(
+                 m,
+-                MethodKind::Jin2021 | MethodKind::Fnl | MethodKind::Strong
++                MethodKind::Jin2021 | MethodKind::Fnl | MethodKind::Strong | MethodKind::AdeBp2015
+             )
+         })
+ }
+
+ /// The planar or the spatial model, which the selection of each method's options on the training block of each
+-/// environment chooses for Jin 2021, FNL and STRONG alike (baseline_selection.py). The roster holds no other method.
++/// environment chooses for Jin 2021, FNL and STRONG alike (baseline_selection.py). ADE-BP implements the planar model
++/// alone, the published form of its paper.
+ fn dimension_allowed(method: MethodKind, policy: DimensionPolicy) -> bool {
++    if method == MethodKind::AdeBp2015 {
++        return policy == DimensionPolicy::Planar;
++    }
+     matches!(
+         method,
+         MethodKind::Jin2021 | MethodKind::Fnl | MethodKind::Strong
+     ) && matches!(policy, DimensionPolicy::Planar | DimensionPolicy::Spatial)
++}
++
++/// ADE-BP keeps the declared settings of its anchor only runs, the 500 particles and the four rounds of its paper and
++/// the cap of 256 importance refinements, and takes each unit's area rather than one of its own, as the TIERS and IDLab
++/// adapters give it.
++fn budget_allowed(config: &MethodConfig) -> bool {
++    match config {
++        MethodConfig::AdeBp2015 {
++            area,
++            particles,
++            iterations,
++            importance_iterations,
++            ..
++        } => area.is_none() && (*particles, *iterations, *importance_iterations) == (500, 4, 256),
++        _ => true,
++    }
++}
++
++/// ADE-BP's runner for one unit, with the unit's operating area, which every unit of an ADE-BP request carries.
++fn with_area(method: &MethodRunner, unit: &Unit) -> Result<MethodRunner> {
++    let mut options = method
++        .config()
++        .cloned()
++        .ok_or_else(|| anyhow::anyhow!("ADE-BP runs from its declared configuration"))?;
++    if let MethodConfig::AdeBp2015 { area, .. } = &mut options {
++        *area = unit.area;
++    }
++    Ok(MethodRunner::configured(method.kind(), options)?)
+ }
+
+ fn main() -> Result<()> {
+@@ -152,6 +215,14 @@
+             dimension_allowed(b.method, b.solve_config.dimension_policy)
+                 && b.solve_config.max_time_micros == 0,
+             "unexpected dimension or time limit"
++        );
++        ensure!(
++            budget_allowed(&b.method_config),
++            "ADE-BP keeps its declared anchor only settings and the unit's area"
++        );
++        ensure!(
++            b.method != MethodKind::AdeBp2015 || request.units.iter().all(|u| u.area.is_some()),
++            "ADE-BP takes the operating area every unit carries"
+         );
+         baselines.push((
+             MethodRunner::configured(b.method, b.method_config)?,
+@@ -166,6 +237,13 @@
+             if method.kind().name() == "strong" {
+                 config.robust_delta = unit.strong_radius_cm;
+             }
++            let configured;
++            let method = if method.kind() == MethodKind::AdeBp2015 {
++                configured = with_area(method, &unit)?;
++                &configured
++            } else {
++                method
++            };
+             let result = method
+                 .solve_with_start(&unit.problem, &config)
+                 .map(|(r, start)| {
+@@ -200,7 +278,8 @@
+ #[cfg(test)]
+ mod tests {
+     use super::*;
+-    use solid_core::{Anchor, CalibratedRangeSample, Point2, RangeObservation};
++    use solid_core::{CalibratedRangeSample, Point2, RangeObservation};
++    use solid_methods::AdeRangingModel;
+
+     fn unit() -> Unit {
+         Unit {
+@@ -208,6 +287,7 @@
+             samples: 10,
+             scale_cm: 20.0,
+             strong_radius_cm: 50.0,
++            area: None,
+             problem: PreparedProblem {
+                 attempts: None,
+                 agent_ids: vec![1, 2],
+@@ -317,7 +397,7 @@
+         assert!(roster_allowed(&[Jin2021, Fnl, Strong]));
+         assert!(roster_allowed(&[Strong, Jin2021, Fnl]));
+         // a selection of one method's options, and a crashed request solved again method by method
+-        for method in [Jin2021, Fnl, Strong] {
++        for method in [Jin2021, Fnl, Strong, AdeBp2015] {
+             assert!(roster_allowed(&[method]));
+         }
+         assert!(roster_allowed(&[Jin2021, Strong]));
+@@ -325,9 +405,9 @@
+         assert!(!roster_allowed(&[Strong, Strong]));
+         assert!(!roster_allowed(&[Jin2021, Fnl, Fnl]));
+         assert!(!roster_allowed(&[]));
+-        // ADE-BP has no spatial implementation
+-        assert!(!roster_allowed(&[AdeBp2015]));
+-        assert!(!roster_allowed(&[Jin2021, Fnl, Strong, AdeBp2015]));
++        // ADE-BP runs with its planar model, alone or beside the three, once
++        assert!(roster_allowed(&[Jin2021, Fnl, Strong, AdeBp2015]));
++        assert!(!roster_allowed(&[AdeBp2015, AdeBp2015]));
+     }
+
+     #[test]
+@@ -337,10 +417,18 @@
+             assert!(dimension_allowed(method, DimensionPolicy::Spatial));
+             assert!(!dimension_allowed(method, DimensionPolicy::Automatic));
+         }
+-        // ADE-BP has no place on Bregar
++        // ADE-BP implements the planar model alone
++        assert!(dimension_allowed(
++            MethodKind::AdeBp2015,
++            DimensionPolicy::Planar
++        ));
+         assert!(!dimension_allowed(
+             MethodKind::AdeBp2015,
+-            DimensionPolicy::Planar
++            DimensionPolicy::Spatial
++        ));
++        assert!(!dimension_allowed(
++            MethodKind::AdeBp2015,
++            DimensionPolicy::Automatic
+         ));
+     }
+
+@@ -362,4 +450,85 @@
+         let input = json!({"baselines": [], "units": [], "deployment_profile": {}});
+         assert!(serde_json::from_value::<Request>(input).is_err());
+     }
+-}
++
++    fn area(minimum_x_cm: f64, maximum_x_cm: f64) -> AreaBounds {
++        AreaBounds {
++            minimum_x_cm,
++            maximum_x_cm,
++            minimum_y_cm: -300.0,
++            maximum_y_cm: 300.0,
++        }
++    }
++
++    #[test]
++    fn a_unit_without_an_area_reads_as_before_and_an_area_must_hold_every_anchor() {
++        let without = json!({"id": 1, "samples": 10, "scale_cm": 20.0, "strong_radius_cm": 50.0, "problem": unit().problem});
++        assert!(serde_json::from_value::<Unit>(without).unwrap().area.is_none());
++        let mut input = unit();
++        for accepted in [area(0.0, 200.0), area(-1000.0, 1000.0)] {
++            input.area = Some(accepted);
++            validate(&input).unwrap();
++        }
++        for refused in [area(102.0, 200.0), area(200.0, 0.0), area(f64::NAN, 200.0), area(0.0, f64::INFINITY)] {
++            input.area = Some(refused);
++            assert!(validate(&input).is_err());
++        }
++    }
++
++    fn ranging_model() -> AdeRangingModel {
++        AdeRangingModel {
++            positive_slope: 0.02,
++            positive_intercept_cm: 14.0,
++            negative_slope: 0.0,
++            negative_intercept_cm: 9.0,
++        }
++    }
++
++    fn ade(area: Option<AreaBounds>, particles: usize, iterations: usize) -> MethodConfig {
++        MethodConfig::AdeBp2015 {
++            area,
++            particles,
++            iterations,
++            importance_iterations: 256,
++            ranging_model: ranging_model(),
++        }
++    }
++
++    #[test]
++    fn ade_bp_keeps_its_budget_and_takes_the_unit_area() {
++        assert!(budget_allowed(&ade(None, 500, 4)));
++        assert!(!budget_allowed(&ade(None, 500, 10)));
++        assert!(!budget_allowed(&ade(None, 100, 4)));
++        assert!(!budget_allowed(&ade(Some(area(0.0, 200.0)), 500, 4)));
++        let strong: MethodConfig = serde_json::from_value(json!({"method": "strong", "initialization": "released"})).unwrap();
++        assert!(budget_allowed(&strong));
++        // the runner of a unit carries the unit's area, and solves as ADE-BP configured with that area directly
++        let mut input = unit();
++        input.problem.agent_ids = vec![1];
++        input.problem.initial_positions = vec![Point2::new(0.0, 0.0)];
++        input.problem.observations = (101..109)
++            .map(|anchor| RangeObservation {
++                from: 1,
++                to: anchor,
++                to_is_anchor: true,
++                tof_ns: vec![],
++                calibrated_samples: vec![CalibratedRangeSample::new(100.0 + anchor as f64, 20.0)],
++            })
++            .collect();
++        input.area = Some(area(-500.0, 700.0));
++        validate(&input).unwrap();
++        let declared = MethodRunner::configured(MethodKind::AdeBp2015, ade(None, 500, 4)).unwrap();
++        let runner = with_area(&declared, &input).unwrap();
++        assert_eq!(runner.config(), Some(&ade(input.area, 500, 4)));
++        let config = SolveConfig {
++            dimension_policy: DimensionPolicy::Planar,
++            max_time_micros: 0,
++            ..SolveConfig::default()
++        };
++        let direct = MethodRunner::configured(MethodKind::AdeBp2015, ade(input.area, 500, 4)).unwrap();
++        assert_eq!(
++            runner.solve(&input.problem, &config).unwrap().positions,
++            direct.solve(&input.problem, &config).unwrap().positions
++        );
++    }
++}

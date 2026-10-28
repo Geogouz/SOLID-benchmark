@@ -1,0 +1,212 @@
+{
+ "schema": "solid.settings.tiers-bern.v1",
+ "rule": "The Bern settings that the TIERS builders read from the retained Bern evidence and its run records: the AF profile and the AF settings of Jin 2021 and FNL 2025 (pilot.retained_settings), ADE-BP's AAC settings (aac_training.prepare) and the transferred Bern ANC ranging model and detection range (tiers_static_check.prepare).",
+ "af": {
+  "profile": {
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "production": {
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04361915824323337,
+     "positive_intercept_cm": 9.7059943254643,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.935533353036
+    },
+    "detection_range_cm": 1007.5959860606662
+   },
+   "free": {
+    "1": {
+     "intercept": 6.50395571968704,
+     "slope": 0.5251975818754163,
+     "conditional_slope": 0.0,
+     "positive_scale": 1.269255917951447,
+     "negative_scale": 1.4457084658819088
+    },
+    "10": {
+     "intercept": 6.32823050108384,
+     "slope": 0.529694425328445,
+     "conditional_slope": 0.0,
+     "positive_scale": 0.8047792729549228,
+     "negative_scale": 0.4342369632501085
+    }
+   },
+   "anchored": {
+    "1": {
+     "2": {
+      "positive_scale": 1.269255917951447,
+      "negative_scale": 1.4457084658819088,
+      "peer_availability": [
+       0.0,
+       0.0
+      ],
+      "anchor_availability": [
+       0.0,
+       0.0
+      ]
+     },
+     "3": {
+      "positive_scale": 1.2537298127363805,
+      "negative_scale": 1.4460429535855177,
+      "peer_availability": [
+       0.0,
+       0.0
+      ],
+      "anchor_availability": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "10": {
+     "2": {
+      "positive_scale": 0.8047792729549228,
+      "negative_scale": 0.4342369632501085,
+      "peer_availability": [
+       0.0,
+       0.0
+      ],
+      "anchor_availability": [
+       0.0,
+       0.0
+      ]
+     },
+     "3": {
+      "positive_scale": 0.7944800861145239,
+      "negative_scale": 0.44212902479149746,
+      "peer_availability": [
+       0.0,
+       0.0
+      ],
+      "anchor_availability": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  "baselines": [
+   {
+    "method": "jin-2021",
+    "method_config": {
+     "method": "jin-2021",
+     "residual_multiplier": 2.0
+    },
+    "solve_config": {
+     "objective": "AccuracyProfile",
+     "aggregation": "Median",
+     "dimension_policy": "planar",
+     "max_iterations": 10000,
+     "gradient_tolerance": 1e-05,
+     "history_size": 10,
+     "robust_delta": 0.7,
+     "max_tof_ns": 200.0,
+     "max_time_micros": 0,
+     "requested_starts": 32,
+     "research": {
+      "accuracy_solver_policy": false,
+      "aac_decoder": "projected_edm_median",
+      "anc_initializer": "production",
+      "anc_cutoff_standardized": 0.0
+     }
+    }
+   },
+   {
+    "method": "fnl",
+    "method_config": {
+     "method": "fnl",
+     "initialization": "solid-geometry"
+    },
+    "solve_config": {
+     "objective": "AccuracyProfile",
+     "aggregation": "Median",
+     "dimension_policy": "planar",
+     "max_iterations": 10000,
+     "gradient_tolerance": 1e-05,
+     "history_size": 10,
+     "robust_delta": 0.7,
+     "max_tof_ns": 200.0,
+     "max_time_micros": 0,
+     "requested_starts": 32,
+     "research": {
+      "accuracy_solver_policy": false,
+      "aac_decoder": "projected_edm_median",
+      "anc_initializer": "production",
+      "anc_cutoff_standardized": 0.0
+     }
+    }
+   }
+  ]
+ },
+ "aac_ade_bp": {
+  "method_config": {
+   "method": "ade-bp-2015",
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "particles": 500,
+   "iterations": 4,
+   "importance_iterations": 256,
+   "ranging_model": {
+    "positive_slope": 0.04361915824323337,
+    "positive_intercept_cm": 9.7059943254643,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.935533353036
+   }
+  },
+  "config": {
+   "objective": "AccuracyProfile",
+   "aggregation": "Median",
+   "dimension_policy": "automatic",
+   "max_iterations": 10000,
+   "gradient_tolerance": 1e-05,
+   "history_size": 10,
+   "robust_delta": 0.7,
+   "max_tof_ns": 200.0,
+   "max_time_micros": 0,
+   "requested_starts": 32,
+   "research": {
+    "accuracy_solver_policy": false,
+    "aac_decoder": "projected_edm_median",
+    "anc_initializer": "production",
+    "anc_cutoff_standardized": 0.0
+   }
+  }
+ },
+ "anc": {
+  "ranging_model": {
+   "positive_slope": 0.0,
+   "positive_intercept_cm": 40.29098856731116,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 57.922654989062224
+  },
+  "detection_range_cm": 1007.5959860606662
+ },
+ "sources": {
+  "research/data/corrected-training/evaluation/runs/jin-2021/af/benchmark.json": "88fa1746193b77a0be4cb569d61698c49411ac579c4ff2e731310786c39ee566",
+  "research/data/runs/fnl/af/benchmark.json": "b6b1281ddf28ec383a43906c5d0ffab628bac0ab7ce6927afaa8d82865dfcf19",
+  "research/data/joint-information-evaluation/runs/af/request.json": "ef512fddfcdabe3513608ec66f35b7e0ed80d5a804d3816ec0b98b6cff493c59",
+  "research/data/corrected-training/evaluation/runs/ade-bp-2015/aac/benchmark.json": "e7c5ad680b41e73ee4f4a2c945ebec7bd33ede42398e8e25df7773b77bbd5a78",
+  "research/data/inputs/2f4317442ea43980/solid.json": "2f4317442ea4398050a6b88955c50b41a2c4a9456005c806abf432daa4035cf6"
+ }
+}

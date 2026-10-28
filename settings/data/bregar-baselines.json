@@ -1,0 +1,86 @@
+{
+ "schema": "solid.settings.bregar-baselines.v1",
+ "rule": "The retained Bern anchor only settings of Jin 2021, FNL 2025 and STRONG 2021 with the spatial model (bregar.baseline_settings).",
+ "baselines": [
+  {
+   "method": "jin-2021",
+   "method_config": {
+    "method": "jin-2021",
+    "residual_multiplier": 2.0
+   },
+   "solve_config": {
+    "objective": "AccuracyProfile",
+    "aggregation": "Median",
+    "dimension_policy": "spatial",
+    "max_iterations": 10000,
+    "gradient_tolerance": 1e-05,
+    "history_size": 10,
+    "robust_delta": 0.7,
+    "max_tof_ns": 200.0,
+    "max_time_micros": 0,
+    "requested_starts": 32,
+    "research": {
+     "accuracy_solver_policy": false,
+     "aac_decoder": "projected_edm_median",
+     "anc_initializer": "production",
+     "anc_cutoff_standardized": 0.0
+    }
+   }
+  },
+  {
+   "method": "fnl",
+   "method_config": {
+    "method": "fnl",
+    "initialization": "released"
+   },
+   "solve_config": {
+    "objective": "AccuracyProfile",
+    "aggregation": "Median",
+    "dimension_policy": "spatial",
+    "max_iterations": 10000,
+    "gradient_tolerance": 1e-05,
+    "history_size": 10,
+    "robust_delta": 0.7,
+    "max_tof_ns": 200.0,
+    "max_time_micros": 0,
+    "requested_starts": 32,
+    "research": {
+     "accuracy_solver_policy": false,
+     "aac_decoder": "projected_edm_median",
+     "anc_initializer": "production",
+     "anc_cutoff_standardized": 0.0
+    }
+   }
+  },
+  {
+   "method": "strong",
+   "method_config": {
+    "method": "strong",
+    "initialization": "solid-geometry"
+   },
+   "solve_config": {
+    "objective": "AccuracyProfile",
+    "aggregation": "Median",
+    "dimension_policy": "spatial",
+    "max_iterations": 10000,
+    "gradient_tolerance": 1e-05,
+    "history_size": 10,
+    "robust_delta": 40.0,
+    "max_tof_ns": 200.0,
+    "max_time_micros": 0,
+    "requested_starts": 32,
+    "research": {
+     "accuracy_solver_policy": false,
+     "aac_decoder": "projected_edm_median",
+     "anc_initializer": "production",
+     "anc_cutoff_standardized": 0.0
+    }
+   }
+  }
+ ],
+ "sources": {
+  "research/data/corrected-training/evaluation/runs/jin-2021/anc/benchmark.json": "30809f4c101846db9ad7aacc65ac12a6d0625d9a58664d26f2641a9f228c5219",
+  "research/data/runs/fnl/anc/benchmark.json": "d23ba4d0cfc45ec1278178ae348c44bdea577053f33d30ca8f5fe8689f3f8c64",
+  "research/data/corrected-training/evaluation/runs/strong/anc/benchmark.json": "7d2a7dc50a735e64b19ea2408f77fc8407443a19a1701a247726432fcfa72d72"
+ }
+}

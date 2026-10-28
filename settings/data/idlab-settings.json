@@ -1,0 +1,73 @@
+{
+ "schema": "solid.settings.idlab.v1",
+ "rule": "The AF settings of Jin 2021 and FNL 2025 that idlab_check.af_baselines reads from the Bern run records, and the IDLab availability record that idlab_availability.py fitted from the original tag and receiver logs (idlab-availability.json.gz beside this file, byte for byte the record idlab_check and idlab_campaign read).",
+ "af_baselines": [
+  {
+   "method": "jin-2021",
+   "method_config": {
+    "method": "jin-2021",
+    "residual_multiplier": 2.0
+   },
+   "solve_config": {
+    "objective": "AccuracyProfile",
+    "aggregation": "Median",
+    "dimension_policy": "planar",
+    "max_iterations": 10000,
+    "gradient_tolerance": 1e-05,
+    "history_size": 10,
+    "robust_delta": 0.7,
+    "max_tof_ns": 200.0,
+    "max_time_micros": 0,
+    "requested_starts": 32,
+    "research": {
+     "accuracy_solver_policy": false,
+     "aac_decoder": "projected_edm_median",
+     "anc_initializer": "production",
+     "anc_cutoff_standardized": 0.0
+    }
+   }
+  },
+  {
+   "method": "fnl",
+   "method_config": {
+    "method": "fnl",
+    "initialization": "solid-geometry"
+   },
+   "solve_config": {
+    "objective": "AccuracyProfile",
+    "aggregation": "Median",
+    "dimension_policy": "planar",
+    "max_iterations": 10000,
+    "gradient_tolerance": 1e-05,
+    "history_size": 10,
+    "robust_delta": 0.7,
+    "max_tof_ns": 200.0,
+    "max_time_micros": 0,
+    "requested_starts": 32,
+    "research": {
+     "accuracy_solver_policy": false,
+     "aac_decoder": "projected_edm_median",
+     "anc_initializer": "production",
+     "anc_cutoff_standardized": 0.0
+    }
+   }
+  }
+ ],
+ "availability": {
+  "record": "idlab-availability.json.gz",
+  "sha256": "3e2c5da870c6afc39d3baaa14620fb987ed98a9c32c4e7e0217168e26dee5fd8",
+  "fitted": {
+   "availability": {
+    "intercept": 1.5191565651785053,
+    "slope": 0.22709257195167654
+   },
+   "detection_range_cm": 735.5824570229811,
+   "constant_probability": 0.17769796476825722
+  }
+ },
+ "sources": {
+  "research/data/corrected-training/evaluation/runs/jin-2021/af/benchmark.json": "88fa1746193b77a0be4cb569d61698c49411ac579c4ff2e731310786c39ee566",
+  "research/data/runs/fnl/af/benchmark.json": "b6b1281ddf28ec383a43906c5d0ffab628bac0ab7ce6927afaa8d82865dfcf19",
+  "research/data/external-benchmarks/idlab-availability.json": "3e2c5da870c6afc39d3baaa14620fb987ed98a9c32c4e7e0217168e26dee5fd8"
+ }
+}

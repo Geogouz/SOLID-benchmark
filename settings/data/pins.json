@@ -1,0 +1,570 @@
+{
+ "schema": "solid.data-pins.v1",
+ "about": "Every public file the pipeline reads, with its place in the data folder (SOLID_DATA, research/data by default), its URL, size, SHA-256 and the MD5 its publisher states. tools/fetch_data.py downloads and verifies them. A file with a sidecar list gets <file>.source.json with those keys, the record the builders check. A file with api_checks is an API response that changes between fetches (download counts), so a fetch checks those fields instead of the SHA-256, which is that of the copy the paper used.",
+ "datasets": {
+  "twr-cloud-bern": {
+   "source": "Zenodo record 23434390, TWR-CLOUD-Bern version 6",
+   "doi": "10.5281/zenodo.23434390",
+   "note": "The evaluation archive and the scorer are the files of version 5 unchanged."
+  },
+  "twr-cloud-bern-v5": {
+   "source": "Zenodo record 20277908, TWR-CLOUD-Bern version 5",
+   "doi": "10.5281/zenodo.20277908"
+  },
+  "scorer": {
+   "source": "Zenodo record 23434390, TWR-CLOUD-Bern version 6, its released scorer",
+   "doi": "10.5281/zenodo.23434390",
+   "note": "The scorer's pair loss scores every dataset, so every dataset needs it beside its own files."
+  },
+  "tiers": {
+   "source": "GitHub TIERS/uwb-relative-localization-dataset",
+   "revision": "5dceab32c4d2b1dc32016a80a5b2406d973cea2d"
+  },
+  "bregar": {
+   "source": "Zenodo record 8280736, version 2.0, with the publisher code of GitHub KlemenBr/uwb_positioning tag v1.0.0",
+   "doi": "10.5281/zenodo.8280736",
+   "revision": "ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc"
+  },
+  "idlab": {
+   "source": "imec share rFWMHfD5WaD6HWy, the Hugging Face card of iwine-ugent/uwb-positioning-datasets and the publisher aggregate of GitHub dietercoppens/UWB-DRL-PHY-Runtime-Adaptation-dataset",
+   "revision": "card d813ce72783241142102723b77c09c0f5fa165d1, aggregate c1b2298534d3bcbc4894b8a00d3f06186a81ceba"
+  },
+  "hymn": {
+   "source": "Zenodo record 19566178, HYMN dataset release 1.3",
+   "doi": "10.5281/zenodo.19566178"
+  },
+  "aau": {
+   "source": "Zenodo record 10819706, AAU Meshed UWB Dataset",
+   "doi": "10.5281/zenodo.10819706"
+  }
+ },
+ "files": [
+  {
+   "dataset": "twr-cloud-bern",
+   "path": "inputs/65c077bb1aa9b879/Rangings at Responders.pkl",
+   "url": "https://zenodo.org/records/23434390/files/Rangings%20at%20Responders.pkl?download=1",
+   "bytes": 259142946,
+   "sha256": "65c077bb1aa9b8793d9b206a406ecfd574047ad345fbafdbf93cfcdfad26fa21",
+   "md5": "d5d71fe55c758c2a87d7efd812357c5b"
+  },
+  {
+   "dataset": "twr-cloud-bern",
+   "path": "inputs/8617b54db218e099/TWR-CLOUD Bern Eval Scenarios.zip",
+   "url": "https://zenodo.org/records/23434390/files/TWR-CLOUD%20Bern%20Eval%20Scenarios.zip?download=1",
+   "bytes": 3555261771,
+   "sha256": "8617b54db218e0999ebda2f6c36107e5c79f3f5e7e84eb1047ecf997551c110b",
+   "md5": "757319458e2c159caddbb27bbc2d49c0"
+  },
+  {
+   "dataset": "scorer",
+   "path": "inputs/0068d72b94db6b1c/score_twr_cloud_bern.py",
+   "url": "https://zenodo.org/records/23434390/files/score_twr_cloud_bern.py?download=1",
+   "bytes": 24972,
+   "sha256": "0068d72b94db6b1c40414829390025a3b2b12e9b9d1fd7d939fff5fc97659073",
+   "md5": "dce91f7dcd472f4cfbabb46f1c49e012"
+  },
+  {
+   "dataset": "twr-cloud-bern-v5",
+   "path": "inputs/2048c6e056a6484e/Rangings at Responders.pkl",
+   "url": "https://zenodo.org/records/20277908/files/Rangings%20at%20Responders.pkl?download=1",
+   "bytes": 259142944,
+   "sha256": "2048c6e056a6484efca5ac1ec4cc6f35c8d4dd345de17eeb31ce29f46e3c0397",
+   "md5": "ddca1cc9de31e1e525c6597519f040a2",
+   "note": "The responder table of version 5, before the correction of three device assignments in training scans 5 to 7. No fit or selection of the paper reads it. The statistics command of research/benchmarks/bern/training/generate_heldscan_corpora.py compares it with the corrected table, and the historical research/benchmarks/bern/training/generate_training_scenarios.py and research/benchmarks/bern/ade_bp/fit_profiles.py (the ADE-BP refinement cap screen) require it by MD5."
+  },
+  {
+   "dataset": "tiers",
+   "path": "external-benchmarks/sources/tiers/case_3/ros1/army_2023-03-24-20-09-29_v2.bag",
+   "url": "https://raw.githubusercontent.com/TIERS/uwb-relative-localization-dataset/5dceab32c4d2b1dc32016a80a5b2406d973cea2d/case_3/ros1/army_2023-03-24-20-09-29_v2.bag",
+   "bytes": 7776049,
+   "sha256": "887f581e1faf84a1d7df030bad0321ed1dc0bea3fca7b40bfd0bfbe2674c8efb",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "tiers",
+   "path": "external-benchmarks/sources/tiers/case_3/ros1/corner_2023-03-24-20-18-25_v2.bag",
+   "url": "https://raw.githubusercontent.com/TIERS/uwb-relative-localization-dataset/5dceab32c4d2b1dc32016a80a5b2406d973cea2d/case_3/ros1/corner_2023-03-24-20-18-25_v2.bag",
+   "bytes": 7899314,
+   "sha256": "ce2d8b3063289ff3402d897c18212790027c238a3588323509c129712c6302ec",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "tiers",
+   "path": "external-benchmarks/sources/tiers/case_3/ros1/diagonal_2023-03-24-20-13-40_v2.bag",
+   "url": "https://raw.githubusercontent.com/TIERS/uwb-relative-localization-dataset/5dceab32c4d2b1dc32016a80a5b2406d973cea2d/case_3/ros1/diagonal_2023-03-24-20-13-40_v2.bag",
+   "bytes": 8729301,
+   "sha256": "33955d29d6a039ea6b332c19fbf938a1b9408ac70edb5fb05bad7d18302adee4",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "tiers",
+   "path": "external-benchmarks/sources/tiers/case_1/final_data.csv",
+   "url": "https://raw.githubusercontent.com/TIERS/uwb-relative-localization-dataset/5dceab32c4d2b1dc32016a80a5b2406d973cea2d/case_1/final_data.csv",
+   "bytes": 1787006,
+   "sha256": "ebb2461f2c0b17d80e9578c56779baa9a59f0304016e1263cfd283ec8278f7a1",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "tiers",
+   "path": "external-benchmarks/sources/tiers/LICENSE",
+   "url": "https://raw.githubusercontent.com/TIERS/uwb-relative-localization-dataset/5dceab32c4d2b1dc32016a80a5b2406d973cea2d/LICENSE",
+   "bytes": 1062,
+   "sha256": "bfbeb7ac3f501170b8af99271b5f412dbc7465144d48a72be7dc927e42dfb2a2",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "tiers",
+   "path": "external-benchmarks/sources/tiers/README.md",
+   "url": "https://raw.githubusercontent.com/TIERS/uwb-relative-localization-dataset/5dceab32c4d2b1dc32016a80a5b2406d973cea2d/README.md",
+   "bytes": 1139,
+   "sha256": "25c3c0d73c72bf1ebf8911f8b1660e21af7ef92304aa9820fbf09a25056f8517",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/8280736/data_set.zip",
+   "url": "https://zenodo.org/api/records/8280736/files/data_set.zip/content",
+   "bytes": 4441862175,
+   "sha256": "73d2d1558182baef96cdbf3f3ff1ff0a4fa0de785e2dd6fc051a5f218d51a358",
+   "md5": "030cce5aadeab7b1b3dbd6901a49bfc2",
+   "sidecar": [
+    "url",
+    "bytes",
+    "md5",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/8280736/record.json",
+   "url": "https://zenodo.org/api/records/8280736",
+   "bytes": 9796,
+   "sha256": "10741b4c8ae8e4ac05b657029f75551c36d5f990398600c1d84122b5b37001d2",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ],
+   "api_checks": {
+    "id": 8280736,
+    "metadata.version": "2.0",
+    "metadata.license.id": "cc-by-4.0",
+    "files.#": 1,
+    "files.0.key": "data_set.zip",
+    "files.0.size": 4441862175,
+    "files.0.checksum": "md5:030cce5aadeab7b1b3dbd6901a49bfc2"
+   }
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/tree.json",
+   "url": "https://api.github.com/repos/KlemenBr/uwb_positioning/git/trees/v1.0.0?recursive=1",
+   "bytes": 20416,
+   "sha256": "472bd5691d27794332017c42ffc70f76be28227f6aee69c682dab131224523e4",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ],
+   "api_checks": {
+    "sha": "ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc",
+    "truncated": false
+   }
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/preprocess.sh",
+   "url": "https://raw.githubusercontent.com/KlemenBr/uwb_positioning/ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc/preprocess.sh",
+   "bytes": 1670,
+   "sha256": "e064c1e6e6b5ec797f241ebdd01d691b512722beb96723415ee6c5cb218f2f6c",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/preprocess/fix_position_data.py",
+   "url": "https://raw.githubusercontent.com/KlemenBr/uwb_positioning/ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc/preprocess/fix_position_data.py",
+   "bytes": 2151,
+   "sha256": "1bcae87ec7e5138b76dd6ae315cf2fd73c0c4beb7caaf704561f743941d0d6af",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/preprocess/fix_outliers.py",
+   "url": "https://raw.githubusercontent.com/KlemenBr/uwb_positioning/ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc/preprocess/fix_outliers.py",
+   "bytes": 3910,
+   "sha256": "88611c52b7a9dfe1019045856abbf685a0dc1e03b3b1c4375cef10d292a27d0f",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/preprocess/fix_offset.py",
+   "url": "https://raw.githubusercontent.com/KlemenBr/uwb_positioning/ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc/preprocess/fix_offset.py",
+   "bytes": 5631,
+   "sha256": "2a74d5555a906e64fc897dc6e2154bb34ca5a2f50415bd075e3aa87841a7ac7f",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/preprocess/fix_final_loc2_A6.py",
+   "url": "https://raw.githubusercontent.com/KlemenBr/uwb_positioning/ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc/preprocess/fix_final_loc2_A6.py",
+   "bytes": 2209,
+   "sha256": "a69e98b924ebbcad18cbf536859cc5c27a7a4c6c41881ba16093632ab7a1bd90",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "bregar",
+   "path": "external-benchmarks/sources/bregar/code-v1.0.0/preprocess/save_raw_data_to_json.py",
+   "url": "https://raw.githubusercontent.com/KlemenBr/uwb_positioning/ef1c7906344ce54ab1b0de9c3e7b4e1e5f4dc4cc/preprocess/save_raw_data_to_json.py",
+   "bytes": 5245,
+   "sha256": "93f7f88ef6499cecf19a36480d9182e8b5edfd8924ccfa66328ee03b8292062a",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_01_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_01_short.csv",
+   "bytes": 10187766,
+   "sha256": "8d65247e77f6fa453c51a2c81ff86ffc22fab841a14b46349f925abf9f817410",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_02_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_02_short.csv",
+   "bytes": 15567387,
+   "sha256": "87b02f41037373e1e05e99e109edc47a2559b7c19b6a5dfc630a855db8c6f96b",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_03_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_03_short.csv",
+   "bytes": 31232207,
+   "sha256": "0f4aa8358954dd913cbe3fdd513ec247b32f9aea48206d2e5db1a217c9b8ad02",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_04_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_04_short.csv",
+   "bytes": 6547561,
+   "sha256": "b28ea22709b2e7242c89ad97f78678b1e682b309185bbeafa8c82c379e6bc36a",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_05_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_05_short.csv",
+   "bytes": 20266506,
+   "sha256": "a223ae3a3487e164eb64aba69e8ad9faa22fb23e27dc6bd3e5518fab45fab90a",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_06_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_06_short.csv",
+   "bytes": 27614448,
+   "sha256": "da612c8b12fa64af1d34d76b5d7b1ac6ef3174cbeb9e146740c80bb306f18f81",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_07_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_07_short.csv",
+   "bytes": 17132109,
+   "sha256": "809c21db0003722629cfc76280756bd35ef2e5d2df82f40f0e450a33f176c2ce",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_08_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_08_short.csv",
+   "bytes": 15108703,
+   "sha256": "8c57534ee3fc513e610d98d5fbd98a66d5cc1209d0943f99482f0d7e5943f16d",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_09_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_09_short.csv",
+   "bytes": 29455562,
+   "sha256": "5f6779de8be7811e9217c291230c80f878b867ae4d0c111508c4379709db14cf",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_10_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_10_short.csv",
+   "bytes": 22538528,
+   "sha256": "b033ef59bedbad4fba05dcba625aedd96256ff78ba7a16e6e3e292dc8f52d8b7",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_11_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_11_short.csv",
+   "bytes": 15235719,
+   "sha256": "2fe81ee6044770be84ffd017e2d3ffa3a7b5f590ec38f4c9b8e6967b6f12f9fa",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_12_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_12_short.csv",
+   "bytes": 12520217,
+   "sha256": "a6c1199123efe5685b00e58f33f8a5c0e59845a146f7c86c5b6f6121dfaa0d22",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_13_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_13_short.csv",
+   "bytes": 11810226,
+   "sha256": "ec458559955481e1afba7f40e66b2708016abc6402bcfe27fc1bf5dd444ab83a",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_14_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_14_short.csv",
+   "bytes": 11162769,
+   "sha256": "82f575b8bfee794a9cb293efd86e3934833a3e756a39d9e581b0673d3b596451",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/office_lab_node_15_short.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2FProcessed+files+%28csv%29&files=office_lab_node_15_short.csv",
+   "bytes": 6765958,
+   "sha256": "0f0a15ef3c2ec8e56fe97fdfabc105c61f998d381c0b6e05fd6bb9832d10abbf",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/groundtruth9.csv",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2F&files=groundtruth9.csv",
+   "bytes": 339,
+   "sha256": "73d33c35d12d8cc714d4dd1f0f68f885aaff1f9dac94b10bdf9f678f10be22f1",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/9thFloorAnchorsLayout.xlsx",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2F&files=9thFloorAnchorsLayout.xlsx",
+   "bytes": 10750,
+   "sha256": "833cfd70cfd9dae4871bbd55d90ea268b089866d2e7661be8d4e82c302eacfbd",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/Readme.md",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2F&files=Readme.md",
+   "bytes": 1,
+   "sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/Experiment description.md",
+   "url": "https://cloud.ilabt.imec.be/index.php/s/rFWMHfD5WaD6HWy/download?path=%2F&files=Experiment+description.md",
+   "bytes": 1403,
+   "sha256": "28c15b265c2803e10f6e9170605280ea72be828b324aeb27eebfb5fabf601872",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/dataset-card.md",
+   "url": "https://huggingface.co/datasets/iwine-ugent/uwb-positioning-datasets/raw/d813ce72783241142102723b77c09c0f5fa165d1/README.md",
+   "bytes": 26862,
+   "sha256": "bb3c27062843cef9278f692b96c4b389e3eb9233674f95a17e332f46385428cd",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/publisher-aggregate/README.md",
+   "url": "https://raw.githubusercontent.com/dietercoppens/UWB-DRL-PHY-Runtime-Adaptation-dataset/c1b2298534d3bcbc4894b8a00d3f06186a81ceba/README.md",
+   "bytes": 2333,
+   "sha256": "70e78eeb52cf1a3b3605f45ab35efb5300843285e4907420ed7e3c9fdd7b6202",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/publisher-aggregate/groundtruth9.csv",
+   "url": "https://raw.githubusercontent.com/dietercoppens/UWB-DRL-PHY-Runtime-Adaptation-dataset/c1b2298534d3bcbc4894b8a00d3f06186a81ceba/groundtruth9.csv",
+   "bytes": 339,
+   "sha256": "73d33c35d12d8cc714d4dd1f0f68f885aaff1f9dac94b10bdf9f678f10be22f1",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "idlab",
+   "path": "external-benchmarks/sources/idlab/publisher-aggregate/office_lab_allsettings2.csv",
+   "url": "https://raw.githubusercontent.com/dietercoppens/UWB-DRL-PHY-Runtime-Adaptation-dataset/c1b2298534d3bcbc4894b8a00d3f06186a81ceba/office_lab_allsettings2.csv",
+   "bytes": 1187237,
+   "sha256": "6d11cb5fc6301ccda8643993094a9e50d752f1fc71dd995ab58e2141fb722d9b",
+   "sidecar": [
+    "url",
+    "bytes",
+    "sha256"
+   ]
+  },
+  {
+   "dataset": "hymn",
+   "path": "downloads/zenodo-19566178/HYMN-dataset-1.3.zip",
+   "url": "https://zenodo.org/records/19566178/files/HYMN-dataset-1.3.zip?download=1",
+   "bytes": 63031322,
+   "sha256": "7a728275e2822411e5dbb3eb1ba72fad31e043498af5218a6545e031d2de257d",
+   "md5": "4874f6c931561eaaa17bb0972a052e42"
+  },
+  {
+   "dataset": "aau",
+   "path": "downloads/zenodo-10819706/AAU_Meshed_UWB_Dataset.zip",
+   "url": "https://zenodo.org/records/10819706/files/AAU_Meshed_UWB_Dataset.zip?download=1",
+   "bytes": 302819865,
+   "sha256": "9236366321ffc51b51543552832a150162aaa271737409ad13c02e04896f8113",
+   "md5": "a59e6d590b0b4b69385746fc464c5050"
+  }
+ ],
+ "not_fetched": [
+  {
+   "dataset": "idlab",
+   "what": "the raw tag and receiver logs of the imec share (/Raw data/Node 1 to 15), about 34 GB",
+   "reason": "They feed only the attempt and receiver record stage (idlab_attempts.py, idlab_receivers.py), which streams them from the share itself and keeps compact records. It is not on the reader's path, and nothing pins them."
+  }
+ ]
+}

@@ -1,0 +1,1341 @@
+{
+ "schema": "solid.deployment.v1",
+ "rules": {
+  "padding_scales": 3.0,
+  "height_percentiles": [
+   5.0,
+   95.0
+  ],
+  "height_nodes": 5,
+  "single_height_span_cm": 10.0,
+  "grid_fraction": 0.25,
+  "grid_step_bounds_cm": [
+   5.0,
+   40.0
+  ],
+  "joint_samples": 512,
+  "seed": 20260918,
+  "decimals": 1,
+  "published_extents_cm": {
+   "tiers": [
+    800.0,
+    900.0
+   ],
+   "idlab": [
+    4100.0,
+    2600.0
+   ]
+  }
+ },
+ "split_record_sha256": "7590ca1818b109a9a34b180d24ddc7bc5b6c949331a20c46a43ff5f98058cf89",
+ "statement": "research/solid/deployment.py",
+ "datasets": {
+  "bern": {
+   "heights_cm": {
+    "positions": 110,
+    "minimum": -93.7,
+    "p5": -91.965,
+    "median": -60.8,
+    "p95": -32.49000000000001,
+    "maximum": -10.6
+   },
+   "anchor_scale_cm": {
+    "packets": 51716594,
+    "median": 24.15949765494572
+   },
+   "extent": "bounding box of the node positions of the training scans, research/artifacts/solid/fits/bern_deployment.json",
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "rule": {
+    "units_with_anchor_range": 145200,
+    "units_whose_padded_box_covers_the_area": 145192,
+    "linked_agents_outside_the_padded_box": 0
+   },
+   "sources": {
+    "bern_deployment": "497fae978f2f0e266678030dfbb28e915cfc08b91b97d7f53e3288e9a253026a",
+    "scans": {
+     "scan-01": "d51f007c8f9a668047c2ce3128e5200ce0bc39559ff41d09513f9e8376e950c9",
+     "scan-02": "efcaabe5495001e3a5b1d4dd90ad6edaad960e0e13a112607ad0397f97ca72d1",
+     "scan-03": "f254aa077c4cde8347138ec5288567c1c0024ffbe54ef26616327790dd684c87",
+     "scan-04": "3037de7caf7ed58e67fe34b51ae452666af2ffd2444ec4f4482db5a7201c7bde",
+     "scan-05": "aac7fad73de8767d191e015da7beb27b4191530c9fa628de59440ae1404099e1",
+     "scan-06": "5bb283945b74f41051bf266a43b57c68031dc94792742b614b437f454c6e9f4a",
+     "scan-07": "1be2aed2654cd7011623aa3288a8e5ce92f0beb4d5708dcb572bc43cd122505e",
+     "scan-08": "f297940fb0e510bbb050a2206705ac4fccde0e6989fbdb25a18f6fe518ef7c3d",
+     "scan-09": "2cc93a5f3574d2fe67a4c399c51de8183409bb7c70942208af467a6b961cdab5",
+     "scan-10": "9e8919953eadb0eeb131625297873c0ad84d6e3d928b523cbbb0870a5eb6995b",
+     "scan-11": "0cef4a95e0b9d25569aba71ed385badac6e44e82e12b1e2118eca01a5683e0df"
+    }
+   },
+   "settings": {
+    "height_nodes": [
+     -92.0,
+     -77.1,
+     -62.2,
+     -47.4,
+     -32.5
+    ],
+    "height_weights": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "grid_step": 6.0,
+    "joint_samples": 512,
+    "seed": 20260918
+   },
+   "containment": {
+    "units": 145200,
+    "agents": 1491600,
+    "linked_agents": 1490256,
+    "linked_outside": 0,
+    "unlinked_agents": 1344,
+    "unlinked_outside": 0,
+    "units_without_anchor_range": 0,
+    "units_with_an_unranged_agent": 1344,
+    "units_bound_by_extent": 0,
+    "first_outside": []
+   },
+   "area_cm": {
+    "width": [
+     1414.4892300000029,
+     1414.4892300000029,
+     1414.4892300000029
+    ],
+    "depth": [
+     3362.259339999997,
+     3362.259339999997,
+     3362.259339999997
+    ],
+    "padding": [
+     353.35459253564443,
+     1893.7050949077206,
+     5762.4215842194635
+    ],
+    "cells": [
+     132396.0,
+     132396.0,
+     132396.0
+    ]
+   },
+   "folds": {
+    "1": {
+     "heights_cm": {
+      "positions": 106,
+      "minimum": -93.7,
+      "p5": -92.425,
+      "median": -60.8,
+      "p95": -32.175,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 47354630,
+      "median": 23.97819728810732
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 1, research/data/anc-tail-generalization/scan-01/fit.json",
+     "containment_scope": "the units of held scan 1, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.4,
+       -77.4,
+       -62.3,
+       -47.2,
+       -32.2
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       404.8761665225401,
+       1868.6665930999145,
+       1995.3035746064425
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "2": {
+     "heights_cm": {
+      "positions": 107,
+      "minimum": -93.5,
+      "p5": -90.64,
+      "median": -60.8,
+      "p95": -32.160000000000025,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 46724540,
+      "median": 24.03267348787547
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 2, research/data/anc-tail-generalization/scan-02/fit.json",
+     "containment_scope": "the units of held scan 2, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -90.6,
+       -76.0,
+       -61.4,
+       -46.8,
+       -32.2
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       836.7905919426112,
+       1770.9200399811837,
+       2425.9794919172073
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "3": {
+     "heights_cm": {
+      "positions": 108,
+      "minimum": -93.7,
+      "p5": -92.195,
+      "median": -60.8,
+      "p95": -32.27000000000002,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 46878816,
+      "median": 23.919614467583493
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 3, research/data/anc-tail-generalization/scan-03/fit.json",
+     "containment_scope": "the units of held scan 3, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.2,
+       -77.2,
+       -62.2,
+       -47.3,
+       -32.3
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       1091.5093700864165,
+       2098.4487357599246,
+       5281.834753427025
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "4": {
+     "heights_cm": {
+      "positions": 109,
+      "minimum": -93.7,
+      "p5": -92.08,
+      "median": -60.8,
+      "p95": -32.38000000000002,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 46886106,
+      "median": 23.883692084480852
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 4, research/data/anc-tail-generalization/scan-04/fit.json",
+     "containment_scope": "the units of held scan 4, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.1,
+       -77.2,
+       -62.2,
+       -47.3,
+       -32.4
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       896.0163617527415,
+       2586.6214932767234,
+       4114.057864880283
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "5": {
+     "heights_cm": {
+      "positions": 109,
+      "minimum": -93.7,
+      "p5": -92.08,
+      "median": -60.8,
+      "p95": -32.38000000000002,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 47134944,
+      "median": 24.074999313972587
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 5, research/data/anc-tail-generalization/scan-05/fit.json",
+     "containment_scope": "the units of held scan 5, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.1,
+       -77.2,
+       -62.2,
+       -47.3,
+       -32.4
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       1064.0633162623294,
+       1776.2166348362443,
+       5181.433774767021
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "6": {
+     "heights_cm": {
+      "positions": 106,
+      "minimum": -93.7,
+      "p5": -90.65,
+      "median": -60.8,
+      "p95": -32.05,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 47005078,
+      "median": 23.76483537441172
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 6, research/data/anc-tail-generalization/scan-06/fit.json",
+     "containment_scope": "the units of held scan 6, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -90.7,
+       -76.0,
+       -61.4,
+       -46.7,
+       -32.0
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 5.9,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       834.3830888782237,
+       1836.405337339479,
+       3334.052210810949
+      ],
+      "cells": [
+       136800.0,
+       136800.0,
+       136800.0
+      ]
+     }
+    },
+    "7": {
+     "heights_cm": {
+      "positions": 107,
+      "minimum": -93.7,
+      "p5": -92.31,
+      "median": -60.8,
+      "p95": -32.160000000000025,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 47314662,
+      "median": 23.905925805776427
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 7, research/data/anc-tail-generalization/scan-07/fit.json",
+     "containment_scope": "the units of held scan 7, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.3,
+       -77.3,
+       -62.2,
+       -47.2,
+       -32.2
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       536.809914215755,
+       2045.3805782220547,
+       5762.4215842194635
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "8": {
+     "heights_cm": {
+      "positions": 107,
+      "minimum": -93.7,
+      "p5": -92.31,
+      "median": -60.8,
+      "p95": -32.160000000000025,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 46941280,
+      "median": 23.817302218168066
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 8, research/data/anc-tail-generalization/scan-08/fit.json",
+     "containment_scope": "the units of held scan 8, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.3,
+       -77.3,
+       -62.2,
+       -47.2,
+       -32.2
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 134256,
+      "linked_outside": 0,
+      "unlinked_agents": 1344,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 1344,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       853.1619652340784,
+       1924.5216823930864,
+       5421.950385710924
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "9": {
+     "heights_cm": {
+      "positions": 106,
+      "minimum": -93.7,
+      "p5": -92.425,
+      "median": -60.8,
+      "p95": -32.05,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 47196318,
+      "median": 24.225610514802288
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 9, research/data/anc-tail-generalization/scan-09/fit.json",
+     "containment_scope": "the units of held scan 9, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -92.4,
+       -77.3,
+       -62.2,
+       -47.1,
+       -32.0
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.1,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       353.35459253564443,
+       1864.8144707123506,
+       1954.3752882334545
+      ],
+      "cells": [
+       128064.0,
+       128064.0,
+       128064.0
+      ]
+     }
+    },
+    "10": {
+     "heights_cm": {
+      "positions": 106,
+      "minimum": -93.7,
+      "p5": -90.65,
+      "median": -60.8,
+      "p95": -33.825,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 46796698,
+      "median": 24.09736145321238
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 10, research/data/anc-tail-generalization/scan-10/fit.json",
+     "containment_scope": "the units of held scan 10, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -90.7,
+       -76.4,
+       -62.2,
+       -48.0,
+       -33.8
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       1093.9169221026975,
+       2032.3799343994397,
+       5030.162720133959
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    },
+    "11": {
+     "heights_cm": {
+      "positions": 102,
+      "minimum": -93.7,
+      "p5": -90.69,
+      "median": -60.8,
+      "p95": -31.610000000000024,
+      "maximum": -10.6
+     },
+     "anchor_scale_cm": {
+      "packets": 46932868,
+      "median": 23.80939604812901
+     },
+     "area": {
+      "minimum_x_cm": -21535.594665,
+      "maximum_x_cm": -20121.105434999998,
+      "minimum_y_cm": -19920.62937,
+      "maximum_y_cm": -16558.370030000002
+     },
+     "extent": "fold area of held scan 11, research/data/anc-tail-generalization/scan-11/fit.json",
+     "containment_scope": "the units of held scan 11, where the fold profile is applied",
+     "settings": {
+      "height_nodes": [
+       -90.7,
+       -75.9,
+       -61.2,
+       -46.4,
+       -31.6
+      ],
+      "height_weights": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "grid_step": 6.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 13200,
+      "agents": 135600,
+      "linked_agents": 135600,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1414.4892300000029,
+       1414.4892300000029,
+       1414.4892300000029
+      ],
+      "depth": [
+       3362.259339999997,
+       3362.259339999997,
+       3362.259339999997
+      ],
+      "padding": [
+       1221.998571884295,
+       2003.0078193815705,
+       2121.652544108785
+      ],
+      "cells": [
+       132396.0,
+       132396.0,
+       132396.0
+      ]
+     }
+    }
+   }
+  },
+  "tiers": {
+   "heights_cm": {
+    "positions": 24,
+    "minimum": 5.93138225376606,
+    "p5": 6.648662406951189,
+    "median": 11.718598194420338,
+    "p95": 18.823163844645023,
+    "maximum": 19.49503868818283
+   },
+   "anchor_scale_cm": {
+    "packets": 2677752,
+    "median": 11.168277015691466
+   },
+   "extent": "published 8 m by 9 m arena, diagonal around every known anchor",
+   "sources": {
+    "base.json.gz": "ffc7b5f93e725e30d4a404bdaae85ef078be12451918fd9d12ccaa9577073851",
+    "catalog.json.gz": "fc3f077872de59975b8a259f27f05e794c95aa7a5db8433250fbd85235ae130c"
+   },
+   "settings": {
+    "height_nodes": [
+     6.6,
+     9.7,
+     12.7,
+     15.8,
+     18.8
+    ],
+    "height_weights": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "grid_step": 5.0,
+    "joint_samples": 512,
+    "seed": 20260918
+   },
+   "containment": {
+    "units": 33948,
+    "agents": 139104,
+    "linked_agents": 139104,
+    "linked_outside": 0,
+    "unlinked_agents": 0,
+    "unlinked_outside": 0,
+    "units_without_anchor_range": 0,
+    "units_with_an_unranged_agent": 0,
+    "units_bound_by_extent": 16689,
+    "first_outside": []
+   },
+   "area_cm": {
+    "width": [
+     870.6920250432786,
+     1902.2981455807476,
+     2076.727464590399
+    ],
+    "depth": [
+     870.6920250432786,
+     1839.3306163886473,
+     2077.3344663718626
+    ],
+    "padding": [
+     435.34601252163935,
+     742.9319547599345,
+     877.9937243505241
+    ],
+    "cells": [
+     30625.0,
+     135792.0,
+     166056.0
+    ]
+   }
+  },
+  "bregar": {
+   "environments": {
+    "environment0": {
+     "heights_cm": {
+      "positions": 85,
+      "minimum": 120.0,
+      "p5": 120.0,
+      "median": 120.0,
+      "p95": 120.0,
+      "maximum": 120.0
+     },
+     "anchor_scale_cm": {
+      "packets": 44879,
+      "median": 51.59098943482609
+     },
+     "extent": null,
+     "settings": {
+      "height_nodes": [
+       120.0
+      ],
+      "height_weights": [
+       1.0
+      ],
+      "grid_step": 12.9,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 12,
+      "agents": 1020,
+      "linked_agents": 1020,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       3511.192311623484,
+       3607.836291196192,
+       3794.381791930433
+      ],
+      "depth": [
+       4070.192311623483,
+       4166.836291196192,
+       4353.381791930433
+      ],
+      "padding": [
+       1444.0961558117417,
+       1492.4181455980959,
+       1585.6908959652164
+      ],
+      "cells": [
+       86268.0,
+       90580.0,
+       99710.0
+      ]
+     }
+    },
+    "environment1": {
+     "heights_cm": {
+      "positions": 80,
+      "minimum": 95.0,
+      "p5": 95.0,
+      "median": 95.0,
+      "p95": 95.0,
+      "maximum": 95.0
+     },
+     "anchor_scale_cm": {
+      "packets": 42240,
+      "median": 27.82943528821265
+     },
+     "extent": null,
+     "settings": {
+      "height_nodes": [
+       95.0
+      ],
+      "height_weights": [
+       1.0
+      ],
+      "grid_step": 7.0,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 12,
+      "agents": 960,
+      "linked_agents": 960,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       1784.9152786728655,
+       1905.5276757871775,
+       1943.290273518934
+      ],
+      "depth": [
+       2069.9152786728655,
+       2190.5276757871775,
+       2228.290273518934
+      ],
+      "padding": [
+       745.4576393364326,
+       805.7638378935887,
+       824.645136759467
+      ],
+      "cells": [
+       75480.0,
+       85585.5,
+       88682.0
+      ]
+     }
+    },
+    "environment2": {
+     "heights_cm": {
+      "positions": 84,
+      "minimum": 132.0,
+      "p5": 132.0,
+      "median": 132.0,
+      "p95": 132.0,
+      "maximum": 132.0
+     },
+     "anchor_scale_cm": {
+      "packets": 38808,
+      "median": 98.16757899251198
+     },
+     "extent": null,
+     "settings": {
+      "height_nodes": [
+       132.0
+      ],
+      "height_weights": [
+       1.0
+      ],
+      "grid_step": 24.5,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 12,
+      "agents": 1008,
+      "linked_agents": 1008,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       6258.465664491161,
+       6477.722174967047,
+       6773.980910894392
+      ],
+      "depth": [
+       5949.465664491161,
+       6168.722174967047,
+       6464.980910894393
+      ],
+      "padding": [
+       2427.7328322455805,
+       2537.3610874835235,
+       2685.4904554471964
+      ],
+      "cells": [
+       62208.0,
+       66788.5,
+       73128.0
+      ]
+     }
+    },
+    "environment3": {
+     "heights_cm": {
+      "positions": 81,
+      "minimum": 120.0,
+      "p5": 120.0,
+      "median": 120.0,
+      "p95": 120.0,
+      "maximum": 120.0
+     },
+     "anchor_scale_cm": {
+      "packets": 42667,
+      "median": 62.50639832320668
+     },
+     "extent": null,
+     "settings": {
+      "height_nodes": [
+       120.0
+      ],
+      "height_weights": [
+       1.0
+      ],
+      "grid_step": 15.6,
+      "joint_samples": 512,
+      "seed": 20260918
+     },
+     "containment": {
+      "units": 12,
+      "agents": 972,
+      "linked_agents": 972,
+      "linked_outside": 0,
+      "unlinked_agents": 0,
+      "unlinked_outside": 0,
+      "units_without_anchor_range": 0,
+      "units_with_an_unranged_agent": 0,
+      "units_bound_by_extent": 0,
+      "first_outside": []
+     },
+     "area_cm": {
+      "width": [
+       4017.480429632862,
+       4179.997117611186,
+       4350.700470602322
+      ],
+      "depth": [
+       3727.480429632862,
+       3889.997117611186,
+       4060.7004706023217
+      ],
+      "padding": [
+       1439.7402148164313,
+       1520.998558805593,
+       1606.350235301161
+      ],
+      "cells": [
+       61662.0,
+       67125.0,
+       72819.0
+      ]
+     }
+    }
+   },
+   "sources": {
+    "request": "964dda60c179af554e6ac3bbcc3123ff9a83995387eda61e49fa8fcd9795a63f",
+    "reference": "718eff151e6333219a54dc0416c0c0c8d6ded370b8a8301f63818520920ecf6f"
+   }
+  },
+  "idlab": {
+   "heights_cm": {
+    "positions": 15,
+    "minimum": 253.8,
+    "p5": 254.71,
+    "median": 257.1,
+    "p95": 262.95,
+    "maximum": 263.3
+   },
+   "anchor_scale_cm": {
+    "packets": 43630620,
+    "median": 80.26037949746505
+   },
+   "extent": "published 41 m by 26 m floor, diagonal around every known anchor",
+   "sources": {
+    "base.json.gz": "800586d14c5f58163f63e12909b43b8988129aaacc83d225680780492a33ddc1",
+    "catalog.json.gz": "40e14ba941e222abf15d119ef8feae2864e300fd919e424f269c14bd3f84823a",
+    "freeze.json": "aa13478e79fc9959fc2ffdcf96d9909f7e6847d6256984ae7e3f32494d959dc6"
+   },
+   "settings": {
+    "height_nodes": [
+     257.1
+    ],
+    "height_weights": [
+     1.0
+    ],
+    "grid_step": 20.1,
+    "joint_samples": 512,
+    "seed": 20260918
+   },
+   "containment": {
+    "units": 1055730,
+    "agents": 8445840,
+    "linked_agents": 4324496,
+    "linked_outside": 0,
+    "unlinked_agents": 4121344,
+    "unlinked_outside": 0,
+    "units_without_anchor_range": 58230,
+    "units_with_an_unranged_agent": 748598,
+    "units_bound_by_extent": 952843,
+    "first_outside": []
+   },
+   "area_cm": {
+    "width": [
+     4687.173458697401,
+     6518.388875150685,
+     9709.788875150685
+    ],
+    "depth": [
+     3121.081373264262,
+     7819.688875150685,
+     9709.788875150685
+    ],
+    "padding": [
+     604.9519111967018,
+     1625.9832813179764,
+     5025.113032481208
+    ],
+    "cells": [
+     38236.0,
+     127592.0,
+     234256.0
+    ]
+   }
+  }
+ }
+}

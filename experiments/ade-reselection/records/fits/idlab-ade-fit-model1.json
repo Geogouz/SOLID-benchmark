@@ -1,0 +1,72 @@
+{
+ "schema": "solid.baselines.ade-fit.v1",
+ "dataset": "idlab",
+ "method": "ade-bp-2015",
+ "rule": "Every valid reserved row of every directed link and radio setting, the IDLab training half.",
+ "procedure": "fit_profiles.fit_constant_ade_model: maximum likelihood of the asymmetric Laplace density with constant scales, model 1 of Li, Hedley and Collings, on the reports of ade_training.py",
+ "distance": "planar Euclidean, cm",
+ "conversion": {
+  "rule": "max(0, gain * range + offset), the affine correction fitted on the reserved rows",
+  "correction": {
+   "gain": 0.9573664980040083,
+   "offset_cm": 20.763409870268887
+  }
+ },
+ "evaluation_rows_used": 0,
+ "previous": {
+  "source": "idlab-training.json profiles.ade_ranging_model, the same reserved rows against the surveyed 3D distance",
+  "ranging_model": {
+   "positive_slope": 0.01635310663811578,
+   "positive_intercept_cm": 13.749990270390033,
+   "negative_slope": 0.026771098718657262,
+   "negative_intercept_cm": 8.721850458237846
+  }
+ },
+ "sources": {
+  "split": {
+   "path": "research/data/external-benchmarks/idlab-split.json",
+   "sha256": "7cd46c3aa442c8df23ac4738254f39d0ed78b47a6446b28a83608834242c7584"
+  },
+  "training": {
+   "path": "research/data/external-benchmarks/idlab-training.json",
+   "sha256": "96eb72686a3ccecd532e4d73e6940353d16c7d25420ec6b21e5fc32cbed81594"
+  },
+  "surveyed": {
+   "path": "research/data/external-benchmarks/sources/idlab/groundtruth9.csv",
+   "sha256": "73d33c35d12d8cc714d4dd1f0f68f885aaff1f9dac94b10bdf9f678f10be22f1"
+  }
+ },
+ "code": {
+  "research/benchmarks/datasets/ade_training.py": "2e0b4ffb24f8c05c3fe11cecd1ffa0410af32947ddd42dc5f441c5be8a2ab2fe",
+  "research/benchmarks/bern/ade_bp/fit_profiles.py": "3dfd3c9e159d269f654c2ae20c1d07fc7a1842395649416a906dfdcbae857312"
+ },
+ "fitted_on": {
+  "host": "linux-x86-64",
+  "python": "3.12.3",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1"
+ },
+ "link_settings": 2010,
+ "fit": {
+  "ranging_model": {
+   "positive_slope": 0.0,
+   "positive_intercept_cm": 28.29588926345108,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 32.81267519033265
+  },
+  "negative_log_likelihood": 2164154.936573721,
+  "nll_per_report": 5.112652049340933,
+  "reports": 423294,
+  "residual_quantiles_cm": {
+   "5": -66.0,
+   "25": -32.374,
+   "50": -1.33,
+   "75": 12.882,
+   "95": 47.417
+  },
+  "previous_nll_per_report": 5.023381169878669
+ },
+ "source_note": "The source of the frozen campaigns is confirmed. They fitted the same reserved rows with the same correction, against the surveyed distance in three dimensions. The refit takes the planar distance of the baseline's procedure. The node heights differ by less than ten centimetres.",
+ "model": 1,
+ "tracked_model_2": "research/artifacts/baselines/idlab-ade-fit.json"
+}

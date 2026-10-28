@@ -1,0 +1,1043 @@
+{
+ "schema": "solid.baselines.ade-fit.v1",
+ "dataset": "bern",
+ "method": "ade-bp-2015",
+ "rule": "Held scan h: every row of the ten other training scans of the corrected responder table, under the calibration law of fold h. Evaluation: every row of the eleven training scans under the law fitted on all eleven, the engine's conversion of the raw evaluation timings.",
+ "procedure": "fit_profiles.fit_ade_model: maximum likelihood of the asymmetric Laplace density with scales slope times measured range plus intercept, over individual reports, Nelder-Mead from (0.02, 20, 0.01, 40) with nonnegative slopes and positive intercepts. Residual is the converted range minus the planar distance.",
+ "distance": "planar Euclidean, cm",
+ "conversion": {
+  "rule": "max(0, slope * ToF + offset) for runtime_tof_floor_ns <= ToF <= runtime_tof_max_ns, the law of the fold (fit_bern.calibration), exactly as the held-scan inputs and the engine convert raw timings",
+  "engine": {
+   "range_slope_cm_per_ns": 28.512859035713586,
+   "range_offset_cm": 19.57939566609116
+  }
+ },
+ "evaluation_rows_used": 0,
+ "previous": {
+  "source": "configs/ade-bp-2015-aac.json and -anc.json, one fit on all eleven training scans under the earlier raw timing conversion 28.50909085 cm/ns and 19.20725779 cm, used for the evaluation corpus and every held scan",
+  "ranging_model": {
+   "positive_slope": 0.04361915824323337,
+   "positive_intercept_cm": 9.7059943254643,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 55.935533353036
+  },
+  "area": {
+   "minimum_x_cm": -21535.594665,
+   "maximum_x_cm": -20121.105434999998,
+   "minimum_y_cm": -19920.62937,
+   "maximum_y_cm": -16558.370030000002
+  },
+  "sha256": "660f93dac4943e0d343a9a991d64b0b4e4fd9237ce82f5a83374a09e2f8cdea8"
+ },
+ "sources": {
+  "table": {
+   "path": "research/data/inputs/65c077bb1aa9b879/Rangings at Responders.pkl",
+   "sha256": "65c077bb1aa9b8793d9b206a406ecfd574047ad345fbafdbf93cfcdfad26fa21"
+  },
+  "full_calibration": {
+   "path": "research/data/corrected-training/full/fit.json",
+   "sha256": "f8e1cd7b32c6116b540f17e9f578877482d81b1994386cca4f3afe27f974bb9e"
+  }
+ },
+ "code": {
+  "research/benchmarks/datasets/ade_training.py": "2e0b4ffb24f8c05c3fe11cecd1ffa0410af32947ddd42dc5f441c5be8a2ab2fe",
+  "research/benchmarks/bern/ade_bp/fit_profiles.py": "3dfd3c9e159d269f654c2ae20c1d07fc7a1842395649416a906dfdcbae857312"
+ },
+ "fitted_on": {
+  "host": "macos-arm64",
+  "python": "3.12.3",
+  "numpy": "2.3.1",
+  "scipy": "1.16.1"
+ },
+ "folds": {
+  "1": {
+   "held_scan": 1,
+   "fit_scans": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1773523,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-01/fit.json",
+    "sha256": "4d7f54467742f0bddbd92659b0ac5692dbc147795bb601bf342bab9391916090",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.506425708504597,
+     "range_offset_cm": 19.510324738004215,
+     "scale_slope": 0.025943113859141876,
+     "scale_intercept_cm": 4.710721380252828,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.0438889760945185,
+    "positive_intercept_cm": 10.0696475517077,
+    "negative_slope": 6.114213385121024e-16,
+    "negative_intercept_cm": 55.796525834830966
+   },
+   "negative_log_likelihood": 9803331.39415177,
+   "nll_per_report": 5.527603191022484,
+   "reports": 1773523,
+   "residual_quantiles_cm": {
+    "5": -175.582,
+    "25": -12.302,
+    "50": 0.083,
+    "75": 14.387,
+    "95": 79.196
+   },
+   "previous_nll_per_report": 5.527690124095617,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-01/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.043888969568622344,
+     "positive_intercept_cm": 10.069652683545806,
+     "negative_slope": 2.2088993240002523e-16,
+     "negative_intercept_cm": 55.79653068100636
+    },
+    "largest_relative_difference": 5.096340725683903e-07
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.0438889760945185,
+     "positive_intercept_cm": 10.0696475517077,
+     "negative_slope": 6.114213385121024e-16,
+     "negative_intercept_cm": 55.796525834830966
+    }
+   }
+  },
+  "2": {
+   "held_scan": 2,
+   "fit_scans": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1766360,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-02/fit.json",
+    "sha256": "d53125b135e5d3793fd5fe70e24856f4c50e76070d217a2e074f0fd7db07b95e",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.525462054303528,
+     "range_offset_cm": 19.521863109948868,
+     "scale_slope": 0.025264129476979993,
+     "scale_intercept_cm": 5.2569746024455455,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04377024360783586,
+    "positive_intercept_cm": 10.244716247474683,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 56.24810251315374
+   },
+   "negative_log_likelihood": 9777651.944855444,
+   "nll_per_report": 5.5354808447063135,
+   "reports": 1766360,
+   "residual_quantiles_cm": {
+    "5": -176.776,
+    "25": -12.423,
+    "50": 0.084,
+    "75": 14.611,
+    "95": 80.161
+   },
+   "previous_nll_per_report": 5.535588378956437,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-02/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.043770243912499736,
+     "positive_intercept_cm": 10.244715388688071,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.248104205526715
+    },
+    "largest_relative_difference": 8.382727162534628e-08
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04377024360783586,
+     "positive_intercept_cm": 10.244716247474683,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.24810251315374
+    }
+   }
+  },
+  "3": {
+   "held_scan": 3,
+   "fit_scans": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1771519,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-03/fit.json",
+    "sha256": "5a690de81a3f785ce59aa01eae38dd746e887fcc7d6828ebea113eb713ae3e0f",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.53710895748047,
+     "range_offset_cm": 19.397061342548568,
+     "scale_slope": 0.025863577775880348,
+     "scale_intercept_cm": 4.8441668585316435,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.043871149576323015,
+    "positive_intercept_cm": 10.092924065842858,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 56.059534674143386
+   },
+   "negative_log_likelihood": 9797018.580753807,
+   "nll_per_report": 5.530292692742108,
+   "reports": 1771519,
+   "residual_quantiles_cm": {
+    "5": -179.5,
+    "25": -12.349,
+    "50": 0.066,
+    "75": 14.559,
+    "95": 78.565
+   },
+   "previous_nll_per_report": 5.530367190649838,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-03/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.04387114578876779,
+     "positive_intercept_cm": 10.092925474664181,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.05953568849222
+    },
+    "largest_relative_difference": 1.3958503173822936e-07
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.043871149576323015,
+     "positive_intercept_cm": 10.092924065842858,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.059534674143386
+    }
+   }
+  },
+  "4": {
+   "held_scan": 4,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1768349,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-04/fit.json",
+    "sha256": "3d0798c665bbcdfea2cfbcdf410d13dddf0908a2115c5676c8984ef26b375964",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.503418808799616,
+     "range_offset_cm": 19.60973455452256,
+     "scale_slope": 0.026378246071695376,
+     "scale_intercept_cm": 4.315975209814788,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04271101284046557,
+    "positive_intercept_cm": 10.243200477247372,
+    "negative_slope": 1.559565452542835e-16,
+    "negative_intercept_cm": 55.27364235260859
+   },
+   "negative_log_likelihood": 9752023.94031681,
+   "nll_per_report": 5.514762040930161,
+   "reports": 1768349,
+   "residual_quantiles_cm": {
+    "5": -172.43,
+    "25": -12.059,
+    "50": 0.141,
+    "75": 14.067,
+    "95": 77.84
+   },
+   "previous_nll_per_report": 5.51486497234367,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-04/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.042711000488658,
+     "positive_intercept_cm": 10.243202391190708,
+     "negative_slope": 3.2322849598839345e-15,
+     "negative_intercept_cm": 55.27364084705436
+    },
+    "largest_relative_difference": 2.8919491129716127e-07
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04271101284046557,
+     "positive_intercept_cm": 10.243200477247372,
+     "negative_slope": 1.559565452542835e-16,
+     "negative_intercept_cm": 55.27364235260859
+    }
+   }
+  },
+  "5": {
+   "held_scan": 5,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1772171,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-05/fit.json",
+    "sha256": "419cffde7447efca3dbe741d5de89656195967063021c5c42cfb18bb4c81a0c1",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.50835497202253,
+     "range_offset_cm": 19.73142203959992,
+     "scale_slope": 0.026621478181433796,
+     "scale_intercept_cm": 4.284647676518091,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.043967942700549094,
+    "positive_intercept_cm": 9.973007213455036,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 56.235354158824805
+   },
+   "negative_log_likelihood": 9804769.571260348,
+   "nll_per_report": 5.532631767058793,
+   "reports": 1772171,
+   "residual_quantiles_cm": {
+    "5": -181.878,
+    "25": -12.37,
+    "50": 0.142,
+    "75": 14.41,
+    "95": 78.833
+   },
+   "previous_nll_per_report": 5.532685317685359,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-05/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.043967942174373206,
+     "positive_intercept_cm": 9.973007599218723,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.23535365106231
+    },
+    "largest_relative_difference": 3.868077747083251e-08
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.043967942700549094,
+     "positive_intercept_cm": 9.973007213455036,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.235354158824805
+    }
+   }
+  },
+  "6": {
+   "held_scan": 6,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1772989,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-06/fit.json",
+    "sha256": "6f534b77df74f212eda2bf1cef2df96952ae209192c89d25c7bd54be949cc40e",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.523763776741095,
+     "range_offset_cm": 19.357462384972223,
+     "scale_slope": 0.025987315191811487,
+     "scale_intercept_cm": 4.561479615418666,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04392918131026025,
+    "positive_intercept_cm": 9.916253582639445,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.737898284573404
+   },
+   "negative_log_likelihood": 9796715.72878543,
+   "nll_per_report": 5.5255366664911225,
+   "reports": 1772989,
+   "residual_quantiles_cm": {
+    "5": -176.63,
+    "25": -12.109,
+    "50": 0.09,
+    "75": 14.233,
+    "95": 78.908
+   },
+   "previous_nll_per_report": 5.525591049587609,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-06/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.043929178005008944,
+     "positive_intercept_cm": 9.916257450419058,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.73789987826471
+    },
+    "largest_relative_difference": 3.900442916463488e-07
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04392918131026025,
+     "positive_intercept_cm": 9.916253582639445,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.737898284573404
+    }
+   }
+  },
+  "7": {
+   "held_scan": 7,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11
+   ],
+   "rows": 1773775,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-07/fit.json",
+    "sha256": "cf70da6cc27a82f68644d82f9dd065d39d9133714f6203344ae769c92e38199d",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.51704719476087,
+     "range_offset_cm": 19.73905905016875,
+     "scale_slope": 0.026356617822578733,
+     "scale_intercept_cm": 4.31821752682529,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04355318110317216,
+    "positive_intercept_cm": 10.333435170457777,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 56.838180628396884
+   },
+   "negative_log_likelihood": 9831082.69982481,
+   "nll_per_report": 5.542463220997483,
+   "reports": 1773775,
+   "residual_quantiles_cm": {
+    "5": -186.585,
+    "25": -12.405,
+    "50": 0.19,
+    "75": 14.35,
+    "95": 80.044
+   },
+   "previous_nll_per_report": 5.5426237202108215,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-07/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.04355317604846776,
+     "positive_intercept_cm": 10.33343564548925,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.83818069133836
+    },
+    "largest_relative_difference": 1.1605821382058541e-07
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04355318110317216,
+     "positive_intercept_cm": 10.333435170457777,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 56.838180628396884
+    }
+   }
+  },
+  "8": {
+   "held_scan": 8,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+   ],
+   "rows": 1767548,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-08/fit.json",
+    "sha256": "958652e1881e7a250164f90a77fadabb3283509a4637fbe2ea5cf9a6ece9065d",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.535687853769204,
+     "range_offset_cm": 19.178107166325276,
+     "scale_slope": 0.02514994884639459,
+     "scale_intercept_cm": 5.2072010420386015,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04285732073681574,
+    "positive_intercept_cm": 10.385799804907492,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.81362151552371
+   },
+   "negative_log_likelihood": 9766133.090644479,
+   "nll_per_report": 5.52524349587365,
+   "reports": 1767548,
+   "residual_quantiles_cm": {
+    "5": -176.834,
+    "25": -12.427,
+    "50": 0.102,
+    "75": 14.566,
+    "95": 77.515
+   },
+   "previous_nll_per_report": 5.5253137677931035,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-08/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.04285731997312804,
+     "positive_intercept_cm": 10.385798840450645,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.813620604784575
+    },
+    "largest_relative_difference": 9.286303076770322e-08
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04285732073681574,
+     "positive_intercept_cm": 10.385799804907492,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.81362151552371
+    }
+   }
+  },
+  "9": {
+   "held_scan": 9,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11
+   ],
+   "rows": 1772990,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-09/fit.json",
+    "sha256": "de965113f87d122e934a7f8f77c435a584df1b77a2af2a815f736aa0c76c4fa9",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.477226352122397,
+     "range_offset_cm": 19.87695829605525,
+     "scale_slope": 0.0270209442560188,
+     "scale_intercept_cm": 4.3122668313746,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04282908572178003,
+    "positive_intercept_cm": 10.2948728321821,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.3466554044259
+   },
+   "negative_log_likelihood": 9782079.178542621,
+   "nll_per_report": 5.517278257938636,
+   "reports": 1772990,
+   "residual_quantiles_cm": {
+    "5": -172.109,
+    "25": -12.311,
+    "50": 0.086,
+    "75": 14.311,
+    "95": 77.643
+   },
+   "previous_nll_per_report": 5.517384038775642,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-09/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.042829085778890524,
+     "positive_intercept_cm": 10.294873559077052,
+     "negative_slope": 2.088291840625346e-16,
+     "negative_intercept_cm": 55.34665382412558
+    },
+    "largest_relative_difference": 7.060746760709828e-08
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04282908572178003,
+     "positive_intercept_cm": 10.2948728321821,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.3466554044259
+    }
+   }
+  },
+  "10": {
+   "held_scan": 10,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11
+   ],
+   "rows": 1765619,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-10/fit.json",
+    "sha256": "7af8f71c926385eb59947deb50ec750a4edf078e20c57f9ea333af3b66b82e50",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.501020213738745,
+     "range_offset_cm": 19.629272234103155,
+     "scale_slope": 0.026836306338325608,
+     "scale_intercept_cm": 4.262776622473655,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04389462867397699,
+    "positive_intercept_cm": 9.812286674851356,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.48301753997917
+   },
+   "negative_log_likelihood": 9745985.271843934,
+   "nll_per_report": 5.519868823253451,
+   "reports": 1765619,
+   "residual_quantiles_cm": {
+    "5": -172.742,
+    "25": -12.37,
+    "50": 0.142,
+    "75": 14.333,
+    "95": 78.321
+   },
+   "previous_nll_per_report": 5.5199285475866064,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-10/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.04389462709467405,
+     "positive_intercept_cm": 9.81228731979886,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.48301727536616
+    },
+    "largest_relative_difference": 6.572855891390029e-08
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04389462867397699,
+     "positive_intercept_cm": 9.812286674851356,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.48301753997917
+    }
+   }
+  },
+  "11": {
+   "held_scan": 11,
+   "fit_scans": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "rows": 1774017,
+   "rows_outside_runtime_interval": 0,
+   "calibration": {
+    "path": "research/data/anc-tail-generalization/scan-11/fit.json",
+    "sha256": "acbede9ca27e6a01842af89c33ed78e45e161157c875aa2aae028c8285c3dca9",
+    "coefficients": {
+     "range_slope_cm_per_ns": 28.50478579053508,
+     "range_offset_cm": 19.832442971457453,
+     "scale_slope": 0.025992383768828682,
+     "scale_intercept_cm": 4.683560373844788,
+     "scale_min_cm": 8.0,
+     "scale_max_cm": 55.0,
+     "runtime_tof_floor_ns": 0.0,
+     "runtime_tof_max_ns": 200.0
+    }
+   },
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.04341858267321369,
+    "positive_intercept_cm": 9.804193863417371,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.322285940467204
+   },
+   "negative_log_likelihood": 9786098.463086851,
+   "nll_per_report": 5.516349878883264,
+   "reports": 1774017,
+   "residual_quantiles_cm": {
+    "5": -173.55,
+    "25": -12.252,
+    "50": 0.08,
+    "75": 14.365,
+    "95": 77.647
+   },
+   "previous_nll_per_report": 5.516401661320243,
+   "earlier_refit": {
+    "record": "research/data/corrected-training/scan-11/fit.json",
+    "ranging_model": {
+     "positive_slope": 0.04341857951134269,
+     "positive_intercept_cm": 9.80419456873046,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.32228761077284
+    },
+    "largest_relative_difference": 7.282298975375151e-08
+   },
+   "config": {
+    "method": "ade-bp-2015",
+    "particles": 500,
+    "iterations": 4,
+    "importance_iterations": 256,
+    "area": {
+     "minimum_x_cm": -21535.594665,
+     "maximum_x_cm": -20121.105434999998,
+     "minimum_y_cm": -19920.62937,
+     "maximum_y_cm": -16558.370030000002
+    },
+    "ranging_model": {
+     "positive_slope": 0.04341858267321369,
+     "positive_intercept_cm": 9.804193863417371,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 55.322285940467204
+    }
+   }
+  }
+ },
+ "evaluation": {
+  "held_scan": null,
+  "fit_scans": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "rows": 1947886,
+  "rows_outside_runtime_interval": 0,
+  "calibration": {
+   "path": "research/data/corrected-training/full/fit.json",
+   "sha256": "f8e1cd7b32c6116b540f17e9f578877482d81b1994386cca4f3afe27f974bb9e",
+   "coefficients": {
+    "range_slope_cm_per_ns": 28.512859035713586,
+    "range_offset_cm": 19.57939566609116,
+    "scale_slope": 0.02635621175286423,
+    "scale_intercept_cm": 4.649664346296255,
+    "scale_min_cm": 8.0,
+    "scale_max_cm": 55.0,
+    "runtime_tof_floor_ns": 0.0,
+    "runtime_tof_max_ns": 200.0
+   }
+  },
+  "area": {
+   "minimum_x_cm": -21535.594665,
+   "maximum_x_cm": -20121.105434999998,
+   "minimum_y_cm": -19920.62937,
+   "maximum_y_cm": -16558.370030000002
+  },
+  "ranging_model": {
+   "positive_slope": 0.043518097740125286,
+   "positive_intercept_cm": 10.1076461725945,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 55.83324326521197
+  },
+  "negative_log_likelihood": 10764404.176493011,
+  "nll_per_report": 5.526198235673449,
+  "reports": 1947886,
+  "residual_quantiles_cm": {
+   "5": -176.802,
+   "25": -12.321,
+   "50": 0.104,
+   "75": 14.38,
+   "95": 78.571
+  },
+  "previous_nll_per_report": 5.5262475351211595,
+  "earlier_refit": {
+   "record": "research/data/corrected-training/full/fit.json",
+   "ranging_model": {
+    "positive_slope": 0.04351809744570012,
+    "positive_intercept_cm": 10.107645707538962,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.833244060292614
+   },
+   "largest_relative_difference": 4.6010270764319035e-08
+  },
+  "config": {
+   "method": "ade-bp-2015",
+   "particles": 500,
+   "iterations": 4,
+   "importance_iterations": 256,
+   "area": {
+    "minimum_x_cm": -21535.594665,
+    "maximum_x_cm": -20121.105434999998,
+    "minimum_y_cm": -19920.62937,
+    "maximum_y_cm": -16558.370030000002
+   },
+   "ranging_model": {
+    "positive_slope": 0.043518097740125286,
+    "positive_intercept_cm": 10.1076461725945,
+    "negative_slope": 0.0,
+    "negative_intercept_cm": 55.83324326521197
+   }
+  }
+ },
+ "configs": {
+  "aac": "research/benchmarks/bern/configs/ade-bp-2015-refit-aac.json",
+  "anc": "research/benchmarks/bern/configs/ade-bp-2015-refit-anc.json"
+ }
+}

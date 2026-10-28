@@ -1,0 +1,17 @@
+# The build settings of OpenBLAS, fixed whatever the environment of a build. On Linux the research workspace's Clarabel,
+# the SDP solver of Jin 2021 (research/methods), links OpenBLAS, which the openblas-src crate compiles from source with
+# settings it reads from the environment of its build script. The evaluation's runners set OPENBLAS_NUM_THREADS=1 for their
+# solves, which a build also took as the library's thread count, so one commit built another library inside a runner
+# than outside it. Cargo reads this file from the directory it runs in and every directory above it, so it holds for
+# every build inside the repository, from the root with --manifest-path research/Cargo.toml as from research. A build
+# directory keeps the library it compiled first, whatever these settings say later, until cargo clean -p openblas-src.
+#
+# NUM_THREADS 1 compiles the single-threaded library that every build inside the node's runners has used, whose results
+# do not depend on a thread count at run time. USE_LOCKING makes that library safe for callers on several threads of
+# one process. NUM_PARALLEL 1 is OpenBLAS's own default. force replaces any value the environment holds. The settings
+# that openblas-src reads by their presence alone, OPENBLAS_DYNAMIC_ARCH, OPENBLAS_USE_THREAD and OPENBLAS_USE_OPENMP,
+# must stay unset. The thread count 1 overrides the last two, and no build of the repository sets any of them.
+[env]
+OPENBLAS_NUM_THREADS = { value = "1", force = true }
+OPENBLAS_NUM_PARALLEL = { value = "1", force = true }
+OPENBLAS_USE_LOCKING = { value = "1", force = true }

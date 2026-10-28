@@ -1,0 +1,219 @@
+{
+ "schema": "solid.fit.idlab-first-stage.v2",
+ "correction": {
+  "gain": 0.9573664980040083,
+  "offset_cm": 20.763409870268887
+ },
+ "scale_cm": 80.26037949746505,
+ "whole": {
+  "af": {
+   "positive_scale": 0.28192328791511373,
+   "negative_scale": 0.2833547553598932
+  },
+  "aac": {
+   "positive_scale": 0.8108332323628739,
+   "negative_scale": 0.7384202913461735
+  },
+  "differences": {
+   "af": 7.437520765486947e-08,
+   "aac": 1.5035109918244121e-16
+  },
+  "optimizer": {
+   "af": {
+    "method": "L-BFGS-B"
+   },
+   "aac": {
+    "method": "L-BFGS-B"
+   }
+  }
+ },
+ "folds": {
+  "0": {
+   "af": {
+    "positive_scale": 0.3163341853484513,
+    "negative_scale": 0.26488543375542406
+   },
+   "aac": {
+    "positive_scale": 0.8557431184388923,
+    "negative_scale": 0.6875891845267887
+   },
+   "fold": {
+    "fold": 0,
+    "seed": 20260927,
+    "assignment_sha256": "37b7cf9bf68de940ae2c3f4a19489f2fb28c6fccaaed9e1f7783f73769d13a1e",
+    "fitted": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     8,
+     12,
+     13,
+     17,
+     20,
+     24,
+     25,
+     32,
+     35,
+     36,
+     37,
+     38,
+     40,
+     42,
+     44,
+     45,
+     46,
+     47,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56
+    ],
+    "positions": [
+     5,
+     6,
+     7,
+     9,
+     10,
+     11,
+     14,
+     15,
+     16,
+     18,
+     19,
+     21,
+     22,
+     23,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     33,
+     34,
+     39,
+     41,
+     43,
+     48,
+     49,
+     50
+    ]
+   },
+   "link_settings": 1020,
+   "rows": 217166,
+   "optimizer": {
+    "af": {
+     "method": "L-BFGS-B"
+    },
+    "aac": {
+     "method": "L-BFGS-B"
+    }
+   }
+  },
+  "1": {
+   "af": {
+    "positive_scale": 0.24166433759823708,
+    "negative_scale": 0.29751979320661887
+   },
+   "aac": {
+    "positive_scale": 0.7585372979050161,
+    "negative_scale": 0.7844921025909174
+   },
+   "fold": {
+    "fold": 1,
+    "seed": 20260927,
+    "assignment_sha256": "37b7cf9bf68de940ae2c3f4a19489f2fb28c6fccaaed9e1f7783f73769d13a1e",
+    "fitted": [
+     5,
+     6,
+     7,
+     9,
+     10,
+     11,
+     14,
+     15,
+     16,
+     18,
+     19,
+     21,
+     22,
+     23,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     33,
+     34,
+     39,
+     41,
+     43,
+     48,
+     49,
+     50
+    ],
+    "positions": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     8,
+     12,
+     13,
+     17,
+     20,
+     24,
+     25,
+     32,
+     35,
+     36,
+     37,
+     38,
+     40,
+     42,
+     44,
+     45,
+     46,
+     47,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56
+    ]
+   },
+   "link_settings": 990,
+   "rows": 206128,
+   "optimizer": {
+    "af": {
+     "method": "L-BFGS-B"
+    },
+    "aac": {
+     "method": "L-BFGS-B"
+    }
+   }
+  }
+ },
+ "rule": "The multipliers of the agent only and the anchor aided first stage of idlab_training.range_profiles, fitted on the reserved rows of the configurations of each fold of the round alone, with the affine correction and the packet scale of every reserved row. The round positions the units of each fold with the first stage of the other.",
+ "identity": {
+  "training_sha256": "96eb72686a3ccecd532e4d73e6940353d16c7d25420ec6b21e5fc32cbed81594",
+  "split_sha256": "7cd46c3aa442c8df23ac4738254f39d0ed78b47a6446b28a83608834242c7584",
+  "surveyed_sha256": "73d33c35d12d8cc714d4dd1f0f68f885aaff1f9dac94b10bdf9f678f10be22f1",
+  "assignment_sha256": "37b7cf9bf68de940ae2c3f4a19489f2fb28c6fccaaed9e1f7783f73769d13a1e",
+  "evaluation_rows_used": 0,
+  "sources": {
+   "fit_idlab_first_stage.py": "29758d0a36dd661ad71fe5ebf315b1b8786ca8901a0772f04885a0dd197ae573",
+   "fit_idlab.py": "f9522370e06b08400a27134c08747f1892a4bb24f9c23786645d8d1bfac47c0c",
+   "idlab_training.py": "fd08fa49ab39df172d96ccda280811ebc98d2e21ec1443e252330ba3e8d263ac",
+   "calibration.py": "abc64053842928ddb102ba4b32aa1db85f31301e54d2022dd4974fbdb8516fbe",
+   "aac_training.py": "dbd1ac2942cadf6dc9960aaf5eb3987cf084619b226c495f6803ab47d5a80317"
+  }
+ }
+}

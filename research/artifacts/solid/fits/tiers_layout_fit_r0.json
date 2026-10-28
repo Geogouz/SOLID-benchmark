@@ -1,0 +1,323 @@
+{
+ "four": {
+  "kappa": 0.18632048466187337,
+  "excess_probability": 0.9241130083734127,
+  "excess_mean_rel": 3.7028355420840415,
+  "persistent_sd_rel": 3.3529595140076665,
+  "early_detection_per_cm": 0.0,
+  "offset_shape": "gaussian",
+  "nu": 3.0,
+  "extra": {},
+  "nll": 60098.1136299733,
+  "converged": true,
+  "iterations": 1716,
+  "evaluations": 4336,
+  "standard_errors": {
+   "kappa": 0.0013760791759597879,
+   "excess_probability": 0.031925947770125335,
+   "excess_mean_rel": 0.13075473392182377,
+   "persistent_sd_rel": 0.08060964953928569
+  },
+  "standard_errors_sandwich": {
+   "kappa": 0.001807295468566776,
+   "excess_probability": 0.03446994659760181,
+   "excess_mean_rel": 0.1542805726897344,
+   "persistent_sd_rel": 0.07066462099326201
+  },
+  "free": [
+   "kappa",
+   "excess_probability",
+   "excess_mean_rel",
+   "persistent_sd_rel"
+  ],
+  "fixed": [
+   "early_detection_per_cm"
+  ],
+  "winning_start": 12,
+  "distinct_optima": 1,
+  "blocks": 3864,
+  "weight_sum": 3864.0,
+  "optimizer": {
+   "method": "declared start grid, Nelder-Mead with an explicit simplex then an L-BFGS-B polish from every start, restarts from the best point until a restart gains under the restart gain, and a rate of false early detections on its lower edge descended once more at zero",
+   "simplex_step": 0.5,
+   "restart_gain_nats": 0.01,
+   "max_restarts": 5,
+   "optimum_tolerance_nats": 0.1,
+   "anchors": {
+    "kappa": 0.23081020328746404,
+    "excess_mean_rel": 3.5194582490896895,
+    "persistent_sd_rel": 3.5194582490896895
+   },
+   "restart_gains": [
+    2.1827872842550278e-10
+   ],
+   "at_bounds": [],
+   "hessian_positive_definite": true,
+   "rate_at_zero": null,
+   "gradient_max_abs": 0.0016061312635430973,
+   "polish": {
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "optima_nll": [
+    60098.113629973515
+   ],
+   "starts": [
+    {
+     "start": {
+      "kappa": 0.23081020328746404,
+      "excess_probability": 0.05,
+      "excess_mean_rel": 3.5194582490896895,
+      "persistent_sd_rel": 3.5194582490896895
+     },
+     "nll": 60098.11363320326,
+     "end": {
+      "kappa": 0.18632059506708815,
+      "excess_probability": 0.924193789893081,
+      "excess_mean_rel": 3.7025840507191847,
+      "persistent_sd_rel": 3.3530395045197783
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.07693673442915468,
+      "excess_probability": 0.05,
+      "excess_mean_rel": 10.558374747269069,
+      "persistent_sd_rel": 10.558374747269069
+     },
+     "nll": 60098.11363073378,
+     "end": {
+      "kappa": 0.1863204789498128,
+      "excess_probability": 0.9241521285875121,
+      "excess_mean_rel": 3.7027179773348253,
+      "persistent_sd_rel": 3.3530014477365486
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.6924306098623921,
+      "excess_probability": 0.05,
+      "excess_mean_rel": 1.173152749696563,
+      "persistent_sd_rel": 1.173152749696563
+     },
+     "nll": 60098.11362997568,
+     "end": {
+      "kappa": 0.18632051022125526,
+      "excess_probability": 0.9241140137800912,
+      "excess_mean_rel": 3.70283636218482,
+      "persistent_sd_rel": 3.352958232350896
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.23081020328746404,
+      "excess_probability": 0.25,
+      "excess_mean_rel": 3.5194582490896895,
+      "persistent_sd_rel": 3.5194582490896895
+     },
+     "nll": 60098.1136376063,
+     "end": {
+      "kappa": 0.18632031229186866,
+      "excess_probability": 0.923988333657269,
+      "excess_mean_rel": 3.703231302153024,
+      "persistent_sd_rel": 3.3528373508065887
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.07693673442915468,
+      "excess_probability": 0.25,
+      "excess_mean_rel": 10.558374747269069,
+      "persistent_sd_rel": 10.558374747269069
+     },
+     "nll": 60098.1136300083,
+     "end": {
+      "kappa": 0.1863204509666004,
+      "excess_probability": 0.924121179581466,
+      "excess_mean_rel": 3.702811826374776,
+      "persistent_sd_rel": 3.3529674992335488
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.6924306098623921,
+      "excess_probability": 0.25,
+      "excess_mean_rel": 1.173152749696563,
+      "persistent_sd_rel": 1.173152749696563
+     },
+     "nll": 60098.113635290996,
+     "end": {
+      "kappa": 0.18632056705598243,
+      "excess_probability": 0.9242168476900805,
+      "excess_mean_rel": 3.7025185545732744,
+      "persistent_sd_rel": 3.3530731478832685
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.23081020328746404,
+      "excess_probability": 0.5,
+      "excess_mean_rel": 3.5194582490896895,
+      "persistent_sd_rel": 3.5194582490896895
+     },
+     "nll": 60098.113629973544,
+     "end": {
+      "kappa": 0.18632045946647494,
+      "excess_probability": 0.9241132307569131,
+      "excess_mean_rel": 3.702834814851415,
+      "persistent_sd_rel": 3.3529612531127664
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.07693673442915468,
+      "excess_probability": 0.5,
+      "excess_mean_rel": 10.558374747269069,
+      "persistent_sd_rel": 10.558374747269069
+     },
+     "nll": 60098.113631522836,
+     "end": {
+      "kappa": 0.18632049132491868,
+      "excess_probability": 0.9241689567812027,
+      "excess_mean_rel": 3.7026659316930095,
+      "persistent_sd_rel": 3.353019567066784
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.6924306098623921,
+      "excess_probability": 0.5,
+      "excess_mean_rel": 1.173152749696563,
+      "persistent_sd_rel": 1.173152749696563
+     },
+     "nll": 60098.11364591007,
+     "end": {
+      "kappa": 0.186320539708382,
+      "excess_probability": 0.923932593270324,
+      "excess_mean_rel": 3.7033697166883237,
+      "persistent_sd_rel": 3.3527689100636597
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.23081020328746404,
+      "excess_probability": 0.8,
+      "excess_mean_rel": 3.5194582490896895,
+      "persistent_sd_rel": 3.5194582490896895
+     },
+     "nll": 60098.11364196422,
+     "end": {
+      "kappa": 0.1863205623089219,
+      "excess_probability": 0.9242690535035388,
+      "excess_mean_rel": 3.70237251445901,
+      "persistent_sd_rel": 3.353118837061024
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.07693673442915468,
+      "excess_probability": 0.8,
+      "excess_mean_rel": 10.558374747269069,
+      "persistent_sd_rel": 10.558374747269069
+     },
+     "nll": 60098.11363022833,
+     "end": {
+      "kappa": 0.1863204296411083,
+      "excess_probability": 0.9240900233708145,
+      "excess_mean_rel": 3.702905500428151,
+      "persistent_sd_rel": 3.352939191568733
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.6924306098623921,
+      "excess_probability": 0.8,
+      "excess_mean_rel": 1.173152749696563,
+      "persistent_sd_rel": 1.173152749696563
+     },
+     "nll": 60098.11363047913,
+     "end": {
+      "kappa": 0.1863204636408108,
+      "excess_probability": 0.9240806378369161,
+      "excess_mean_rel": 3.7029338031139796,
+      "persistent_sd_rel": 3.3529245956651934
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.23081020328746404,
+      "excess_probability": 0.95,
+      "excess_mean_rel": 3.5194582490896895,
+      "persistent_sd_rel": 3.5194582490896895
+     },
+     "nll": 60098.113629973515,
+     "end": {
+      "kappa": 0.18632048400263862,
+      "excess_probability": 0.9241130076979068,
+      "excess_mean_rel": 3.702834248245134,
+      "persistent_sd_rel": 3.352958938341433
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.07693673442915468,
+      "excess_probability": 0.95,
+      "excess_mean_rel": 10.558374747269069,
+      "persistent_sd_rel": 10.558374747269069
+     },
+     "nll": 60098.11363039602,
+     "end": {
+      "kappa": 0.18632043151012959,
+      "excess_probability": 0.9240835481562314,
+      "excess_mean_rel": 3.7029246062481267,
+      "persistent_sd_rel": 3.3529347955400826
+     }
+    },
+    {
+     "start": {
+      "kappa": 0.6924306098623921,
+      "excess_probability": 0.95,
+      "excess_mean_rel": 1.173152749696563,
+      "persistent_sd_rel": 1.173152749696563
+     },
+     "nll": 60098.113629973835,
+     "end": {
+      "kappa": 0.18632045486148,
+      "excess_probability": 0.9241120519868552,
+      "excess_mean_rel": 3.702841250756952,
+      "persistent_sd_rel": 3.3529575135157734
+     }
+    }
+   ]
+  },
+  "likelihood": {
+   "name": "link_likelihood.block_loglik",
+   "source": "link_likelihood.py",
+   "sha256": "f5b572e9ac816135abe83523a8f1867c9094a17983e6dada44008b4bccf939c5"
+  }
+ },
+ "blocks": 3864,
+ "blocks_cap": 2000,
+ "blocks_per_track": {
+  "1": 1932,
+  "10": 1932
+ },
+ "blocks_per_length": {
+  "1": 1932,
+  "10": 1932
+ },
+ "weight_per_track": {
+  "1": 1932.0,
+  "10": 1932.0
+ },
+ "nu": 3.0,
+ "identity": {
+  "split": "training",
+  "split_record_sha256": "7590ca1818b109a9a34b180d24ddc7bc5b6c949331a20c46a43ff5f98058cf89",
+  "evaluation_rows_used": 0,
+  "sources": {
+   "base": "ffc7b5f93e725e30d4a404bdaae85ef078be12451918fd9d12ccaa9577073851",
+   "catalog": "fc3f077872de59975b8a259f27f05e794c95aa7a5db8433250fbd85235ae130c"
+  }
+ }
+}

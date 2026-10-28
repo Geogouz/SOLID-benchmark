@@ -1,0 +1,110 @@
+{
+ "schema": "solid.baselines.ade-heightspread.fits.v1",
+ "dataset": "aau",
+ "harness": {
+  "path": "experiments/ade-heightspread/fit_ade.py",
+  "sha256": "039a49f44fe5878af8a349356c6de7126b9df46659108ca97bd4af240e7aa2fa",
+  "shared": {
+   "path": "experiments/ade-heightspread/shared.py",
+   "sha256": "6ae662c154e823d1808f5766a253aa0d3a01da348021112cfcd327faa2f91192"
+  }
+ },
+ "declaration": {
+  "path": "experiments/ade-heightspread/declaration.json",
+  "sha256": "0af21f8c7e169cb1f71d0d62ddbb2f4aa0686ebf7859f0a037093e50c0e1049c"
+ },
+ "root": ".",
+ "commit": "108e535cc280ff8e5bd78e7ff18093ef97ef5e80",
+ "checkouts": {
+  "repository": {
+   "path": ".",
+   "commit": "108e535cc280ff8e5bd78e7ff18093ef97ef5e80"
+  },
+  "code": {
+   "path": ".",
+   "commit": "108e535cc280ff8e5bd78e7ff18093ef97ef5e80"
+  }
+ },
+ "prerequisites": {
+  "adapters_record": {
+   "path": "WORK/adapters.json",
+   "sha256": "3944d3d9a45ffbc0afd0ca754384ebd2d25eed9d5ed39f00f0d3774dc31f2e9e"
+  },
+  "validation_record": {
+   "path": "WORK/validation/tiers-ade-validation.json",
+   "sha256": "b59a233993b4652a233abc4db6437b5de45e6e4f01bd3525f953cbb92fea8dd7"
+  },
+  "table_checked": {
+   "path": "WORK/tables/aau/check-committed.json",
+   "sha256": "8019a5ce3ff3b7f28c081e1be1c5bc51782f164621360a6c0cea56834d7e03a1"
+  }
+ },
+ "read": "0004-aau-fit-20261004T060508912",
+ "freeze": {
+  "freeze_record": "research/artifacts/solid/selections/method-freeze.json",
+  "freeze_record_sha256": "dce9a22eb78616cdfb0d5d563ba2d2e0ba7c034cc6db9ee83fdb17db5858327a",
+  "stage_one_closed": "2026-09-29T19:15:36+00:00"
+ },
+ "patches": [
+  {
+   "target": "tempfile.tempdir",
+   "reason": "temporary files lie under WORK, where the audit hook lets them be written, the recordings aau_layout.flights writes among them"
+  },
+  {
+   "target": "heldout.require_freeze",
+   "reason": "every read of a held-out half is of the training half, and any other half is refused before a file is read"
+  },
+  {
+   "target": "aau_layout.load",
+   "reason": "aau_layout.load gives the one load of the archive to the collector and to both fits"
+  }
+ ],
+ "procedure": {
+  "model2": "fit_profiles.fit_ade_model: maximum likelihood of the asymmetric Laplace density with scales slope times measured range plus intercept, over individual reports, Nelder-Mead from (0.02, 20, 0.01, 40) with nonnegative slopes and positive intercepts. Residual is the converted range minus the planar distance.",
+  "model1": "fit_profiles.fit_constant_ade_model: maximum likelihood of the asymmetric Laplace density with constant scales, model 1 of Li, Hedley and Collings, on the readings of the model 2 fit (experiments/ade-reselection/fit_model1.py)"
+ },
+ "code": {
+  "ade_training": "2e0b4ffb24f8c05c3fe11cecd1ffa0410af32947ddd42dc5f441c5be8a2ab2fe",
+  "common": "ff4224e3781bafb2a912b2b990f6108fc6444eb1a5e44703a0fc5ee9fff96bdc",
+  "fit_layout": "1a5a28ca2c82ae8c74354170a9c3becb63247819fd325f56f99d57b43bb9770c",
+  "heldout": "33220116f3c821f37c6a55a4faf408e19599d52ae85a0b477acb34d1d0fa8258",
+  "heldout_ade": "b7fcfd064035c4cc20f9cf42c139bf799d5ebf6bba2756a6365cf15c8cb17408",
+  "aau_layout": "e6db6b588b63598b117d285e90846bf17b1a0819458e8039dcf6703d04a44821",
+  "hymn_layout": "228941a3d8f1bc2007ea42586b63758b0f42aee962e6009a7ab77eac65ef50c8"
+ },
+ "records": {
+  "aau-ade-fit.json": "6a7a6b97cb1741b595cdf5bb30cf8a10b4812e7ee1d0b7ccb22987a1757efcb7",
+  "aau-ade-fit-model1.json": "1511cfbb2213faa232265a01deb3f336e6367889f88274be7d4c3b5d01ca6c26"
+ },
+ "models": {
+  "None": {
+   "model2": {
+    "ranging_model": {
+     "positive_slope": 0.0,
+     "positive_intercept_cm": 30.711194136604988,
+     "negative_slope": 0.0020772545429420704,
+     "negative_intercept_cm": 1.7315201514500815
+    },
+    "readings": 61086,
+    "nll_per_report": 4.5112122112766295,
+    "failure": null
+   },
+   "model1": {
+    "ranging_model": {
+     "positive_slope": 0.0,
+     "positive_intercept_cm": 30.73929520203755,
+     "negative_slope": 0.0,
+     "negative_intercept_cm": 2.8087573453108776
+    },
+    "readings": 61086,
+    "nll_per_report": 4.512978842394725,
+    "failure": null
+   }
+  }
+ },
+ "evaluation_rows_used": 0,
+ "evaluation_rows_rule": "The readings of the declared evaluation half each fit took, counted by its collector, AAU's by fit_layout.aau_groups, HYMN's by fit_layout.evaluation_rows over the points heldout_ade.hymn_reports walks, and none on Bregar, whose collector fit_layout.bregar_groups refuses a request that is not the training block. Every fit record names its count, and any count but 0 stops the run.",
+ "passed": true,
+ "finished": "2026-10-04T06:05:13.482+00:00",
+ "seconds": 5.5
+}

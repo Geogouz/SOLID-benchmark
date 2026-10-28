@@ -1,0 +1,98 @@
+{
+ "1": {
+  "range_error": {
+   "positive_scale": 0.21403187493890596,
+   "negative_scale": 0.2139738653969116
+  },
+  "presence": {
+   "shape": "gaussian",
+   "quantile": 0.9,
+   "factor": 0.75,
+   "width": 0.15,
+   "reach": "ml",
+   "enabled": true
+  },
+  "block_range": {
+   "kappa": 0.18632048466187337,
+   "excess_probability": 0.9241130083734127,
+   "excess_mean_rel": 3.7028355420840415,
+   "persistent_sd_rel": 3.3529595140076665,
+   "nu": 3.0,
+   "offset_shape": "gaussian",
+   "early_detection_per_cm": 0.0,
+   "height_nodes": [
+    6.6,
+    9.7,
+    12.7,
+    15.8,
+    18.8
+   ],
+   "height_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "refine_from_median": true,
+   "independent_packets": false
+  },
+  "starts": 64,
+  "calibration": {
+   "range_slope_cm_per_ns": 28.512859035713586,
+   "range_offset_cm": 19.57939566609116,
+   "scale_slope": 0.02635621175286423,
+   "scale_intercept_cm": 4.649664346296255,
+   "scale_min_cm": 8.0,
+   "scale_max_cm": 55.0
+  }
+ },
+ "10": {
+  "range_error": {
+   "positive_scale": 0.21403187493890596,
+   "negative_scale": 0.2139738653969116
+  },
+  "presence": {
+   "shape": "gaussian",
+   "quantile": 0.9,
+   "factor": 0.75,
+   "width": 0.15,
+   "reach": "ml",
+   "enabled": true
+  },
+  "block_range": {
+   "kappa": 0.18632048466187337,
+   "excess_probability": 0.9241130083734127,
+   "excess_mean_rel": 3.7028355420840415,
+   "persistent_sd_rel": 3.3529595140076665,
+   "nu": 3.0,
+   "offset_shape": "gaussian",
+   "early_detection_per_cm": 0.0,
+   "height_nodes": [
+    6.6,
+    9.7,
+    12.7,
+    15.8,
+    18.8
+   ],
+   "height_weights": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "refine_from_median": true,
+   "independent_packets": false
+  },
+  "starts": 64,
+  "calibration": {
+   "range_slope_cm_per_ns": 28.512859035713586,
+   "range_offset_cm": 19.57939566609116,
+   "scale_slope": 0.02635621175286423,
+   "scale_intercept_cm": 4.649664346296255,
+   "scale_min_cm": 8.0,
+   "scale_max_cm": 55.0
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "area": {
+  "minimum_x_cm": -21535.594665,
+  "maximum_x_cm": -20121.105434999998,
+  "minimum_y_cm": -19920.62937,
+  "maximum_y_cm": -16558.370030000002
+ },
+ "anchor_only": {
+  "kappa": 0.2607633285659527,
+  "excess_probability": 0.27515125647327787,
+  "excess_mean_rel": 8.464749681396242,
+  "persistent_sd_rel": 2.7750956999229297,
+  "nu": 3.0,
+  "offset_shape": "gaussian",
+  "early_detection_per_cm": 0.0,
+  "height_nodes": [
+   -92.0,
+   -77.1,
+   -62.2,
+   -47.4,
+   -32.5
+  ],
+  "height_weights": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "grid_step": 4.242640687119285,
+  "joint_samples": 1024,
+  "seed": 20260918,
+  "independent_packets": false,
+  "decision": "risk",
+  "presence": {
+   "shape": "gaussian",
+   "quantile": 0.9,
+   "factor": 0.75,
+   "width": 0.15,
+   "reach": "ml",
+   "enabled": true
+  }
+ }
+}

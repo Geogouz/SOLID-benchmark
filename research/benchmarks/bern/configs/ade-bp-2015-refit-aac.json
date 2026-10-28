@@ -1,0 +1,18 @@
+{
+ "method": "ade-bp-2015",
+ "particles": 500,
+ "iterations": 4,
+ "importance_iterations": 256,
+ "area": {
+  "minimum_x_cm": -21535.594665,
+  "maximum_x_cm": -20121.105434999998,
+  "minimum_y_cm": -19920.62937,
+  "maximum_y_cm": -16558.370030000002
+ },
+ "ranging_model": {
+  "positive_slope": 0.043518097740125286,
+  "positive_intercept_cm": 10.1076461725945,
+  "negative_slope": 0.0,
+  "negative_intercept_cm": 55.83324326521197
+ }
+}

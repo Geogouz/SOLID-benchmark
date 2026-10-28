@@ -1,0 +1,99 @@
+{
+ "schema": "solid.baselines.ade-fit.v1",
+ "dataset": "aau",
+ "method": "ade-bp-2015",
+ "rule": "Every admissible calibrated report of every ordered pair of static nodes in the complete blocks of the training flights the relocation guard keeps, the ten-reading blocks of SOLID's link fit (fit_layout.aau_groups), against the planar distance between the published node positions.",
+ "procedure": "fit_profiles.fit_ade_model: maximum likelihood of the asymmetric Laplace density with scales slope times measured range plus intercept, over individual reports, Nelder-Mead from (0.02, 20, 0.01, 40) with nonnegative slopes and positive intercepts. Residual is the converted range minus the planar distance.",
+ "distance": "planar Euclidean, cm",
+ "conversion": {
+  "rule": "raw range minus the publisher's constant bias of the ordered pair as the README lists it, estimated on spiral_8m seq1, inadmissible readings dropped, the calibration every method receives"
+ },
+ "evaluation_rows_used": 0,
+ "previous": {
+  "source": "the retained Bern ANC configuration research/benchmarks/bern/configs/ade-bp-2015-anc.json",
+  "ranging_model": {
+   "positive_slope": 0.04361915824323337,
+   "positive_intercept_cm": 9.7059943254643,
+   "negative_slope": 0.0,
+   "negative_intercept_cm": 55.935533353036
+  },
+  "sha256": "660f93dac4943e0d343a9a991d64b0b4e4fd9237ce82f5a83374a09e2f8cdea8"
+ },
+ "sources": {
+  "archive": {
+   "path": "research/data/downloads/zenodo-10819706/AAU_Meshed_UWB_Dataset.zip",
+   "sha256": "9236366321ffc51b51543552832a150162aaa271737409ad13c02e04896f8113"
+  },
+  "calibration": {
+   "path": "research/data/external-benchmarks/aau-layout/calibration.json",
+   "sha256": "265a593450b4b23fe308fc4a66515b4fa7f977d43cf49e4aeecbab3f02dda8eb"
+  },
+  "declaration": {
+   "path": "research/artifacts/solid/splits/heldout-benchmarks.json",
+   "sha256": "b51dc4f8ffc4aee76381ee3312475824242ffb0343d66a51bc1be35aae4611f4"
+  }
+ },
+ "code": {
+  "research/benchmarks/datasets/ade_training.py": "2e0b4ffb24f8c05c3fe11cecd1ffa0410af32947ddd42dc5f441c5be8a2ab2fe",
+  "research/benchmarks/bern/ade_bp/fit_profiles.py": "3dfd3c9e159d269f654c2ae20c1d07fc7a1842395649416a906dfdcbae857312",
+  "research/benchmarks/datasets/heldout_ade.py": "b7fcfd064035c4cc20f9cf42c139bf799d5ebf6bba2756a6365cf15c8cb17408"
+ },
+ "fitted_on": {
+  "host": "linux-x86-64",
+  "python": "3.12.3",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1"
+ },
+ "training_flights": [
+  "spiral_8m/seq1",
+  "spiral_8m/seq2",
+  "spiral_8m/seq3",
+  "spiral_8m/seq4",
+  "spiral_8m/seq5",
+  "spiral_8m/seq6",
+  "spiral_8m/seq7"
+ ],
+ "excluded_training_flights": [],
+ "blocks": 6552,
+ "ordered_pairs": 72,
+ "readings": 61086,
+ "fit": {
+  "ranging_model": {
+   "positive_slope": 0.0,
+   "positive_intercept_cm": 30.711194136604988,
+   "negative_slope": 0.0020772545429420704,
+   "negative_intercept_cm": 1.7315201514500815
+  },
+  "negative_log_likelihood": 275571.90913804417,
+  "nll_per_report": 4.5112122112766295,
+  "reports": 61086,
+  "residual_quantiles_cm": {
+   "5": -1.837,
+   "25": 2.723,
+   "50": 14.547,
+   "75": 45.738,
+   "95": 86.72
+  },
+  "previous_nll_per_report": 5.5817213148675675
+ },
+ "model": 2,
+ "environment": null,
+ "harness": {
+  "path": "experiments/ade-heightspread/fit_ade.py",
+  "sha256": "039a49f44fe5878af8a349356c6de7126b9df46659108ca97bd4af240e7aa2fa",
+  "shared": {
+   "path": "experiments/ade-heightspread/shared.py",
+   "sha256": "6ae662c154e823d1808f5766a253aa0d3a01da348021112cfcd327faa2f91192"
+  }
+ },
+ "collector": {
+  "split": "training",
+  "dataset": "aau",
+  "declaration_sha256": "b51dc4f8ffc4aee76381ee3312475824242ffb0343d66a51bc1be35aae4611f4",
+  "evaluation_rows_used": 0,
+  "sources": {
+   "archive": "9236366321ffc51b51543552832a150162aaa271737409ad13c02e04896f8113",
+   "calibration": "265a593450b4b23fe308fc4a66515b4fa7f977d43cf49e4aeecbab3f02dda8eb"
+  }
+ }
+}

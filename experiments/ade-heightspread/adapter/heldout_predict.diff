@@ -1,0 +1,217 @@
+--- research/benchmarks/datasets/heldout_predict.rs
++++ experiments/ade-heightspread/adapter/src/heldout_predict.rs
+@@ -4,8 +4,10 @@
+ //! the fifteen IDLab nodes. This one accepts any anchor only unit with at least one anchor and two agents. Both
+ //! constellations have real height spread, so it follows the rule of the Bregar adapter. Jin 2021, FNL 2025 and
+ //! STRONG 2021 run with the planar or the spatial model, the one their selection on the training half chose, and
+-//! ADE-BP, which has no spatial implementation, is refused. A run sends the three and a selection of a method's options
+-//! sends that method alone. It writes one JSON record per unit and method. Truth never enters a request.
++//! ADE-BP 2015 runs with the planar model of its paper, the one it implements, with the settings of its anchor only runs
++//! and the operating area each unit carries (experiments/ade-heightspread/declaration.json). A run sends the three and a
++//! selection of a method's options sends that method alone. It writes one JSON record per unit and method. Truth never
++//! enters a request.
+ use std::collections::BTreeSet;
+ use std::fs::File;
+ use std::io::{BufWriter, Write};
+@@ -38,8 +40,8 @@
+     id: u32,
+     samples: usize,
+     problem: PreparedProblem,
+-    /// The operating area of the unit by the deployment rules, the area SOLID receives. No baseline of the roster takes an
+-    /// area, and the adapter only checks that it holds every anchor.
++    /// The operating area of the unit by the deployment rules, the area SOLID receives. ADE-BP takes it, and the
++    /// adapter checks that it holds every anchor.
+     area: AreaBounds,
+ }
+
+@@ -131,9 +133,9 @@
+     Ok(())
+ }
+
+-/// Jin, FNL and STRONG, each at most once. ADE-BP has no spatial implementation and is not run on scenes with real
+-/// height spread. A run sends the three and a selection of a method's options sends that method alone. The isolation of
+-/// a crashed solve resends a crashed request method by method, so every single method of the three must pass.
++/// Jin, FNL, STRONG and ADE-BP, each at most once. A run sends the three and a selection of a method's options sends
++/// that method alone, ADE-BP's runs and selections send ADE-BP alone. The isolation of a crashed solve resends a crashed
++/// request method by method, so every single method of the four must pass.
+ fn roster_allowed(methods: &[MethodKind]) -> bool {
+     let names: BTreeSet<_> = methods.iter().map(|m| m.name()).collect();
+     !methods.is_empty()
+@@ -141,18 +143,48 @@
+         && methods.iter().all(|m| {
+             matches!(
+                 m,
+-                MethodKind::Jin2021 | MethodKind::Fnl | MethodKind::Strong
++                MethodKind::Jin2021 | MethodKind::Fnl | MethodKind::Strong | MethodKind::AdeBp2015
+             )
+         })
+ }
+
+ /// The rule of the Bregar adapter for scenes with real height spread. Jin, FNL and STRONG take the planar or the
+-/// spatial model that their selection on the training half chose (baseline_selection.py).
++/// spatial model that their selection on the training half chose (baseline_selection.py). ADE-BP implements the planar
++/// model alone, the published form of its paper.
+ fn dimension_allowed(method: MethodKind, policy: DimensionPolicy) -> bool {
++    if method == MethodKind::AdeBp2015 {
++        return policy == DimensionPolicy::Planar;
++    }
+     matches!(
+         method,
+         MethodKind::Jin2021 | MethodKind::Fnl | MethodKind::Strong
+     ) && matches!(policy, DimensionPolicy::Planar | DimensionPolicy::Spatial)
++}
++
++/// ADE-BP keeps the declared settings of its anchor only runs, the 500 particles and the four rounds of its paper and
++/// the cap of 256 importance refinements, and takes each unit's area rather than one of its own, as the TIERS and IDLab
++/// adapters give it.
++fn budget_allowed(config: &MethodConfig) -> bool {
++    match config {
++        MethodConfig::AdeBp2015 {
++            area,
++            particles,
++            iterations,
++            importance_iterations,
++            ..
++        } => area.is_none() && (*particles, *iterations, *importance_iterations) == (500, 4, 256),
++        _ => true,
++    }
++}
++
++/// The runner of one baseline for one unit, ADE-BP with the unit's operating area and every other method as the
++/// request configures it.
++fn configured_for(baseline: &Baseline, unit: &Unit) -> Result<MethodRunner> {
++    let mut config = baseline.method_config.clone();
++    if let MethodConfig::AdeBp2015 { area, .. } = &mut config {
++        *area = Some(unit.area);
++    }
++    Ok(MethodRunner::configured(baseline.method, config)?)
+ }
+
+ /// The estimate of a record, with whether the solve stayed where it started (stayed_at_start).
+@@ -188,6 +220,10 @@
+             b.solve_config.max_time_micros == 0,
+             "no wall-clock truncation"
+         );
++        ensure!(
++            budget_allowed(&b.method_config),
++            "ADE-BP keeps its declared anchor only settings and the unit's area"
++        );
+         MethodRunner::configured(b.method, b.method_config.clone())?;
+     }
+     let mut keys = BTreeSet::new();
+@@ -199,7 +235,7 @@
+     for unit in request.units {
+         for b in &request.baselines {
+             let started = Instant::now();
+-            let runner = MethodRunner::configured(b.method, b.method_config.clone())?;
++            let runner = configured_for(b, &unit)?;
+             let result: Result<Value> = runner
+                 .solve_with_start(&unit.problem, &b.solve_config)
+                 .map(estimate)
+@@ -228,7 +264,7 @@
+ mod tests {
+     use super::*;
+     use solid_core::{Anchor, CalibratedRangeSample, RangeObservation};
+-    use solid_methods::LocalizationMethod;
++    use solid_methods::{AdeRangingModel, LocalizationMethod};
+
+     fn unit(anchors: u32, agents: u32) -> Unit {
+         let anchors: Vec<_> = (0..anchors)
+@@ -355,11 +391,12 @@
+     }
+
+     #[test]
+-    fn ade_bp_is_not_run_on_scenes_with_real_height_spread() {
++    fn ade_bp_runs_alone_or_beside_the_three_once() {
+         use MethodKind::{AdeBp2015, Fnl, Jin2021, Strong};
+-        assert!(!roster_allowed(&[AdeBp2015]));
+-        assert!(!roster_allowed(&[Jin2021, AdeBp2015, Fnl, Strong]));
+-        assert!(!roster_allowed(&[Strong, AdeBp2015]));
++        assert!(roster_allowed(&[AdeBp2015]));
++        assert!(roster_allowed(&[Jin2021, AdeBp2015, Fnl, Strong]));
++        assert!(roster_allowed(&[Strong, AdeBp2015]));
++        assert!(!roster_allowed(&[AdeBp2015, AdeBp2015]));
+     }
+
+     #[test]
+@@ -382,7 +419,66 @@
+             assert!(dimension_allowed(method, Spatial));
+             assert!(!dimension_allowed(method, Automatic));
+         }
+-        assert!(!dimension_allowed(MethodKind::AdeBp2015, Planar));
++        // ADE-BP implements the planar model alone
++        assert!(dimension_allowed(MethodKind::AdeBp2015, Planar));
++        assert!(!dimension_allowed(MethodKind::AdeBp2015, Spatial));
++        assert!(!dimension_allowed(MethodKind::AdeBp2015, Automatic));
++    }
++
++    /// ADE-BP's baseline entry as the runner builds it from the declared base configuration, with a ranging model.
++    fn ade(area: Option<AreaBounds>, particles: usize, iterations: usize, aggregation: &str) -> Baseline {
++        serde_json::from_value(json!({"method": "ade-bp-2015",
++            "method_config": {"method": "ade-bp-2015", "area": area, "particles": particles, "iterations": iterations,
++                "importance_iterations": 256, "ranging_model": {"positive_slope": 0.02, "positive_intercept_cm": 14.0,
++                "negative_slope": 0.0, "negative_intercept_cm": 9.0}},
++            "solve_config": {"aggregation": aggregation, "dimension_policy": "planar", "gradient_tolerance": 1e-5,
++                "history_size": 10, "max_iterations": 10000, "max_time_micros": 0, "max_tof_ns": 200.0,
++                "robust_delta": 0.7}}))
++        .unwrap()
++    }
++
++    #[test]
++    fn ade_bp_keeps_its_budget_and_takes_the_unit_area() {
++        assert!(budget_allowed(&ade(None, 500, 4, "Median").method_config));
++        assert!(budget_allowed(&ade(None, 500, 4, "AllSamples").method_config));
++        assert!(!budget_allowed(&ade(None, 500, 10, "Median").method_config));
++        assert!(!budget_allowed(&ade(None, 2000, 4, "Median").method_config));
++        let input = unit(4, 3);
++        assert!(!budget_allowed(&ade(Some(input.area), 500, 4, "Median").method_config));
++        // the runner of a unit carries the unit's area, and its solve is the solve with that area configured directly
++        let baseline = ade(None, 500, 4, "Median");
++        let runner = configured_for(&baseline, &input).unwrap();
++        match runner.config() {
++            Some(MethodConfig::AdeBp2015 { area, .. }) => assert_eq!(*area, Some(input.area)),
++            _ => panic!("ADE-BP lost its configuration"),
++        }
++        let direct = MethodRunner::configured(
++            MethodKind::AdeBp2015,
++            MethodConfig::AdeBp2015 {
++                area: Some(input.area),
++                particles: 500,
++                iterations: 4,
++                importance_iterations: 256,
++                ranging_model: AdeRangingModel {
++                    positive_slope: 0.02,
++                    positive_intercept_cm: 14.0,
++                    negative_slope: 0.0,
++                    negative_intercept_cm: 9.0,
++                },
++            },
++        )
++        .unwrap();
++        let ours = runner.solve(&input.problem, &baseline.solve_config).unwrap();
++        let theirs = direct.solve(&input.problem, &baseline.solve_config).unwrap();
++        assert_eq!(ours.positions, theirs.positions);
++        // the other methods keep the configuration of the request
++        let strong: Baseline = serde_json::from_value(json!({"method": "strong",
++            "method_config": {"method": "strong", "initialization": "released"},
++            "solve_config": {"aggregation": "Median", "dimension_policy": "spatial", "gradient_tolerance": 1e-5,
++                "history_size": 10, "max_iterations": 3, "max_time_micros": 0, "max_tof_ns": 200.0,
++                "robust_delta": 40.0}}))
++        .unwrap();
++        assert_eq!(configured_for(&strong, &input).unwrap().config(), Some(&strong.method_config));
+     }
+
+     /// A baseline of a request as the runner builds it, with the given start and a short budget, so that the start
+@@ -444,6 +540,12 @@
+                 assert_eq!(estimate.agent_ids, input.problem.agent_ids);
+             }
+         }
++        let baseline = ade(None, 500, 4, "Median");
++        let estimate = configured_for(&baseline, &input)
++            .unwrap()
++            .solve(&input.problem, &baseline.solve_config)
++            .unwrap();
++        assert_eq!(estimate.agent_ids, input.problem.agent_ids);
+     }
+
+     #[test]

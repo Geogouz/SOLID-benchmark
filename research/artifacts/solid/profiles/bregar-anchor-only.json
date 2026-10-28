@@ -1,0 +1,124 @@
+{
+ "environments": {
+  "environment0": {
+   "anchor_only": {
+    "kappa": 0.045431171293847036,
+    "excess_probability": 0.999999,
+    "excess_mean_rel": 13.94264072682983,
+    "persistent_sd_rel": 8.830982367230376,
+    "nu": 3.0,
+    "offset_shape": "gaussian",
+    "early_detection_per_cm": 0.0,
+    "independent_packets": false,
+    "decision": "risk",
+    "presence": {
+     "shape": "gaussian",
+     "quantile": 0.9,
+     "factor": 0.75,
+     "width": 0.15,
+     "reach": "ml",
+     "enabled": true
+    },
+    "height_nodes": [
+     120.0
+    ],
+    "height_weights": [
+     1.0
+    ],
+    "grid_step": 9.121677477306463,
+    "joint_samples": 1024,
+    "seed": 20260918
+   }
+  },
+  "environment1": {
+   "anchor_only": {
+    "kappa": 0.08528821051504938,
+    "excess_probability": 0.8594975064226703,
+    "excess_mean_rel": 8.222116220500416,
+    "persistent_sd_rel": 2.364732734555945,
+    "nu": 3.0,
+    "offset_shape": "gaussian",
+    "early_detection_per_cm": 0.0,
+    "independent_packets": false,
+    "decision": "risk",
+    "presence": {
+     "shape": "gaussian",
+     "quantile": 0.9,
+     "factor": 0.75,
+     "width": 0.15,
+     "reach": "ml",
+     "enabled": true
+    },
+    "height_nodes": [
+     95.0
+    ],
+    "height_weights": [
+     1.0
+    ],
+    "grid_step": 4.949747468305833,
+    "joint_samples": 1024,
+    "seed": 20260918
+   }
+  },
+  "environment2": {
+   "anchor_only": {
+    "kappa": 0.0340365001122633,
+    "excess_probability": 0.559081306402796,
+    "excess_mean_rel": 30.60805425249289,
+    "persistent_sd_rel": 4.522053007662469,
+    "nu": 3.0,
+    "offset_shape": "gaussian",
+    "early_detection_per_cm": 0.0,
+    "independent_packets": false,
+    "decision": "risk",
+    "presence": {
+     "shape": "gaussian",
+     "quantile": 0.9,
+     "factor": 0.75,
+     "width": 0.15,
+     "reach": "ml",
+     "enabled": true
+    },
+    "height_nodes": [
+     132.0
+    ],
+    "height_weights": [
+     1.0
+    ],
+    "grid_step": 17.324116139070412,
+    "joint_samples": 1024,
+    "seed": 20260918
+   }
+  },
+  "environment3": {
+   "anchor_only": {
+    "kappa": 0.044674214911984846,
+    "excess_probability": 0.8485714841182248,
+    "excess_mean_rel": 14.71353868211581,
+    "persistent_sd_rel": 10.564474945135347,
+    "nu": 3.0,
+    "offset_shape": "gaussian",
+    "early_detection_per_cm": 0.0,
+    "independent_packets": false,
+    "decision": "risk",
+    "presence": {
+     "shape": "gaussian",
+     "quantile": 0.9,
+     "factor": 0.75,
+     "width": 0.15,
+     "reach": "ml",
+     "enabled": true
+    },
+    "height_nodes": [
+     120.0
+    ],
+    "height_weights": [
+     1.0
+    ],
+    "grid_step": 11.030865786510141,
+    "joint_samples": 1024,
+    "seed": 20260918
+   }
+  }
+ }
+}
